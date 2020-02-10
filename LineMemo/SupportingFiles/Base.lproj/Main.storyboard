@@ -243,11 +243,99 @@
                         <outlet property="editImageBarButtonItem" destination="rFZ-iX-qGb" id="hRs-1e-biD"/>
                         <outlet property="subTextView" destination="BI6-oE-pe1" id="Md4-Pp-62p"/>
                         <outlet property="titleTextField" destination="RJ2-mE-ot0" id="Ms3-zd-2es"/>
+                        <segue destination="NeP-No-x2Y" kind="show" identifier="goToAddURLImageView" id="Huw-pd-QnH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1eW-0M-XqJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1963.7681159420292" y="120.53571428571428"/>
+        </scene>
+        <!--URL 이미지 등록-->
+        <scene sceneID="8db-Yw-4VO">
+            <objects>
+                <viewController id="aiw-5N-fu0" customClass="AddURLImageViewController" customModule="LineMemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1P5-rC-k8t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Xmx-BQ-Yyu">
+                                <rect key="frame" x="5" y="138" width="404" height="174"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미지 URL를 입력 후 등록버튼을 눌러주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnW-es-hys">
+                                        <rect key="frame" x="20" y="0.0" width="364" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Ggm-pg-flc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4MO-wB-4Xm">
+                                        <rect key="frame" x="20" y="52" width="364" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="5De-8d-ogt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkP-6Z-FGJ">
+                                        <rect key="frame" x="20" y="124" width="364" height="50"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="2dm-zf-TCi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                        <state key="normal" title="이미지 등록하기">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addImageButtonPressed:" destination="aiw-5N-fu0" eventType="touchUpInside" id="unj-6z-4Xz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="wkP-6Z-FGJ" firstAttribute="leading" secondItem="Xmx-BQ-Yyu" secondAttribute="leading" constant="20" symbolic="YES" id="1fj-9v-wLd"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZnW-es-hys" secondAttribute="trailing" constant="20" symbolic="YES" id="68E-Qu-izg"/>
+                                    <constraint firstAttribute="trailing" secondItem="wkP-6Z-FGJ" secondAttribute="trailing" constant="20" symbolic="YES" id="7of-Nq-v1s"/>
+                                    <constraint firstItem="ZnW-es-hys" firstAttribute="leading" secondItem="Xmx-BQ-Yyu" secondAttribute="leading" constant="20" symbolic="YES" id="Ook-RI-iyc"/>
+                                    <constraint firstAttribute="trailing" secondItem="4MO-wB-4Xm" secondAttribute="trailing" constant="20" symbolic="YES" id="anS-yh-ZOL"/>
+                                    <constraint firstItem="4MO-wB-4Xm" firstAttribute="leading" secondItem="Xmx-BQ-Yyu" secondAttribute="leading" constant="20" symbolic="YES" id="cwk-JU-cbD"/>
+                                </constraints>
+                            </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Vx7-qu-098">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Vx7-qu-098" firstAttribute="centerY" secondItem="1P5-rC-k8t" secondAttribute="centerY" id="D8W-3s-Pfq"/>
+                            <constraint firstItem="Vx7-qu-098" firstAttribute="centerX" secondItem="1P5-rC-k8t" secondAttribute="centerX" id="G5y-jg-Vn1"/>
+                            <constraint firstItem="Xmx-BQ-Yyu" firstAttribute="leading" secondItem="xuJ-rl-4iB" secondAttribute="leading" constant="5" id="Gzj-lr-sey"/>
+                            <constraint firstItem="xuJ-rl-4iB" firstAttribute="trailing" secondItem="Xmx-BQ-Yyu" secondAttribute="trailing" constant="5" id="dD9-XP-K96"/>
+                            <constraint firstItem="Xmx-BQ-Yyu" firstAttribute="top" secondItem="xuJ-rl-4iB" secondAttribute="top" constant="50" id="lUc-cf-o0z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xuJ-rl-4iB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="URL 이미지 등록" id="JrV-M8-snP">
+                        <barButtonItem key="leftBarButtonItem" title="취소" id="uRY-gF-cdn">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="cancelBarButtonItemPressed:" destination="aiw-5N-fu0" id="Gfy-j7-KLC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addImageButton" destination="wkP-6Z-FGJ" id="Qvq-9U-8yE"/>
+                        <outlet property="indicatorView" destination="Vx7-qu-098" id="0fb-vj-nx4"/>
+                        <outlet property="textField" destination="4MO-wB-4Xm" id="T4z-NF-4nz"/>
+                        <segue destination="KGS-Mf-9Am" kind="unwind" identifier="unwindToAddMemoView" unwindAction="unwindToAddMemoView:" id="em9-lu-rIT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fBP-12-cA9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="KGS-Mf-9Am" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3728.985507246377" y="117.85714285714285"/>
         </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="KUj-TE-id8">
@@ -267,6 +355,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pD-Hj-qpM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="115.84821428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iwt-Fg-L0l">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NeP-No-x2Y" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="XoP-iO-cb3"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="STR-Ag-IxW">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aiw-5N-fu0" kind="relationship" relationship="rootViewController" id="tuA-Cj-aEp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1EE-Cn-JgI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2818.840579710145" y="117.85714285714285"/>
         </scene>
     </scenes>
     <resources>

@@ -13,8 +13,6 @@ import UIKit
 class AddMemoViewController: UIViewController {
     // MARK: UI
 
-    // MARK: - IB
-
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var subTextView: UITextView!
@@ -60,6 +58,15 @@ class AddMemoViewController: UIViewController {
         addImageTapGestureRecognizer.addTarget(self, action: #selector(addImageCollectionViewCellPressed(_:)))
     }
 
+    // MARK: - Configuration
+
+    func addImage(_ image: UIImage) {
+        DispatchQueue.main.async {
+            self.imageViewList.append(image)
+            self.collectionView.reloadData()
+        }
+    }
+
     private func configureEditImageBarButtonItem() {}
 
     private func configureAddMemoBarButtonItem() {
@@ -68,6 +75,28 @@ class AddMemoViewController: UIViewController {
 
     private func configureimagePickerController() {
         imagePickerController.delegate = self
+    }
+
+    private func configureCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+
+    private func configureTextView() {
+        subTextView.configureBasicBorder()
+        subTextView.delegate = self
+    }
+
+    private func configureTextField() {
+        titleTextField.configureBasicBorder()
+        titleTextField.delegate = self
+    }
+
+    private func checkInputData() {
+        guard let titleText = titleTextField.text,
+            let subText = subTextView.text else { return }
+        isValidInputData = !titleText.trimmingCharacters(in: .whitespaces).isEmpty
+            && !subText.trimmingCharacters(in: .whitespaces).isEmpty
     }
 
     private func configureAlertController() {
@@ -111,11 +140,21 @@ class AddMemoViewController: UIViewController {
             }
         })
 
+        let getPictureFromURLAction = UIAlertAction(title: "URL로 등록하기", style: .default) { _ in
+            // URL 이미지등록 화면으로 이동
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: UIIdentifier.Segue.goToAddURLImageView, sender: nil)
+            }
+        }
+
         let cancelAlertAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         selectImageAlertController.addAction(takePictureAlertAction)
         selectImageAlertController.addAction(getAlbumAlertAction)
+        selectImageAlertController.addAction(getPictureFromURLAction)
         selectImageAlertController.addAction(cancelAlertAction)
     }
+
+    // MARK: Transition
 
     private func presentAlbumAuthRequestAlertController() {
         DispatchQueue.main.async {
@@ -129,27 +168,7 @@ class AddMemoViewController: UIViewController {
         }
     }
 
-    private func configureCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    }
-
-    private func configureTextView() {
-        subTextView.configureBasicBorder()
-        subTextView.delegate = self
-    }
-
-    private func configureTextField() {
-        titleTextField.configureBasicBorder()
-        titleTextField.delegate = self
-    }
-
-    private func checkInputData() {
-        guard let titleText = titleTextField.text,
-            let subText = subTextView.text else { return }
-        isValidInputData = !titleText.trimmingCharacters(in: .whitespaces).isEmpty
-            && !subText.trimmingCharacters(in: .whitespaces).isEmpty
-    }
+    @IBAction func unwindToAddMemoView(_: UIStoryboardSegue) {}
 
     // MARK: - Event
 
