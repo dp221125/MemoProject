@@ -14,6 +14,7 @@ class AddMemoViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var subTextView: UITextView!
+    private let addImageTapGestureRecognizer = UITapGestureRecognizer()
 
     // MARK: Properties
 
@@ -28,6 +29,7 @@ class AddMemoViewController: UIViewController {
         configureCollectionView()
         configureTextField()
         configureTextView()
+        addImageTapGestureRecognizer.addTarget(self, action: #selector(addImageCollectionViewCellPressed(_:)))
     }
 
     private func configureCollectionView() {
@@ -47,6 +49,10 @@ class AddMemoViewController: UIViewController {
 
     // MARK: - Event
 
+    @objc func addImageCollectionViewCellPressed(_: UITapGestureRecognizer) {
+        print("addImageCollectionViewCell Pressed!!")
+    }
+
     override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
         view.endEditing(true)
     }
@@ -60,6 +66,14 @@ extension AddMemoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let addImageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: UIIdentifier.Cell.Collection.addImage, for: indexPath) as? MemoImageCollectionViewCell else { return UICollectionViewCell() }
 
+        let isLastItemCell = indexPath.item == imageViewList.count ? true : false
+        if isLastItemCell == false {
+            let image = imageViewList[indexPath.item]
+            addImageCollectionViewCell.configureCell(image)
+        } else {
+            addImageCollectionViewCell.configureCell(nil)
+            addImageCollectionViewCell.imageView.addGestureRecognizer(addImageTapGestureRecognizer)
+        }
         return addImageCollectionViewCell
     }
 }

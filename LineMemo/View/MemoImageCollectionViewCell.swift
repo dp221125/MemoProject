@@ -14,4 +14,11 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+
+    // MARK: Method
+
+    func configureCell(_ image: UIImage?) {
+        guard let image = image else { return }
+        imageView.image = image
+    }
 }
