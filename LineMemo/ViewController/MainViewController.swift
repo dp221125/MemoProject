@@ -14,6 +14,8 @@ class MainViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var addMemoBarButtonItem: UIBarButtonItem!
 
+    // MARK: - Properties
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -35,7 +37,7 @@ extension MainViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let mainTableViewCell = tableView.dequeueReusableCell(withIdentifier: UIIdentifier.Cell.main, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
+        guard let mainTableViewCell = tableView.dequeueReusableCell(withIdentifier: UIIdentifier.Cell.Table.main, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
         return mainTableViewCell
     }
 }

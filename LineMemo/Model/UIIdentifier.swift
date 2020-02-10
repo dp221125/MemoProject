@@ -10,7 +10,13 @@ import Foundation
 
 struct UIIdentifier {
     struct Cell {
-        static let main = "MainTableViewCell"
+        struct Table {
+            static let main = "MainTableViewCell"
+        }
+
+        struct Collection {
+            static let addImage = "MemoImageCollectionViewCell"
+        }
     }
 
     struct Storyboard {

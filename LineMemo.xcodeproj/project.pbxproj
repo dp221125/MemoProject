@@ -19,6 +19,9 @@
 		0794F87823F140C700D16463 /* UIIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F87723F140C700D16463 /* UIIdentifier.swift */; };
 		0794F87A23F1458100D16463 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F87923F1458100D16463 /* MainNavigationController.swift */; };
 		0794F87E23F14E2C00D16463 /* AddMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F87D23F14E2C00D16463 /* AddMemoViewController.swift */; };
+		0794F88023F1572200D16463 /* AssetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F87F23F1572200D16463 /* AssetIdentifier.swift */; };
+		0794F88223F1584900D16463 /* MemoImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F88123F1584900D16463 /* MemoImageCollectionViewCell.swift */; };
+		0794F88523F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F88423F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		0794F87723F140C700D16463 /* UIIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIIdentifier.swift; sourceTree = "<group>"; };
 		0794F87923F1458100D16463 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		0794F87D23F14E2C00D16463 /* AddMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewController.swift; sourceTree = "<group>"; };
+		0794F87F23F1572200D16463 /* AssetIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetIdentifier.swift; sourceTree = "<group>"; };
+		0794F88123F1584900D16463 /* MemoImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		0794F88423F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoImageCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 			children = (
 				0794F87023F13F3300D16463 /* MemoData.swift */,
 				0794F87723F140C700D16463 /* UIIdentifier.swift */,
+				0794F87F23F1572200D16463 /* AssetIdentifier.swift */,
 				0794F86E23F13EE600D16463 /* CommonData.swift */,
 			);
 			path = Model;
@@ -105,8 +112,18 @@
 			isa = PBXGroup;
 			children = (
 				0794F87523F1408800D16463 /* MainTableViewCell.swift */,
+				0794F88123F1584900D16463 /* MemoImageCollectionViewCell.swift */,
+				0794F88323F15E0C00D16463 /* FlowLayout */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0794F88323F15E0C00D16463 /* FlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				0794F88423F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift */,
+			);
+			path = FlowLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,11 +201,14 @@
 				0794F87823F140C700D16463 /* UIIdentifier.swift in Sources */,
 				0794F85F23F13CE000D16463 /* MainViewController.swift in Sources */,
 				0794F87A23F1458100D16463 /* MainNavigationController.swift in Sources */,
+				0794F88223F1584900D16463 /* MemoImageCollectionViewCell.swift in Sources */,
 				0794F87123F13F3400D16463 /* MemoData.swift in Sources */,
 				0794F85B23F13CE000D16463 /* AppDelegate.swift in Sources */,
 				0794F86F23F13EE600D16463 /* CommonData.swift in Sources */,
 				0794F87623F1408800D16463 /* MainTableViewCell.swift in Sources */,
 				0794F85D23F13CE000D16463 /* SceneDelegate.swift in Sources */,
+				0794F88523F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift in Sources */,
+				0794F88023F1572200D16463 /* AssetIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
