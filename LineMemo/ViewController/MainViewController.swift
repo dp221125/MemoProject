@@ -9,37 +9,35 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
     // MARK: - UI
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addMemoBarButtonItem: UIBarButtonItem!
-    
+
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var addMemoBarButtonItem: UIBarButtonItem!
+
     // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
+
     // MARK: - Method
-    @IBAction func addMemoBarButtonItemPressed(_ sender: UIBarButtonItem) {
-        print("pressed!!")
+
+    @IBAction func addMemoBarButtonItemPressed(_: UIBarButtonItem) {
+        performSegue(withIdentifier: UIIdentifier.Segue.goToAddMemoView, sender: nil)
     }
 }
 
 extension MainViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return CommonData.shared.memoDataList.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let mainTableViewCell = tableView.dequeueReusableCell(withIdentifier: UIIdentifier.Cell.main, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
         return mainTableViewCell
     }
 }
 
-extension MainViewController: UITableViewDelegate {
-    
-}
-
-
+extension MainViewController: UITableViewDelegate {}

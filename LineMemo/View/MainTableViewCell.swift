@@ -9,11 +9,10 @@
 import UIKit
 
 class MainTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var mainTitleLabel: UILabel!
-    @IBOutlet weak var subTextLabel: UILabel!
-    @IBOutlet weak var thumbnailImageView: UIImageView!
-    
+    @IBOutlet var mainTitleLabel: UILabel!
+    @IBOutlet var subTextLabel: UILabel!
+    @IBOutlet var thumbnailImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

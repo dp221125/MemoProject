@@ -9,15 +9,16 @@
 import Foundation
 
 struct UIIdentifier {
-    
     struct Cell {
         static let main = "MainTableViewCell"
     }
-    
+
     struct Storyboard {
         static let main = "Main"
         static let mainNavigationController = "MainNavigationController"
     }
-    
-    
+
+    struct Segue {
+        static let goToAddMemoView = "goToAddMemoView"
+    }
 }
