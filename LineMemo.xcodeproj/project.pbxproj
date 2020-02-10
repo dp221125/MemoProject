@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		075172EB23F1CF4200959180 /* DetailMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075172EA23F1CF4200959180 /* DetailMemoViewController.swift */; };
 		077E94A123F19DAE00103AC9 /* UIActivityIndicatorView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */; };
 		0794F85B23F13CE000D16463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85A23F13CE000D16463 /* AppDelegate.swift */; };
 		0794F85D23F13CE000D16463 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85C23F13CE000D16463 /* SceneDelegate.swift */; };
-		0794F85F23F13CE000D16463 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85E23F13CE000D16463 /* MainViewController.swift */; };
+		0794F85F23F13CE000D16463 /* MainMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85E23F13CE000D16463 /* MainMemoViewController.swift */; };
 		0794F86223F13CE000D16463 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0794F86023F13CE000D16463 /* Main.storyboard */; };
 		0794F86423F13CE000D16463 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0794F86323F13CE000D16463 /* Assets.xcassets */; };
 		0794F86723F13CE000D16463 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0794F86523F13CE000D16463 /* LaunchScreen.storyboard */; };
@@ -32,11 +33,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		075172EA23F1CF4200959180 /* DetailMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMemoViewController.swift; sourceTree = "<group>"; };
 		077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+.swift"; sourceTree = "<group>"; };
 		0794F85723F13CE000D16463 /* LineMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0794F85A23F13CE000D16463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0794F85C23F13CE000D16463 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0794F85E23F13CE000D16463 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0794F85E23F13CE000D16463 /* MainMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMemoViewController.swift; sourceTree = "<group>"; };
 		0794F86123F13CE000D16463 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0794F86323F13CE000D16463 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0794F86623F13CE000D16463 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,7 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				0794F87923F1458100D16463 /* MainNavigationController.swift */,
-				0794F85E23F13CE000D16463 /* MainViewController.swift */,
+				0794F85E23F13CE000D16463 /* MainMemoViewController.swift */,
+				075172EA23F1CF4200959180 /* DetailMemoViewController.swift */,
 				0794F87D23F14E2C00D16463 /* AddMemoViewController.swift */,
 				07DD9E6F23F192CB009B95A0 /* AddURLImageViewController.swift */,
 			);
@@ -248,7 +251,7 @@
 				0794F87E23F14E2C00D16463 /* AddMemoViewController.swift in Sources */,
 				0794F87823F140C700D16463 /* UIIdentifier.swift in Sources */,
 				07DD9E7223F19945009B95A0 /* RequestImage.swift in Sources */,
-				0794F85F23F13CE000D16463 /* MainViewController.swift in Sources */,
+				0794F85F23F13CE000D16463 /* MainMemoViewController.swift in Sources */,
 				07DD9E6E23F19000009B95A0 /* UISize.swift in Sources */,
 				0794F87A23F1458100D16463 /* MainNavigationController.swift in Sources */,
 				0794F88223F1584900D16463 /* MemoImageCollectionViewCell.swift in Sources */,
@@ -259,6 +262,7 @@
 				0794F87623F1408800D16463 /* MainTableViewCell.swift in Sources */,
 				0794F85D23F13CE000D16463 /* SceneDelegate.swift in Sources */,
 				0794F88523F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift in Sources */,
+				075172EB23F1CF4200959180 /* DetailMemoViewController.swift in Sources */,
 				0794F88023F1572200D16463 /* AssetIdentifier.swift in Sources */,
 				077E94A123F19DAE00103AC9 /* UIActivityIndicatorView+.swift in Sources */,
 			);

@@ -16,10 +16,10 @@ class AddMemoViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var subTextView: UITextView!
-    @IBOutlet var editImageBarButtonItem: UIBarButtonItem!
     @IBOutlet var addMemoBarButtonItem: UIBarButtonItem!
 
     private let addImageTapGestureRecognizer = UITapGestureRecognizer()
+
     private lazy var selectImageAlertController = UIAlertController(title: "사진 등록방법 선택", message: "사진 등록방법을 선택하세요.", preferredStyle: .actionSheet)
 
     private lazy var imagePickerController: UIImagePickerController = {
@@ -30,11 +30,7 @@ class AddMemoViewController: UIViewController {
 
     // MARK: Properties
 
-    private var imageViewList: [UIImage] = [#imageLiteral(resourceName: "plus")] {
-        didSet {
-            editImageBarButtonItem.isEnabled = imageViewList.count > 1
-        }
-    }
+    private var imageViewList: [UIImage] = [#imageLiteral(resourceName: "plus")]
 
     private var isValidInputData = false {
         didSet {
@@ -62,7 +58,7 @@ class AddMemoViewController: UIViewController {
 
     func addImage(_ image: UIImage) {
         DispatchQueue.main.async {
-            self.imageViewList.append(image)
+            self.imageViewList.insert(image, at: 1)
             self.collectionView.reloadData()
         }
     }
@@ -176,6 +172,18 @@ class AddMemoViewController: UIViewController {
         present(selectImageAlertController, animated: true)
     }
 
+    @objc func deleteImageButtonPressed(_ sender: UITapGestureRecognizer) {
+        guard let imageView = sender.view as? UIImageView,
+            let cell = imageView.superview?.superview as? MemoImageCollectionViewCell,
+            let indexPath = self.collectionView.indexPath(for: cell) else { return }
+        print(indexPath)
+
+        collectionView.performBatchUpdates({
+            imageViewList.remove(at: indexPath.row)
+            collectionView.deleteItems(at: [indexPath])
+        }, completion: nil)
+    }
+
     @IBAction func addMemoBarButtonItemPressed(_: UIBarButtonItem) {
         guard let title = titleTextField.text,
             let subText = subTextView.text else { return }
@@ -212,11 +220,13 @@ extension AddMemoViewController: UICollectionViewDataSource {
         guard let addImageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: UIIdentifier.Cell.Collection.addImage, for: indexPath) as? MemoImageCollectionViewCell else { return UICollectionViewCell() }
 
         let isFirstItemCell = indexPath.item == 0 ? true : false
-        if isFirstItemCell == true {
+        addImageCollectionViewCell.configureCell(imageViewList[indexPath.item], isFirstItemCell)
+
+        if isFirstItemCell {
             addImageCollectionViewCell.imageView.addGestureRecognizer(addImageTapGestureRecognizer)
-            addImageCollectionViewCell.configureCell(imageViewList[indexPath.item])
         } else {
-            addImageCollectionViewCell.configureCell(imageViewList[imageViewList.count - indexPath.item])
+            let deleteImageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(deleteImageButtonPressed(_:)))
+            addImageCollectionViewCell.deleteImageView.addGestureRecognizer(deleteImageTapGestureRecognizer)
         }
 
         return addImageCollectionViewCell
@@ -230,7 +240,7 @@ extension AddMemoViewController: UINavigationControllerDelegate {}
 extension AddMemoViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
-        imageViewList.append(selectedImage)
+        imageViewList.insert(selectedImage, at: 1)
         DispatchQueue.main.async {
             picker.dismiss(animated: true, completion: nil)
             self.collectionView.reloadData()

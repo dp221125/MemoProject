@@ -17,7 +17,7 @@ class MainNavigationController: UINavigationController {
     }
 
     func reloadMemoList() {
-        guard let mainViewController = self.viewControllers.first as? MainViewController else { return }
+        guard let mainViewController = self.viewControllers.first as? MainMemoViewController else { return }
         DispatchQueue.main.async {
             mainViewController.tableView.reloadData()
         }
