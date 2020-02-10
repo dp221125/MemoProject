@@ -1,5 +1,5 @@
 //
-//  AssetIdentifier.swift
+//  UISize.swift
 //  LineMemo
 //
 //  Created by MinKyeongTae on 2020/02/10.
@@ -8,8 +8,6 @@
 
 import UIKit
 
-struct AssetIdentifier {
-    struct Image {
-        static let plus = #imageLiteral(resourceName: "plus")
-    }
+struct CellHeight {
+    static let mainTableView: CGFloat = 100
 }

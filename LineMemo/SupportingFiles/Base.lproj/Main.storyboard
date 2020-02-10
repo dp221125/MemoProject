@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--메모장-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="LineMemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -70,7 +70,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="mainTitleLabel" destination="deO-af-PC7" id="Grd-5F-9ba"/>
-                                            <outlet property="textLabel" destination="ag1-J1-2ge" id="Z2t-iy-5jP"/>
+                                            <outlet property="subTextLabel" destination="ag1-J1-2ge" id="fhF-3Y-4HW"/>
                                             <outlet property="thumbnailImageView" destination="kzQ-4X-hHH" id="ans-Sq-FBv"/>
                                         </connections>
                                     </tableViewCell>
@@ -86,7 +86,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="V26-Be-95P">
+                    <navigationItem key="navigationItem" title="메모장" id="V26-Be-95P">
                         <barButtonItem key="rightBarButtonItem" title="메모작성" id="lU7-Zj-OEJ">
                             <connections>
                                 <action selector="addMemoBarButtonItemPressed:" destination="BYZ-38-t0r" id="EQB-6B-v8Z"/>
@@ -103,7 +103,7 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="115.84821428571428"/>
         </scene>
-        <!--Add Memo View Controller-->
+        <!--메모추가-->
         <scene sceneID="x1O-6k-bpV">
             <objects>
                 <viewController id="VfV-Qo-eFX" customClass="AddMemoViewController" customModule="LineMemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -221,9 +221,26 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4JY-aZ-18j"/>
                     </view>
-                    <navigationItem key="navigationItem" id="faU-q4-4Bq"/>
+                    <navigationItem key="navigationItem" title="메모추가" id="faU-q4-4Bq">
+                        <rightBarButtonItems>
+                            <barButtonItem title="메모추가" id="fiz-b9-FEl">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="addMemoBarButtonItemPressed:" destination="VfV-Qo-eFX" id="kdJ-eF-nmj"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="사진편집" id="rFZ-iX-qGb">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="editImageBarButtonItemPressed:" destination="VfV-Qo-eFX" id="wlr-Ze-EoW"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addMemoBarButtonItem" destination="fiz-b9-FEl" id="d5N-PG-YIU"/>
                         <outlet property="collectionView" destination="70K-DU-2ln" id="TMo-F1-a7m"/>
+                        <outlet property="editImageBarButtonItem" destination="rFZ-iX-qGb" id="hRs-1e-biD"/>
                         <outlet property="subTextView" destination="BI6-oE-pe1" id="Md4-Pp-62p"/>
                         <outlet property="titleTextField" destination="RJ2-mE-ot0" id="Ms3-zd-2es"/>
                     </connections>
@@ -240,6 +257,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZHH-Xx-uKn">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

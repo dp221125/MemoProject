@@ -11,4 +11,8 @@ import UIKit
 final class CommonData {
     static let shared = CommonData()
     private(set) var memoDataList = [MemoData]()
+
+    func addMemoData(_ memoData: MemoData) {
+        memoDataList.append(memoData)
+    }
 }

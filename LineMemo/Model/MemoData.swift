@@ -11,5 +11,5 @@ import UIKit
 struct MemoData {
     var title: String
     var subText: String
-    var imageList: [UIImage]?
+    var imageList: [UIImage]
 }

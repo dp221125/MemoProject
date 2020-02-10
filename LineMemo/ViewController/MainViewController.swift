@@ -38,8 +38,13 @@ extension MainViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let mainTableViewCell = tableView.dequeueReusableCell(withIdentifier: UIIdentifier.Cell.Table.main, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
+        mainTableViewCell.configureCell(CommonData.shared.memoDataList[indexPath.row])
         return mainTableViewCell
     }
 }
 
-extension MainViewController: UITableViewDelegate {}
+extension MainViewController: UITableViewDelegate {
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
+        return CellHeight.mainTableView
+    }
+}

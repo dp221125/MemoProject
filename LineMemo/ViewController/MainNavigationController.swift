@@ -16,17 +16,20 @@ class MainNavigationController: UINavigationController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
+    func reloadMemoList() {
+        guard let mainViewController = self.viewControllers.first as? MainViewController else { return }
+        DispatchQueue.main.async {
+            mainViewController.tableView.reloadData()
+        }
+    }
+
     @objc func keyboardWillShow(_ sender: NSNotification) {
         if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y == 0 {
-                view.frame.origin.y -= keyboardSize.height
-            }
+            topViewController?.view.frame.origin.y = -keyboardSize.height
         }
     }
 
     @objc func keyboardWillHide(_: NSNotification) {
-        if view.frame.origin.y != 0 {
-            view.frame.origin.y = 0
-        }
+        topViewController?.view.frame.origin.y = 0
     }
 }

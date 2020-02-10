@@ -16,4 +16,12 @@ class MainTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+
+    func configureCell(_ memoData: MemoData) {
+        mainTitleLabel.text = memoData.title
+        subTextLabel.text = memoData.subText
+
+        guard let thumbnailImage = memoData.imageList.first else { return }
+        thumbnailImageView.image = thumbnailImage
+    }
 }
