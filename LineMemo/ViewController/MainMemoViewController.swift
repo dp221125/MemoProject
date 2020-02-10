@@ -26,6 +26,14 @@ class MainMemoViewController: UIViewController {
 
     // MARK: - Method
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailMemoViewController = segue.destination as? DetailMemoViewController,
+            let memoData = sender as? MemoData else { return }
+        detailMemoViewController.configureMemoData(memoData)
+    }
+
+    // MARK: - Event
+
     @IBAction func addMemoBarButtonItemPressed(_: UIBarButtonItem) {
         performSegue(withIdentifier: UIIdentifier.Segue.goToAddMemoView, sender: nil)
     }
@@ -46,5 +54,9 @@ extension MainMemoViewController: UITableViewDataSource {
 extension MainMemoViewController: UITableViewDelegate {
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return CellHeight.mainTableView
+    }
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: UIIdentifier.Segue.goToDetailMemoView, sender: CommonData.shared.memoDataList[indexPath.row])
     }
 }

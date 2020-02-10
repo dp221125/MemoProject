@@ -74,6 +74,10 @@ class AddMemoViewController: UIViewController {
     }
 
     private func configureCollectionView() {
+        let memoImageCollectionViewCell = UINib(nibName: UIIdentifier.Nib.memoImageCollectionViewCell, bundle: nil)
+
+        collectionView.register(memoImageCollectionViewCell, forCellWithReuseIdentifier: UIIdentifier.Nib.memoImageCollectionViewCell)
+
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -204,8 +208,6 @@ class AddMemoViewController: UIViewController {
         }
     }
 
-    @IBAction func editImageBarButtonItemPressed(_: UIBarButtonItem) {}
-
     override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
         view.endEditing(true)
     }
@@ -217,13 +219,13 @@ extension AddMemoViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let addImageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: UIIdentifier.Cell.Collection.addImage, for: indexPath) as? MemoImageCollectionViewCell else { return UICollectionViewCell() }
+        guard let addImageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: UIIdentifier.Cell.Collection.memoImage, for: indexPath) as? MemoImageCollectionViewCell else { return UICollectionViewCell() }
 
         let isFirstItemCell = indexPath.item == 0 ? true : false
         addImageCollectionViewCell.configureCell(imageViewList[indexPath.item], isFirstItemCell)
 
         if isFirstItemCell {
-            addImageCollectionViewCell.imageView.addGestureRecognizer(addImageTapGestureRecognizer)
+            addImageCollectionViewCell.photoImageView.addGestureRecognizer(addImageTapGestureRecognizer)
         } else {
             let deleteImageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(deleteImageButtonPressed(_:)))
             addImageCollectionViewCell.deleteImageView.addGestureRecognizer(deleteImageTapGestureRecognizer)

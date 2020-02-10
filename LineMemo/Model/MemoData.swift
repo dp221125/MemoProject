@@ -12,4 +12,10 @@ struct MemoData {
     var title: String
     var subText: String
     var imageList: [UIImage]
+
+    init(title: String = "Title", subText: String = "Sub Text", imageList: [UIImage] = []) {
+        self.title = title
+        self.subText = subText
+        self.imageList = imageList
+    }
 }

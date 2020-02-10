@@ -9,7 +9,7 @@
 import UIKit
 
 class MemoImageCollectionViewCell: UICollectionViewCell {
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var deleteImageView: UIImageView!
 
     override func awakeFromNib() {
@@ -20,6 +20,6 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
 
     func configureCell(_ image: UIImage, _ isFirstItem: Bool) {
         deleteImageView.isHidden = isFirstItem
-        imageView.image = image
+        photoImageView.image = image
     }
 }

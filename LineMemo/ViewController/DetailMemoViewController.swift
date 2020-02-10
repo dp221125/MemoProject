@@ -15,19 +15,57 @@ class DetailMemoViewController: UIViewController {
     @IBOutlet var subTextView: UITextView!
     @IBOutlet var collectionView: UICollectionView!
 
+    private var memoData = MemoData()
+
     // MARK: Method
 
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCollectionView()
         configureTitleTextField()
         configureSubTextView()
     }
 
     // MARK: - Configuration
 
-    func configureTitleTextField() {}
+    private func configureCollectionView() {
+        collectionView.register(UINib(nibName: UIIdentifier.Nib.memoImageCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: UIIdentifier.Cell.Collection.memoImage)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
 
-    func configureSubTextView() {}
+    func configureMemoData(_ memoData: MemoData) {
+        self.memoData = memoData
+    }
+
+    private func configureTitleTextField() {
+        titleTextField.text = memoData.title
+        titleTextField.layer.borderWidth = 0
+    }
+
+    private func configureSubTextView() {
+        subTextView.text = memoData.subText
+    }
+
+    // MARK: - Event
+
+    @IBAction func editBarButtonItemPressed(_: UIBarButtonItem) {
+        print("Edit BarButtonItem Pressed")
+    }
 }
+
+extension DetailMemoViewController: UICollectionViewDataSource {
+    func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
+        return memoData.imageList.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let imageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: UIIdentifier.Cell.Collection.memoImage, for: indexPath) as? MemoImageCollectionViewCell else { return UICollectionViewCell() }
+        imageCollectionViewCell.configureCell(memoData.imageList[indexPath.item], true)
+        return imageCollectionViewCell
+    }
+}
+
+extension DetailMemoViewController: UICollectionViewDelegate {}

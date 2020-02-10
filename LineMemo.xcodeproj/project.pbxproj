@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		075172EB23F1CF4200959180 /* DetailMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075172EA23F1CF4200959180 /* DetailMemoViewController.swift */; };
+		075172F123F1D97200959180 /* MemoImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */; };
 		077E94A123F19DAE00103AC9 /* UIActivityIndicatorView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */; };
 		0794F85B23F13CE000D16463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85A23F13CE000D16463 /* AppDelegate.swift */; };
 		0794F85D23F13CE000D16463 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85C23F13CE000D16463 /* SceneDelegate.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		075172EA23F1CF4200959180 /* DetailMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMemoViewController.swift; sourceTree = "<group>"; };
+		075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+.swift"; sourceTree = "<group>"; };
 		0794F85723F13CE000D16463 /* LineMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0794F85A23F13CE000D16463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				0794F87523F1408800D16463 /* MainTableViewCell.swift */,
 				0794F88123F1584900D16463 /* MemoImageCollectionViewCell.swift */,
+				075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */,
 				0794F88323F15E0C00D16463 /* FlowLayout */,
 			);
 			path = View;
@@ -235,6 +238,7 @@
 				0794F86723F13CE000D16463 /* LaunchScreen.storyboard in Resources */,
 				0794F86423F13CE000D16463 /* Assets.xcassets in Resources */,
 				0794F86223F13CE000D16463 /* Main.storyboard in Resources */,
+				075172F123F1D97200959180 /* MemoImageCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

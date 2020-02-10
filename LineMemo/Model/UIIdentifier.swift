@@ -15,8 +15,12 @@ struct UIIdentifier {
         }
 
         struct Collection {
-            static let addImage = "MemoImageCollectionViewCell"
+            static let memoImage = "MemoImageCollectionViewCell"
         }
+    }
+
+    struct Nib {
+        static let memoImageCollectionViewCell = "MemoImageCollectionViewCell"
     }
 
     struct Storyboard {
@@ -26,6 +30,7 @@ struct UIIdentifier {
 
     struct Segue {
         static let goToAddMemoView = "goToAddMemoView"
+        static let goToDetailMemoView = "goToDetailMemoView"
         static let goToAddURLImageView = "goToAddURLImageView"
         static let unwindToAddMemoView = "unwindToAddMemoView"
     }
