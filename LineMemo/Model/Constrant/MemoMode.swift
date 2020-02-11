@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ImageMode: Int {
+enum MemoMode: Int {
     case view
     case edit
 }

@@ -10,6 +10,7 @@
 		075172EB23F1CF4200959180 /* DetailMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075172EA23F1CF4200959180 /* DetailMemoViewController.swift */; };
 		075172F123F1D97200959180 /* MemoImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */; };
 		077E94A123F19DAE00103AC9 /* UIActivityIndicatorView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */; };
+		078141C123F2D33400D9A9CD /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078141C023F2D33400D9A9CD /* UITextView+.swift */; };
 		0794F85B23F13CE000D16463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85A23F13CE000D16463 /* AppDelegate.swift */; };
 		0794F85D23F13CE000D16463 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85C23F13CE000D16463 /* SceneDelegate.swift */; };
 		0794F85F23F13CE000D16463 /* MainMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85E23F13CE000D16463 /* MainMemoViewController.swift */; };
@@ -27,8 +28,11 @@
 		0794F88523F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F88423F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift */; };
 		0794F88B23F170D600D16463 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F88A23F170D600D16463 /* UIViewController+.swift */; };
 		0794F88D23F182C300D16463 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F88C23F182C300D16463 /* UIView+.swift */; };
-		07BFEE8D23F28FAA00877D8F /* ImageMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE8C23F28FAA00877D8F /* ImageMode.swift */; };
+		07BFEE8D23F28FAA00877D8F /* MemoMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE8C23F28FAA00877D8F /* MemoMode.swift */; };
 		07BFEE8F23F2A4F900877D8F /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE8E23F2A4F900877D8F /* UIImage+.swift */; };
+		07BFEE9123F2BDD800877D8F /* CanSendDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE9023F2BDD800877D8F /* CanSendDataDelegate.swift */; };
+		07BFEE9323F2CC4500877D8F /* UpdateMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE9223F2CC4500877D8F /* UpdateMode.swift */; };
+		07BFEE9523F2D1CD00877D8F /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE9423F2D1CD00877D8F /* UITextField+.swift */; };
 		07DD9E6E23F19000009B95A0 /* UISize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E6D23F19000009B95A0 /* UISize.swift */; };
 		07DD9E7023F192CB009B95A0 /* AddURLImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E6F23F192CB009B95A0 /* AddURLImageViewController.swift */; };
 		07DD9E7223F19945009B95A0 /* RequestImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E7123F19945009B95A0 /* RequestImage.swift */; };
@@ -39,6 +43,7 @@
 		075172EA23F1CF4200959180 /* DetailMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMemoViewController.swift; sourceTree = "<group>"; };
 		075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+.swift"; sourceTree = "<group>"; };
+		078141C023F2D33400D9A9CD /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		0794F85723F13CE000D16463 /* LineMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0794F85A23F13CE000D16463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0794F85C23F13CE000D16463 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,8 +63,11 @@
 		0794F88423F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoImageCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		0794F88A23F170D600D16463 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		0794F88C23F182C300D16463 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		07BFEE8C23F28FAA00877D8F /* ImageMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMode.swift; sourceTree = "<group>"; };
+		07BFEE8C23F28FAA00877D8F /* MemoMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoMode.swift; sourceTree = "<group>"; };
 		07BFEE8E23F2A4F900877D8F /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		07BFEE9023F2BDD800877D8F /* CanSendDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanSendDataDelegate.swift; sourceTree = "<group>"; };
+		07BFEE9223F2CC4500877D8F /* UpdateMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMode.swift; sourceTree = "<group>"; };
+		07BFEE9423F2D1CD00877D8F /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		07DD9E6D23F19000009B95A0 /* UISize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISize.swift; sourceTree = "<group>"; };
 		07DD9E6F23F192CB009B95A0 /* AddURLImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddURLImageViewController.swift; sourceTree = "<group>"; };
 		07DD9E7123F19945009B95A0 /* RequestImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestImage.swift; sourceTree = "<group>"; };
@@ -174,11 +182,14 @@
 			isa = PBXGroup;
 			children = (
 				0794F87023F13F3300D16463 /* MemoData.swift */,
-				07BFEE8C23F28FAA00877D8F /* ImageMode.swift */,
+				07BFEE8C23F28FAA00877D8F /* MemoMode.swift */,
+				07BFEE9223F2CC4500877D8F /* UpdateMode.swift */,
 				07DD9E6D23F19000009B95A0 /* UISize.swift */,
 				0794F87723F140C700D16463 /* UIIdentifier.swift */,
 				07BFEE8E23F2A4F900877D8F /* UIImage+.swift */,
 				0794F87F23F1572200D16463 /* AssetIdentifier.swift */,
+				07BFEE9423F2D1CD00877D8F /* UITextField+.swift */,
+				078141C023F2D33400D9A9CD /* UITextView+.swift */,
 			);
 			path = Constrant;
 			sourceTree = "<group>";
@@ -187,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				07DD9E7323F19B1B009B95A0 /* RequestImageDelegate.swift */,
+				07BFEE9023F2BDD800877D8F /* CanSendDataDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -267,8 +279,11 @@
 				0794F88D23F182C300D16463 /* UIView+.swift in Sources */,
 				0794F88B23F170D600D16463 /* UIViewController+.swift in Sources */,
 				07DD9E7423F19B1B009B95A0 /* RequestImageDelegate.swift in Sources */,
+				07BFEE9323F2CC4500877D8F /* UpdateMode.swift in Sources */,
 				0794F87E23F14E2C00D16463 /* AddMemoViewController.swift in Sources */,
+				078141C123F2D33400D9A9CD /* UITextView+.swift in Sources */,
 				0794F87823F140C700D16463 /* UIIdentifier.swift in Sources */,
+				07BFEE9523F2D1CD00877D8F /* UITextField+.swift in Sources */,
 				07DD9E7223F19945009B95A0 /* RequestImage.swift in Sources */,
 				0794F85F23F13CE000D16463 /* MainMemoViewController.swift in Sources */,
 				07DD9E6E23F19000009B95A0 /* UISize.swift in Sources */,
@@ -281,7 +296,8 @@
 				0794F87623F1408800D16463 /* MainTableViewCell.swift in Sources */,
 				0794F85D23F13CE000D16463 /* SceneDelegate.swift in Sources */,
 				0794F88523F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift in Sources */,
-				07BFEE8D23F28FAA00877D8F /* ImageMode.swift in Sources */,
+				07BFEE9123F2BDD800877D8F /* CanSendDataDelegate.swift in Sources */,
+				07BFEE8D23F28FAA00877D8F /* MemoMode.swift in Sources */,
 				075172EB23F1CF4200959180 /* DetailMemoViewController.swift in Sources */,
 				07BFEE8F23F2A4F900877D8F /* UIImage+.swift in Sources */,
 				0794F88023F1572200D16463 /* AssetIdentifier.swift in Sources */,

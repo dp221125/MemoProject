@@ -17,6 +17,7 @@ class AddURLImageViewController: UIViewController {
 
     // MARK: Properties
 
+    var delegate: CanSendDataDelegate?
     private var isInputData = false {
         didSet {
             addImageButton.isEnabled = isInputData
@@ -57,16 +58,6 @@ class AddURLImageViewController: UIViewController {
         addImageButton.configureBasicBorder()
     }
 
-    private func sendImageDataToParentView(_ image: UIImage?) {
-        performSegue(withIdentifier: UIIdentifier.Segue.unwindToAddMemoView, sender: image)
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let image = sender as? UIImage,
-            let addMemoViewController = segue.destination as? AddMemoViewController else { return }
-        addMemoViewController.addImage(image)
-    }
-
     // MARK: - Normal
 
     private func checkInputData() {
@@ -89,7 +80,7 @@ class AddURLImageViewController: UIViewController {
         RequestImage.shared.requestFromURL(requestedURL) { success, image in
             if success {
                 DispatchQueue.main.async {
-                    self.sendImageDataToParentView(image)
+                    self.delegate?.sendData(image)
                     self.dismiss(animated: true, completion: nil)
                 }
             }

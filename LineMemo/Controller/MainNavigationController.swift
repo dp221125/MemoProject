@@ -25,7 +25,7 @@ class MainNavigationController: UINavigationController {
 
     @objc func keyboardWillShow(_ sender: NSNotification) {
         if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            topViewController?.view.frame.origin.y = -keyboardSize.height
+            topViewController?.view.frame.origin.y = -keyboardSize.height / 2
         }
     }
 

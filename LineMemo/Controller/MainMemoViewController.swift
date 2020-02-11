@@ -20,11 +20,18 @@ class MainMemoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        configureTableView()
     }
 
-    // MARK: - Method
+    // MARK: Method
+
+    // MARK: - Configuration
+
+    private func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.allowsSelectionDuringEditing = false
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailMemoViewController = segue.destination as? DetailMemoViewController,
@@ -57,6 +64,21 @@ extension MainMemoViewController: UITableViewDelegate {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        CommonData.shared.configureEditingMemoIndex(at: indexPath.row)
         performSegue(withIdentifier: UIIdentifier.Segue.goToDetailMemoView, sender: CommonData.shared.memoDataList[indexPath.row])
+    }
+
+    func tableView(_: UITableView, editingStyleForRowAt _: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+
+    func tableView(_: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            CommonData.shared.removeMemoData(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        default:
+            break
+        }
     }
 }

@@ -34,11 +34,12 @@ class DetailMemoViewController: UIViewController {
     private var originMemoData = MemoData()
     private var editingMemoData = MemoData()
 
-    private var imageMode = ImageMode.view {
+    private var imageMode = MemoMode.view {
         didSet {
             switch imageMode {
             case .view:
                 cancelEditBarButtonItem.isEnabled = false
+                saveEditBarButtonItem.isEnabled = true
                 saveEditBarButtonItem.title = "편집"
                 titleTextField.isEnabled = false
                 subTextView.isEditable = false
@@ -49,7 +50,7 @@ class DetailMemoViewController: UIViewController {
                 subTextView.isEditable = true
             }
 
-            configureAddImageButton(imageMode: imageMode)
+            configureAddImageButton(mode: imageMode)
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -113,14 +114,50 @@ class DetailMemoViewController: UIViewController {
     private func configureSubTextView() {
         subTextView.delegate = self
         subTextView.setContentOffset(.zero, animated: false)
+        subTextView.textContainerInset = UIEdgeInsets(
+            top: 0,
+            left: -subTextView.textContainer.lineFragmentPadding,
+            bottom: 0,
+            right: -subTextView.textContainer.lineFragmentPadding
+        )
     }
 
-    private func configureAddImageButton(imageMode: ImageMode) {
+    private func configureAddImageButton(mode: MemoMode) {
+        titleTextField.configureTextField(mode: mode)
+        subTextView.configureTextView(mode: mode)
         switch imageMode {
         case .view:
             editingMemoData.imageList = editingMemoData.imageList.filter { $0 != .addImage }
         case .edit:
-            editingMemoData.imageList.insert(.addImage, at: 0)
+            insertAndUpdateImageList(at: 0, image: .addImage, mode: .whole)
+        }
+    }
+
+    private func insertAndUpdateImageList(at index: Int, image: UIImage, mode: UpdateMode) {
+        DispatchQueue.main.async {
+            self.editingMemoData.imageList.insert(image, at: index)
+            switch mode {
+            case .single:
+                self.collectionView.performBatchUpdates({
+                    self.collectionView.insertItems(at: [IndexPath(item: index, section: 0)])
+                }, completion: nil)
+            case .whole:
+                self.collectionView.reloadData()
+            }
+        }
+    }
+
+    private func removeAndUpdateImageList(at index: Int, mode: UpdateMode) {
+        DispatchQueue.main.async {
+            self.editingMemoData.imageList.remove(at: index)
+            switch mode {
+            case .single:
+                self.collectionView.performBatchUpdates({
+                    self.collectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
+                }, completion: nil)
+            case .whole:
+                self.collectionView.reloadData()
+            }
         }
     }
 
@@ -166,9 +203,13 @@ class DetailMemoViewController: UIViewController {
         })
 
         let getPictureFromURLAction = UIAlertAction(title: "URL로 등록하기", style: .default) { _ in
-            // URL 이미지등록 화면으로 이동
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: UIIdentifier.Segue.goToAddURLImageView, sender: nil)
+
+            DispatchQueue.main.async { [weak self] in
+                let mainStoryboard = UIStoryboard(name: UIIdentifier.Storyboard.main, bundle: nil)
+                guard let addURLImageNavigationController = mainStoryboard.instantiateViewController(withIdentifier: UIIdentifier.Storyboard.addURLImageNavigationController) as? UINavigationController else { return }
+                guard let addURLImageViewController = addURLImageNavigationController.viewControllers[0] as? AddURLImageViewController else { return }
+                addURLImageViewController.delegate = self
+                self?.present(addURLImageNavigationController, animated: true)
             }
         }
 
@@ -210,11 +251,11 @@ class DetailMemoViewController: UIViewController {
     @objc func deleteImageInCollectionViewCellPressed(_ sender: UITapGestureRecognizer) {
         guard let memoImageCollectionViewCell = sender.view?.superview?.superview as? MemoImageCollectionViewCell,
             let indexPath = self.collectionView.indexPath(for: memoImageCollectionViewCell) else { return }
-        editingMemoData.imageList.remove(at: indexPath.item)
+        removeAndUpdateImageList(at: indexPath.item, mode: .single)
     }
 
     @IBAction func editBarButtonItemPressed(_: UIBarButtonItem) {
-        print("Edit BarButtonItem Pressed")
+        debugPrint("Edit BarButtonItem Pressed")
         switch imageMode {
         case .view:
             imageMode = .edit
@@ -224,7 +265,7 @@ class DetailMemoViewController: UIViewController {
 
             updateEditingMemoData(title: titleText, subText: subText, imageList: editingMemoData.imageList.filter { $0 != .addImage })
             originMemoData = editingMemoData
-            CommonData.shared.updateMemoData(originMemoData, at: originMemoData.id)
+            CommonData.shared.updateMemoData(originMemoData, at: CommonData.shared.editingMemoIndex)
             updateMainMemoList()
             imageMode = .view
         }
@@ -233,6 +274,17 @@ class DetailMemoViewController: UIViewController {
     @IBAction func cancelEditBarButtonItemPressed(_: UIBarButtonItem) {
         initializeMemoData()
         imageMode = .view
+    }
+
+    override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
+        view.endEditing(true)
+    }
+}
+
+extension DetailMemoViewController: CanSendDataDelegate {
+    func sendData<T>(_ data: T) {
+        guard let urlImage = data as? UIImage else { return }
+        insertAndUpdateImageList(at: 1, image: urlImage, mode: .single)
     }
 }
 
@@ -245,9 +297,12 @@ extension DetailMemoViewController: UICollectionViewDataSource {
         guard let imageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: UIIdentifier.Cell.Collection.memoImage, for: indexPath) as? MemoImageCollectionViewCell else { return UICollectionViewCell() }
 
         let isFirstItem = indexPath.row == 0 ? true : false
-        imageCollectionViewCell.configureCell(image: editingMemoData.imageList[indexPath.item], isFirstItem: isFirstItem, imageMode: imageMode)
+        imageCollectionViewCell.configureCell(image: editingMemoData.imageList[indexPath.item], imageMode: imageMode, indexPath: indexPath)
 
-        if imageMode == .edit {
+        switch imageMode {
+        case .view:
+            imageCollectionViewCell.removeGestureRecognizer(addImageTapGestureRecognizer)
+        case .edit:
             if isFirstItem {
                 imageCollectionViewCell.addGestureRecognizer(addImageTapGestureRecognizer)
             } else {
@@ -255,6 +310,7 @@ extension DetailMemoViewController: UICollectionViewDataSource {
                 imageCollectionViewCell.deleteImageView.addGestureRecognizer(deleteImageTapGestureRecognizer)
             }
         }
+
         return imageCollectionViewCell
     }
 }
@@ -271,10 +327,7 @@ extension DetailMemoViewController: UINavigationControllerDelegate {}
 extension DetailMemoViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
-        editingMemoData.imageList.insert(selectedImage, at: 1)
-        DispatchQueue.main.async {
-            picker.dismiss(animated: true, completion: nil)
-            self.collectionView.reloadData()
-        }
+        insertAndUpdateImageList(at: 1, image: selectedImage, mode: .single)
+        picker.dismiss(animated: true, completion: nil)
     }
 }

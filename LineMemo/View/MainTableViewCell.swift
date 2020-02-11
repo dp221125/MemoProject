@@ -21,7 +21,10 @@ class MainTableViewCell: UITableViewCell {
         mainTitleLabel.text = memoData.title
         subTextLabel.text = memoData.subText
 
-        guard let thumbnailImage = memoData.imageList.first else { return }
+        guard let thumbnailImage = memoData.imageList.first else {
+            thumbnailImageView.image = nil
+            return
+        }
         thumbnailImageView.image = thumbnailImage
     }
 }

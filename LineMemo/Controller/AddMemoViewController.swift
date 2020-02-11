@@ -56,13 +56,6 @@ class AddMemoViewController: UIViewController {
 
     // MARK: - Configuration
 
-    func addImage(_ image: UIImage) {
-        DispatchQueue.main.async {
-            self.imageViewList.insert(image, at: 1)
-            self.collectionView.reloadData()
-        }
-    }
-
     private func configureEditImageBarButtonItem() {}
 
     private func configureAddMemoBarButtonItem() {
@@ -142,8 +135,12 @@ class AddMemoViewController: UIViewController {
 
         let getPictureFromURLAction = UIAlertAction(title: "URL로 등록하기", style: .default) { _ in
             // URL 이미지등록 화면으로 이동
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: UIIdentifier.Segue.goToAddURLImageView, sender: nil)
+            DispatchQueue.main.async { [weak self] in
+                let mainStoryboard = UIStoryboard(name: UIIdentifier.Storyboard.main, bundle: nil)
+                guard let addURLImageNavigationController = mainStoryboard.instantiateViewController(withIdentifier: UIIdentifier.Storyboard.addURLImageNavigationController) as? UINavigationController else { return }
+                guard let addURLImageViewController = addURLImageNavigationController.viewControllers[0] as? AddURLImageViewController else { return }
+                addURLImageViewController.delegate = self
+                self?.present(addURLImageNavigationController, animated: true)
             }
         }
 
@@ -154,9 +151,30 @@ class AddMemoViewController: UIViewController {
         selectImageAlertController.addAction(cancelAlertAction)
     }
 
-    // MARK: Transition
+    private func insertAndUpdateImageList(at index: Int, image: UIImage) {
+        DispatchQueue.main.async {
+            self.imageViewList.insert(image, at: index)
+            self.collectionView.performBatchUpdates({
+                self.collectionView.insertItems(at: [IndexPath(item: index, section: 0)])
+            }, completion: nil)
+        }
+    }
 
-    @IBAction func unwindToAddMemoView(_: UIStoryboardSegue) {}
+    private func removeAndUpdateImageList(at index: Int, mode: UpdateMode) {
+        DispatchQueue.main.async {
+            self.imageViewList.remove(at: index)
+            switch mode {
+            case .single:
+                self.collectionView.performBatchUpdates({
+                    self.collectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
+                }, completion: nil)
+            case .whole:
+                self.collectionView.reloadData()
+            }
+        }
+    }
+
+    // MARK: Transition
 
     // MARK: - Event
 
@@ -169,20 +187,17 @@ class AddMemoViewController: UIViewController {
             let cell = imageView.superview?.superview as? MemoImageCollectionViewCell,
             let indexPath = self.collectionView.indexPath(for: cell) else { return }
         print(indexPath)
-
-        collectionView.performBatchUpdates({
-            imageViewList.remove(at: indexPath.row)
-            collectionView.deleteItems(at: [indexPath])
-        }, completion: nil)
+        removeAndUpdateImageList(at: indexPath.row, mode: .single)
     }
 
     @IBAction func addMemoBarButtonItemPressed(_: UIBarButtonItem) {
+        view.endEditing(true)
         guard let title = titleTextField.text,
             let subText = subTextView.text else { return }
 
         let imageList = imageViewList.filter { $0 != .addImage }
 
-        let memoData = MemoData(id: CommonData.shared.memoDataList.count, title: title, subText: subText, imageList: imageList)
+        let memoData = MemoData(title: title, subText: subText, imageList: imageList)
         presentTwoButtonAlertController(title: "메모 추가", message: "해당 메모를 추가하시겠습니까?") { isApproval in
             if isApproval {
                 DispatchQueue.main.async {
@@ -200,6 +215,13 @@ class AddMemoViewController: UIViewController {
     }
 }
 
+extension AddMemoViewController: CanSendDataDelegate {
+    func sendData<T>(_ data: T) {
+        guard let urlImage = data as? UIImage else { return }
+        insertAndUpdateImageList(at: 1, image: urlImage)
+    }
+}
+
 extension AddMemoViewController: UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         return imageViewList.count
@@ -209,7 +231,7 @@ extension AddMemoViewController: UICollectionViewDataSource {
         guard let addImageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: UIIdentifier.Cell.Collection.memoImage, for: indexPath) as? MemoImageCollectionViewCell else { return UICollectionViewCell() }
 
         let isFirstItemCell = indexPath.item == 0 ? true : false
-        addImageCollectionViewCell.configureCell(image: imageViewList[indexPath.item], isFirstItem: isFirstItemCell, imageMode: ImageMode.edit)
+        addImageCollectionViewCell.configureCell(image: imageViewList[indexPath.item], imageMode: MemoMode.edit, indexPath: indexPath)
 
         if isFirstItemCell {
             addImageCollectionViewCell.photoImageView.addGestureRecognizer(addImageTapGestureRecognizer)
@@ -229,11 +251,8 @@ extension AddMemoViewController: UINavigationControllerDelegate {}
 extension AddMemoViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
-        imageViewList.insert(selectedImage, at: 1)
-        DispatchQueue.main.async {
-            picker.dismiss(animated: true, completion: nil)
-            self.collectionView.reloadData()
-        }
+        insertAndUpdateImageList(at: 1, image: selectedImage)
+        picker.dismiss(animated: true, completion: nil)
     }
 }
 
