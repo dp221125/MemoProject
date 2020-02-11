@@ -75,10 +75,15 @@ class DetailMemoViewController: UIViewController {
         configureBarButtonItems()
         configureAlertController()
         configureAddImageTapGestureRecognizer()
+        configureImagePickerController()
         debugPrint("now memoData : \(originMemoData)")
     }
 
     // MARK: - Configuration
+
+    private func configureImagePickerController() {
+        imagePickerController.delegate = self
+    }
 
     private func configureBarButtonItems() {
         saveEditBarButtonItem.title = "편집"
@@ -174,7 +179,7 @@ class DetailMemoViewController: UIViewController {
         selectImageAlertController.addAction(cancelAlertAction)
     }
 
-    private func updateTempMemoData(title: String, subText: String, imageList: [UIImage]) {
+    private func updateEditingMemoData(title: String, subText: String, imageList: [UIImage]) {
         editingMemoData.title = title
         editingMemoData.subText = subText
         editingMemoData.imageList = imageList
@@ -217,9 +222,9 @@ class DetailMemoViewController: UIViewController {
             guard let titleText = titleTextField.text,
                 let subText = subTextView.text else { return }
 
-            updateTempMemoData(title: titleText, subText: subText, imageList: originMemoData.imageList.filter { $0 != .addImage })
+            updateEditingMemoData(title: titleText, subText: subText, imageList: editingMemoData.imageList.filter { $0 != .addImage })
             originMemoData = editingMemoData
-            CommonData.shared.updateMemoData(editingMemoData, at: originMemoData.id)
+            CommonData.shared.updateMemoData(originMemoData, at: originMemoData.id)
             updateMainMemoList()
             imageMode = .view
         }
@@ -259,5 +264,17 @@ extension DetailMemoViewController: UICollectionViewDelegate {}
 extension DetailMemoViewController: UITextViewDelegate {
     func textViewDidChange(_: UITextView) {
         checkInputData()
+    }
+}
+
+extension DetailMemoViewController: UINavigationControllerDelegate {}
+extension DetailMemoViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        editingMemoData.imageList.insert(selectedImage, at: 1)
+        DispatchQueue.main.async {
+            picker.dismiss(animated: true, completion: nil)
+            self.collectionView.reloadData()
+        }
     }
 }
