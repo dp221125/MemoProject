@@ -48,16 +48,16 @@ class AddURLImageViewController: UIViewController {
 
     // MARK: - Configuration
 
-    func configureTextField() {
+    private func configureTextField() {
         textField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         textField.configureBasicBorder()
     }
 
-    func configureAddImageButton() {
+    private func configureAddImageButton() {
         addImageButton.configureBasicBorder()
     }
 
-    func sendImageDataToParentView(_ image: UIImage?) {
+    private func sendImageDataToParentView(_ image: UIImage?) {
         performSegue(withIdentifier: UIIdentifier.Segue.unwindToAddMemoView, sender: image)
     }
 
@@ -69,7 +69,7 @@ class AddURLImageViewController: UIViewController {
 
     // MARK: - Normal
 
-    func checkInputData() {
+    private func checkInputData() {
         guard let urlText = textField.text else { return }
         isInputData = !urlText.trimmingCharacters(in: .whitespaces).isEmpty
     }
