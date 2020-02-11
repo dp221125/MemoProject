@@ -51,7 +51,7 @@ class AddMemoViewController: UIViewController {
         configureTextView()
         configureAddMemoBarButtonItem()
         configureEditImageBarButtonItem()
-        addImageTapGestureRecognizer.addTarget(self, action: #selector(addImageCollectionViewCellPressed(_:)))
+        addImageTapGestureRecognizer.addTarget(self, action: #selector(addImageInCollectionViewCellPressed(_:)))
     }
 
     // MARK: - Configuration
@@ -156,27 +156,15 @@ class AddMemoViewController: UIViewController {
 
     // MARK: Transition
 
-    private func presentAlbumAuthRequestAlertController() {
-        DispatchQueue.main.async {
-            self.presentAuthRequestAlertController(title: "앨범 접근권한 필요", message: "앨범사용을 위해 앨범 접근권한이 필요합니다.")
-        }
-    }
-
-    private func presentCameraAuthRequestAlertController() {
-        DispatchQueue.main.async {
-            self.presentAuthRequestAlertController(title: "카메라 권한 필요", message: "사진촬영을 위해 카메라 권한을 허용해주세요.")
-        }
-    }
-
     @IBAction func unwindToAddMemoView(_: UIStoryboardSegue) {}
 
     // MARK: - Event
 
-    @objc func addImageCollectionViewCellPressed(_: UITapGestureRecognizer) {
+    @objc func addImageInCollectionViewCellPressed(_: UITapGestureRecognizer) {
         present(selectImageAlertController, animated: true)
     }
 
-    @objc func deleteImageButtonPressed(_ sender: UITapGestureRecognizer) {
+    @objc func deleteImageButtonInCollectionViewCellPressed(_ sender: UITapGestureRecognizer) {
         guard let imageView = sender.view as? UIImageView,
             let cell = imageView.superview?.superview as? MemoImageCollectionViewCell,
             let indexPath = self.collectionView.indexPath(for: cell) else { return }
@@ -226,7 +214,7 @@ extension AddMemoViewController: UICollectionViewDataSource {
         if isFirstItemCell {
             addImageCollectionViewCell.photoImageView.addGestureRecognizer(addImageTapGestureRecognizer)
         } else {
-            let deleteImageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(deleteImageButtonPressed(_:)))
+            let deleteImageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(deleteImageButtonInCollectionViewCellPressed(_:)))
             addImageCollectionViewCell.deleteImageView.addGestureRecognizer(deleteImageTapGestureRecognizer)
         }
 

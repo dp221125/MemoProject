@@ -23,6 +23,18 @@ extension UIViewController {
         }
     }
 
+    func presentAlbumAuthRequestAlertController() {
+        DispatchQueue.main.async {
+            self.presentAuthRequestAlertController(title: "앨범 접근권한 필요", message: "앨범사용을 위해 앨범 접근권한이 필요합니다.")
+        }
+    }
+
+    func presentCameraAuthRequestAlertController() {
+        DispatchQueue.main.async {
+            self.presentAuthRequestAlertController(title: "카메라 권한 필요", message: "사진촬영을 위해 카메라 권한을 허용해주세요.")
+        }
+    }
+
     func presentAuthRequestAlertController(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let getAuthAction = UIAlertAction(title: "네", style: .default) { _ in
