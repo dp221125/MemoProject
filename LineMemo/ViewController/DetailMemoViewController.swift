@@ -14,9 +14,32 @@ class DetailMemoViewController: UIViewController {
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var subTextView: UITextView!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var cancelEditBarButtonItem: UIBarButtonItem!
+    @IBOutlet var saveEditBarButtonItem: UIBarButtonItem!
 
     private var memoData = MemoData()
-    private var imageMode = ImageMode.view
+
+    private var imageMode = ImageMode.view {
+        didSet {
+            switch imageMode {
+            case .view:
+                cancelEditBarButtonItem.isEnabled = false
+                saveEditBarButtonItem.title = "편집"
+                titleTextField.isEnabled = false
+                subTextView.isEditable = false
+            case .edit:
+                cancelEditBarButtonItem.isEnabled = true
+                saveEditBarButtonItem.title = "저장"
+                titleTextField.isEnabled = true
+                subTextView.isEditable = true
+            }
+
+            configureAddImageButton(imageMode: imageMode)
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
 
     // MARK: Method
 
@@ -27,9 +50,17 @@ class DetailMemoViewController: UIViewController {
         configureCollectionView()
         configureTitleTextField()
         configureSubTextView()
+        configureBarButtonItems()
+        debugPrint("now memoData : \(memoData)")
     }
 
     // MARK: - Configuration
+
+    private func configureBarButtonItems() {
+        saveEditBarButtonItem.title = "편집"
+        cancelEditBarButtonItem.title = "취소"
+        cancelEditBarButtonItem.isEnabled = false
+    }
 
     private func configureCollectionView() {
         collectionView.register(UINib(nibName: UIIdentifier.Nib.memoImageCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: UIIdentifier.Cell.Collection.memoImage)
@@ -48,12 +79,40 @@ class DetailMemoViewController: UIViewController {
 
     private func configureSubTextView() {
         subTextView.text = memoData.subText
+        subTextView.setContentOffset(.zero, animated: false)
+    }
+
+    private func configureAddImageButton(imageMode: ImageMode) {
+        switch imageMode {
+        case .view:
+            memoData.imageList = memoData.imageList.filter { $0 != AssetIdentifier.Image.plus }
+        case .edit:
+            memoData.imageList.insert(AssetIdentifier.Image.plus, at: 0)
+        }
     }
 
     // MARK: - Event
 
     @IBAction func editBarButtonItemPressed(_: UIBarButtonItem) {
         print("Edit BarButtonItem Pressed")
+        switch imageMode {
+        case .view:
+            imageMode = .edit
+        case .edit:
+            // update memoData
+            guard let titleText = titleTextField.text,
+                let subText = subTextView.text else { return }
+            let imageList = memoData.imageList.filter { $0 != AssetIdentifier.Image.plus }
+            let newMemoData = MemoData(id: memoData.id, title: titleText, subText: subText, imageList: imageList)
+            memoData = newMemoData
+            CommonData.shared.updateMemoData(newMemoData, at: memoData.id)
+            imageMode = .view
+            updateMainMemoList()
+        }
+    }
+
+    @IBAction func cancelEditBarButtonItemPressed(_: UIBarButtonItem) {
+        imageMode = .view
     }
 }
 
@@ -64,7 +123,9 @@ extension DetailMemoViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let imageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: UIIdentifier.Cell.Collection.memoImage, for: indexPath) as? MemoImageCollectionViewCell else { return UICollectionViewCell() }
-        imageCollectionViewCell.configureCell(image: memoData.imageList[indexPath.item], isFirstItem: true, imageMode: imageMode)
+
+        let isFirstItem = indexPath.row == 0 ? true : false
+        imageCollectionViewCell.configureCell(image: memoData.imageList[indexPath.item], isFirstItem: isFirstItem, imageMode: imageMode)
         return imageCollectionViewCell
     }
 }

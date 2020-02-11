@@ -9,6 +9,11 @@
 import UIKit
 
 extension UIViewController {
+    func updateMainMemoList() {
+        guard let navigationController = self.navigationController as? MainNavigationController else { return }
+        navigationController.reloadMainMemoList()
+    }
+
     func openCamera(_ imagePickerController: UIImagePickerController) {
         DispatchQueue.main.async {
             if UIImagePickerController.isSourceTypeAvailable(.camera) {

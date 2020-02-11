@@ -16,7 +16,7 @@ class MainNavigationController: UINavigationController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    func reloadMemoList() {
+    func reloadMainMemoList() {
         guard let mainViewController = self.viewControllers.first as? MainMemoViewController else { return }
         DispatchQueue.main.async {
             mainViewController.tableView.reloadData()

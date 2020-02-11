@@ -24,7 +24,6 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
             deleteImageView.isHidden = true
         case .edit:
             deleteImageView.isHidden = isFirstItem ? true : false
-            deleteImageView.isHidden = isFirstItem
         }
         photoImageView.image = image
     }

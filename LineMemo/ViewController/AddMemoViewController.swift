@@ -194,14 +194,13 @@ class AddMemoViewController: UIViewController {
 
         let imageList = imageViewList.filter { $0 != AssetIdentifier.Image.plus }
 
-        let memoData = MemoData(title: title, subText: subText, imageList: imageList)
+        let memoData = MemoData(id: CommonData.shared.memoDataList.count, title: title, subText: subText, imageList: imageList)
         presentTwoButtonAlertController(title: "메모 추가", message: "해당 메모를 추가하시겠습니까?") { isApproval in
             if isApproval {
                 DispatchQueue.main.async {
                     CommonData.shared.addMemoData(memoData)
                     debugPrint(CommonData.shared.memoDataList)
-                    guard let navigationController = self.navigationController as? MainNavigationController else { return }
-                    navigationController.reloadMemoList()
+                    self.updateMainMemoList()
                     self.navigationController?.popViewController(animated: true)
                 }
             }

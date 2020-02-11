@@ -112,17 +112,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fDE-Ug-MaF">
-                                <rect key="frame" x="0.0" y="118" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="118" width="414" height="100"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="KW4-xz-Zbo"/>
+                                    <constraint firstAttribute="height" constant="100" id="KW4-xz-Zbo"/>
                                 </constraints>
                                 <collectionViewLayout key="collectionViewLayout" id="fTl-Pd-Lsk" customClass="MemoImageCollectionViewFlowLayout" customModule="LineMemo" customModuleProvider="target"/>
                                 <cells/>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HT1-hR-FQi">
-                                <rect key="frame" x="10" y="328" width="394" height="428"/>
+                                <rect key="frame" x="10" y="228" width="394" height="528"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZeL-nn-syU">
                                         <rect key="frame" x="5" y="0.0" width="384" height="30"/>
@@ -142,7 +142,7 @@
                                         </constraints>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" editable="NO" text="Sub Text" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4O-fj-YAH">
-                                        <rect key="frame" x="0.0" y="51" width="394" height="377"/>
+                                        <rect key="frame" x="0.0" y="51" width="394" height="477"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -173,15 +173,24 @@
                         <viewLayoutGuide key="safeArea" id="V7a-7a-CRu"/>
                     </view>
                     <navigationItem key="navigationItem" title="메모장" id="ema-e7-Sii">
-                        <barButtonItem key="rightBarButtonItem" title="편집" id="F7i-di-DfS">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="editBarButtonItemPressed:" destination="YSz-N6-AgJ" id="Vw1-bF-zaA"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="편집" id="F7i-di-DfS">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="editBarButtonItemPressed:" destination="YSz-N6-AgJ" id="Vw1-bF-zaA"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="취소" id="bk4-UC-2zr">
+                                <connections>
+                                    <action selector="cancelEditBarButtonItemPressed:" destination="YSz-N6-AgJ" id="VmZ-gP-flx"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelEditBarButtonItem" destination="bk4-UC-2zr" id="gCh-YO-05J"/>
                         <outlet property="collectionView" destination="fDE-Ug-MaF" id="Ysf-V2-i9b"/>
+                        <outlet property="saveEditBarButtonItem" destination="F7i-di-DfS" id="Ctz-sj-J8x"/>
                         <outlet property="subTextView" destination="I4O-fj-YAH" id="vfV-i3-VcG"/>
                         <outlet property="titleTextField" destination="ZeL-nn-syU" id="dmE-Fc-1bA"/>
                     </connections>

@@ -15,4 +15,9 @@ final class CommonData {
     func addMemoData(_ memoData: MemoData) {
         memoDataList.append(memoData)
     }
+
+    func updateMemoData(_ memoData: MemoData, at index: Int) {
+        if index >= memoDataList.count { return }
+        memoDataList[index] = memoData
+    }
 }
