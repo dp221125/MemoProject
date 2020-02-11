@@ -85,9 +85,9 @@ class DetailMemoViewController: UIViewController {
     private func configureAddImageButton(imageMode: ImageMode) {
         switch imageMode {
         case .view:
-            memoData.imageList = memoData.imageList.filter { $0 != AssetIdentifier.Image.plus }
+            memoData.imageList = memoData.imageList.filter { $0 != .addImage }
         case .edit:
-            memoData.imageList.insert(AssetIdentifier.Image.plus, at: 0)
+            memoData.imageList.insert(.addImage, at: 0)
         }
     }
 
@@ -102,7 +102,7 @@ class DetailMemoViewController: UIViewController {
             // update memoData
             guard let titleText = titleTextField.text,
                 let subText = subTextView.text else { return }
-            let imageList = memoData.imageList.filter { $0 != AssetIdentifier.Image.plus }
+            let imageList = memoData.imageList.filter { $0 != .addImage }
             let newMemoData = MemoData(id: memoData.id, title: titleText, subText: subText, imageList: imageList)
             memoData = newMemoData
             CommonData.shared.updateMemoData(newMemoData, at: memoData.id)

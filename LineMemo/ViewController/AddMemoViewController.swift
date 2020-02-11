@@ -192,7 +192,7 @@ class AddMemoViewController: UIViewController {
         guard let title = titleTextField.text,
             let subText = subTextView.text else { return }
 
-        let imageList = imageViewList.filter { $0 != AssetIdentifier.Image.plus }
+        let imageList = imageViewList.filter { $0 != .addImage }
 
         let memoData = MemoData(id: CommonData.shared.memoDataList.count, title: title, subText: subText, imageList: imageList)
         presentTwoButtonAlertController(title: "메모 추가", message: "해당 메모를 추가하시겠습니까?") { isApproval in

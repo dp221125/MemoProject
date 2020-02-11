@@ -28,6 +28,7 @@
 		0794F88B23F170D600D16463 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F88A23F170D600D16463 /* UIViewController+.swift */; };
 		0794F88D23F182C300D16463 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F88C23F182C300D16463 /* UIView+.swift */; };
 		07BFEE8D23F28FAA00877D8F /* ImageMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE8C23F28FAA00877D8F /* ImageMode.swift */; };
+		07BFEE8F23F2A4F900877D8F /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE8E23F2A4F900877D8F /* UIImage+.swift */; };
 		07DD9E6E23F19000009B95A0 /* UISize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E6D23F19000009B95A0 /* UISize.swift */; };
 		07DD9E7023F192CB009B95A0 /* AddURLImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E6F23F192CB009B95A0 /* AddURLImageViewController.swift */; };
 		07DD9E7223F19945009B95A0 /* RequestImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E7123F19945009B95A0 /* RequestImage.swift */; };
@@ -58,6 +59,7 @@
 		0794F88A23F170D600D16463 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		0794F88C23F182C300D16463 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		07BFEE8C23F28FAA00877D8F /* ImageMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMode.swift; sourceTree = "<group>"; };
+		07BFEE8E23F2A4F900877D8F /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		07DD9E6D23F19000009B95A0 /* UISize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISize.swift; sourceTree = "<group>"; };
 		07DD9E6F23F192CB009B95A0 /* AddURLImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddURLImageViewController.swift; sourceTree = "<group>"; };
 		07DD9E7123F19945009B95A0 /* RequestImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestImage.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				07BFEE8C23F28FAA00877D8F /* ImageMode.swift */,
 				07DD9E6D23F19000009B95A0 /* UISize.swift */,
 				0794F87723F140C700D16463 /* UIIdentifier.swift */,
+				07BFEE8E23F2A4F900877D8F /* UIImage+.swift */,
 				0794F87F23F1572200D16463 /* AssetIdentifier.swift */,
 			);
 			path = Constrant;
@@ -279,6 +282,7 @@
 				0794F88523F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift in Sources */,
 				07BFEE8D23F28FAA00877D8F /* ImageMode.swift in Sources */,
 				075172EB23F1CF4200959180 /* DetailMemoViewController.swift in Sources */,
+				07BFEE8F23F2A4F900877D8F /* UIImage+.swift in Sources */,
 				0794F88023F1572200D16463 /* AssetIdentifier.swift in Sources */,
 				077E94A123F19DAE00103AC9 /* UIActivityIndicatorView+.swift in Sources */,
 			);

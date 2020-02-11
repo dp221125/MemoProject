@@ -8,8 +8,4 @@
 
 import UIKit
 
-struct AssetIdentifier {
-    struct Image {
-        static let plus = #imageLiteral(resourceName: "plus")
-    }
-}
+struct AssetIdentifier {}
