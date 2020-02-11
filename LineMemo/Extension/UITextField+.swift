@@ -10,8 +10,13 @@ import UIKit
 
 extension UITextField {
     func configureTextField(mode editingMode: MemoMode) {
+        let insetView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: frame.size.height))
+        leftView = insetView
+        leftViewMode = .always
+
         switch editingMode {
         case .view:
+            borderStyle = .none
             layer.borderWidth = 0
             isEnabled = false
         case .edit:

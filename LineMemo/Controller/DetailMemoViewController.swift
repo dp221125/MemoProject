@@ -50,7 +50,7 @@ class DetailMemoViewController: UIViewController {
                 subTextView.isEditable = true
             }
 
-            configureAddImageButton(mode: imageMode)
+            configureByMemoMode(mode: imageMode)
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -108,21 +108,15 @@ class DetailMemoViewController: UIViewController {
 
     private func configureTitleTextField() {
         titleTextField.addTarget(self, action: #selector(titleTextEditingChanged(_:)), for: .editingChanged)
-        titleTextField.layer.borderWidth = 0
+        titleTextField.configureTextField(mode: .view)
     }
 
     private func configureSubTextView() {
         subTextView.delegate = self
-        subTextView.setContentOffset(.zero, animated: false)
-        subTextView.textContainerInset = UIEdgeInsets(
-            top: 0,
-            left: -subTextView.textContainer.lineFragmentPadding,
-            bottom: 0,
-            right: -subTextView.textContainer.lineFragmentPadding
-        )
+        subTextView.configureTextView(mode: .view)
     }
 
-    private func configureAddImageButton(mode: MemoMode) {
+    private func configureByMemoMode(mode: MemoMode) {
         titleTextField.configureTextField(mode: mode)
         subTextView.configureTextView(mode: mode)
         switch imageMode {

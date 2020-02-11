@@ -76,12 +76,12 @@ class AddMemoViewController: UIViewController {
     }
 
     private func configureTextView() {
-        subTextView.configureBasicBorder()
+        subTextView.configureTextView(mode: .edit)
         subTextView.delegate = self
     }
 
     private func configureTextField() {
-        titleTextField.configureBasicBorder()
+        titleTextField.configureTextField(mode: .edit)
         titleTextField.delegate = self
     }
 

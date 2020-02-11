@@ -176,6 +176,9 @@
 		0794F88923F170CD00D16463 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				07BFEE8E23F2A4F900877D8F /* UIImage+.swift */,
+				07BFEE9423F2D1CD00877D8F /* UITextField+.swift */,
+				078141C023F2D33400D9A9CD /* UITextView+.swift */,
 				0794F88A23F170D600D16463 /* UIViewController+.swift */,
 				0794F88C23F182C300D16463 /* UIView+.swift */,
 				077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */,
@@ -192,10 +195,7 @@
 				07BFEE9223F2CC4500877D8F /* UpdateMode.swift */,
 				07DD9E6D23F19000009B95A0 /* UISize.swift */,
 				0794F87723F140C700D16463 /* UIIdentifier.swift */,
-				07BFEE8E23F2A4F900877D8F /* UIImage+.swift */,
 				0794F87F23F1572200D16463 /* AssetIdentifier.swift */,
-				07BFEE9423F2D1CD00877D8F /* UITextField+.swift */,
-				078141C023F2D33400D9A9CD /* UITextView+.swift */,
 			);
 			path = Constrant;
 			sourceTree = "<group>";
