@@ -16,6 +16,7 @@ class DetailMemoViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
 
     private var memoData = MemoData()
+    private var imageMode = ImageMode.view
 
     // MARK: Method
 
@@ -63,7 +64,7 @@ extension DetailMemoViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let imageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: UIIdentifier.Cell.Collection.memoImage, for: indexPath) as? MemoImageCollectionViewCell else { return UICollectionViewCell() }
-        imageCollectionViewCell.configureCell(memoData.imageList[indexPath.item], true)
+        imageCollectionViewCell.configureCell(image: memoData.imageList[indexPath.item], isFirstItem: true, imageMode: imageMode)
         return imageCollectionViewCell
     }
 }

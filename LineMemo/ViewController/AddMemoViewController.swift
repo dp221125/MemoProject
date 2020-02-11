@@ -222,7 +222,7 @@ extension AddMemoViewController: UICollectionViewDataSource {
         guard let addImageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: UIIdentifier.Cell.Collection.memoImage, for: indexPath) as? MemoImageCollectionViewCell else { return UICollectionViewCell() }
 
         let isFirstItemCell = indexPath.item == 0 ? true : false
-        addImageCollectionViewCell.configureCell(imageViewList[indexPath.item], isFirstItemCell)
+        addImageCollectionViewCell.configureCell(image: imageViewList[indexPath.item], isFirstItem: isFirstItemCell, imageMode: ImageMode.edit)
 
         if isFirstItemCell {
             addImageCollectionViewCell.photoImageView.addGestureRecognizer(addImageTapGestureRecognizer)

@@ -18,8 +18,14 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
 
     // MARK: Method
 
-    func configureCell(_ image: UIImage, _ isFirstItem: Bool) {
-        deleteImageView.isHidden = isFirstItem
+    func configureCell(image: UIImage, isFirstItem: Bool, imageMode: ImageMode) {
+        switch imageMode {
+        case .view:
+            deleteImageView.isHidden = true
+        case .edit:
+            deleteImageView.isHidden = isFirstItem ? true : false
+            deleteImageView.isHidden = isFirstItem
+        }
         photoImageView.image = image
     }
 }
