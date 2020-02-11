@@ -17,7 +17,11 @@ class DetailMemoViewController: UIViewController {
     @IBOutlet var cancelEditBarButtonItem: UIBarButtonItem!
     @IBOutlet var saveEditBarButtonItem: UIBarButtonItem!
 
+    // MARK: Properties
+
+    private lazy var addImageTapGestureRecognizer = UITapGestureRecognizer()
     private var memoData = MemoData()
+    private var tempMemoData = MemoData()
 
     private var imageMode = ImageMode.view {
         didSet {
@@ -52,6 +56,7 @@ class DetailMemoViewController: UIViewController {
         configureSubTextView()
         configureBarButtonItems()
         debugPrint("now memoData : \(memoData)")
+        addImageTapGestureRecognizer.addTarget(self, action: #selector(addImageButtonPressed(_:)))
     }
 
     // MARK: - Configuration
@@ -91,7 +96,22 @@ class DetailMemoViewController: UIViewController {
         }
     }
 
+    private func updateTempMemoData(title: String, subText: String, imageList: [UIImage]) {
+        tempMemoData.title = title
+        tempMemoData.subText = subText
+        tempMemoData.imageList = imageList
+    }
+
     // MARK: - Event
+
+    @objc func addImageButtonPressed(_: UITapGestureRecognizer) {
+        debugPrint("addImageButton Pressed")
+    }
+
+    @objc func deleteImageButtonPressed(_: UITapGestureRecognizer) {
+        debugPrint("deleteImageButton Pressed")
+        //        let
+    }
 
     @IBAction func editBarButtonItemPressed(_: UIBarButtonItem) {
         print("Edit BarButtonItem Pressed")
@@ -99,19 +119,21 @@ class DetailMemoViewController: UIViewController {
         case .view:
             imageMode = .edit
         case .edit:
-            // update memoData
             guard let titleText = titleTextField.text,
                 let subText = subTextView.text else { return }
-            let imageList = memoData.imageList.filter { $0 != .addImage }
-            let newMemoData = MemoData(id: memoData.id, title: titleText, subText: subText, imageList: imageList)
-            memoData = newMemoData
-            CommonData.shared.updateMemoData(newMemoData, at: memoData.id)
-            imageMode = .view
+
+            updateTempMemoData(title: titleText, subText: subText, imageList: memoData.imageList.filter { $0 != .addImage })
+            memoData = tempMemoData
+            CommonData.shared.updateMemoData(tempMemoData, at: memoData.id)
             updateMainMemoList()
+            imageMode = .view
         }
     }
 
     @IBAction func cancelEditBarButtonItemPressed(_: UIBarButtonItem) {
+        titleTextField.text = memoData.title
+        subTextView.text = memoData.subText
+        tempMemoData = memoData
         imageMode = .view
     }
 }
@@ -126,6 +148,15 @@ extension DetailMemoViewController: UICollectionViewDataSource {
 
         let isFirstItem = indexPath.row == 0 ? true : false
         imageCollectionViewCell.configureCell(image: memoData.imageList[indexPath.item], isFirstItem: isFirstItem, imageMode: imageMode)
+
+        if imageMode == .edit {
+            if isFirstItem {
+                imageCollectionViewCell.addGestureRecognizer(addImageTapGestureRecognizer)
+            } else {
+                let deleteImageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(deleteImageButtonPressed(_:)))
+                imageCollectionViewCell.deleteImageView.addGestureRecognizer(deleteImageTapGestureRecognizer)
+            }
+        }
         return imageCollectionViewCell
     }
 }

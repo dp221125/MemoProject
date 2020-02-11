@@ -363,7 +363,7 @@
                                     <constraint firstItem="4MO-wB-4Xm" firstAttribute="leading" secondItem="Xmx-BQ-Yyu" secondAttribute="leading" constant="20" symbolic="YES" id="cwk-JU-cbD"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Vx7-qu-098">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Vx7-qu-098">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>

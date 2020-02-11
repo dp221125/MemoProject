@@ -102,13 +102,13 @@
 				07DD9E7523F19B20009B95A0 /* Protocol */,
 				0794F87323F13FD500D16463 /* Model */,
 				0794F87423F1406900D16463 /* View */,
-				0794F87223F13FC900D16463 /* ViewController */,
+				0794F87223F13FC900D16463 /* Controller */,
 				0794F88623F16B8400D16463 /* SupportingFiles */,
 			);
 			path = LineMemo;
 			sourceTree = "<group>";
 		};
-		0794F87223F13FC900D16463 /* ViewController */ = {
+		0794F87223F13FC900D16463 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				0794F87923F1458100D16463 /* MainNavigationController.swift */,
@@ -117,15 +117,15 @@
 				0794F87D23F14E2C00D16463 /* AddMemoViewController.swift */,
 				07DD9E6F23F192CB009B95A0 /* AddURLImageViewController.swift */,
 			);
-			path = ViewController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		0794F87323F13FD500D16463 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				07BFEE8B23F28F9900877D8F /* Constrant */,
 				0794F86E23F13EE600D16463 /* CommonData.swift */,
 				07DD9E7123F19945009B95A0 /* RequestImage.swift */,
+				07BFEE8B23F28F9900877D8F /* Constrant */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,6 +223,7 @@
 				TargetAttributes = {
 					0794F85623F13CE000D16463 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
