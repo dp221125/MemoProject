@@ -265,7 +265,12 @@ class DetailMemoViewController: UIViewController {
 
             updateEditingMemoData(title: titleText, subText: subText, imageList: editingMemoData.imageList.filter { $0 != .addImage })
             originMemoData = editingMemoData
-            CommonData.shared.updateMemoData(originMemoData, at: CommonData.shared.editingMemoIndex)
+            do {
+                try UserDataManager.shared.updateMemoData(memoData: originMemoData, at: UserDataManager.shared.editingMemoIndex)
+            } catch {
+                debugPrint("Updating Error")
+            }
+
             updateMainMemoList()
             imageMode = .view
         }

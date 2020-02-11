@@ -28,6 +28,8 @@
 		0794F88523F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F88423F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift */; };
 		0794F88B23F170D600D16463 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F88A23F170D600D16463 /* UIViewController+.swift */; };
 		0794F88D23F182C300D16463 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F88C23F182C300D16463 /* UIView+.swift */; };
+		07B6DFA223F3193800B870CF /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B6DFA123F3193800B870CF /* UserDataManager.swift */; };
+		07B6DFA623F31B5800B870CF /* MemoRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B6DFA523F31B5800B870CF /* MemoRawData.swift */; };
 		07BFEE8D23F28FAA00877D8F /* MemoMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE8C23F28FAA00877D8F /* MemoMode.swift */; };
 		07BFEE8F23F2A4F900877D8F /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE8E23F2A4F900877D8F /* UIImage+.swift */; };
 		07BFEE9123F2BDD800877D8F /* CanSendDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE9023F2BDD800877D8F /* CanSendDataDelegate.swift */; };
@@ -63,6 +65,8 @@
 		0794F88423F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoImageCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		0794F88A23F170D600D16463 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		0794F88C23F182C300D16463 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		07B6DFA123F3193800B870CF /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		07B6DFA523F31B5800B870CF /* MemoRawData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRawData.swift; sourceTree = "<group>"; };
 		07BFEE8C23F28FAA00877D8F /* MemoMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoMode.swift; sourceTree = "<group>"; };
 		07BFEE8E23F2A4F900877D8F /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		07BFEE9023F2BDD800877D8F /* CanSendDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanSendDataDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 		0794F87323F13FD500D16463 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				07B6DFA123F3193800B870CF /* UserDataManager.swift */,
 				0794F86E23F13EE600D16463 /* CommonData.swift */,
 				07DD9E7123F19945009B95A0 /* RequestImage.swift */,
 				07BFEE8B23F28F9900877D8F /* Constrant */,
@@ -182,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				0794F87023F13F3300D16463 /* MemoData.swift */,
+				07B6DFA523F31B5800B870CF /* MemoRawData.swift */,
 				07BFEE8C23F28FAA00877D8F /* MemoMode.swift */,
 				07BFEE9223F2CC4500877D8F /* UpdateMode.swift */,
 				07DD9E6D23F19000009B95A0 /* UISize.swift */,
@@ -278,6 +284,7 @@
 			files = (
 				0794F88D23F182C300D16463 /* UIView+.swift in Sources */,
 				0794F88B23F170D600D16463 /* UIViewController+.swift in Sources */,
+				07B6DFA223F3193800B870CF /* UserDataManager.swift in Sources */,
 				07DD9E7423F19B1B009B95A0 /* RequestImageDelegate.swift in Sources */,
 				07BFEE9323F2CC4500877D8F /* UpdateMode.swift in Sources */,
 				0794F87E23F14E2C00D16463 /* AddMemoViewController.swift in Sources */,
@@ -293,6 +300,7 @@
 				0794F87123F13F3400D16463 /* MemoData.swift in Sources */,
 				0794F85B23F13CE000D16463 /* AppDelegate.swift in Sources */,
 				0794F86F23F13EE600D16463 /* CommonData.swift in Sources */,
+				07B6DFA623F31B5800B870CF /* MemoRawData.swift in Sources */,
 				0794F87623F1408800D16463 /* MainTableViewCell.swift in Sources */,
 				0794F85D23F13CE000D16463 /* SceneDelegate.swift in Sources */,
 				0794F88523F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift in Sources */,

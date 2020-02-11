@@ -48,12 +48,12 @@ class MainMemoViewController: UIViewController {
 
 extension MainMemoViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return CommonData.shared.memoDataList.count
+        return UserDataManager.shared.memoDataList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let mainTableViewCell = tableView.dequeueReusableCell(withIdentifier: UIIdentifier.Cell.Table.main, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
-        mainTableViewCell.configureCell(CommonData.shared.memoDataList[indexPath.row])
+        mainTableViewCell.configureCell(UserDataManager.shared.memoDataList[indexPath.row])
         return mainTableViewCell
     }
 }
@@ -64,8 +64,8 @@ extension MainMemoViewController: UITableViewDelegate {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        CommonData.shared.configureEditingMemoIndex(at: indexPath.row)
-        performSegue(withIdentifier: UIIdentifier.Segue.goToDetailMemoView, sender: CommonData.shared.memoDataList[indexPath.row])
+        UserDataManager.shared.configureEditingMemoIndex(at: indexPath.row)
+        performSegue(withIdentifier: UIIdentifier.Segue.goToDetailMemoView, sender: UserDataManager.shared.memoDataList[indexPath.row])
     }
 
     func tableView(_: UITableView, editingStyleForRowAt _: IndexPath) -> UITableViewCell.EditingStyle {
@@ -75,7 +75,11 @@ extension MainMemoViewController: UITableViewDelegate {
     func tableView(_: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            CommonData.shared.removeMemoData(at: indexPath.row)
+            do {
+                try UserDataManager.shared.remove(at: indexPath.row)
+            } catch {
+                debugPrint("Removing Error")
+            }
             tableView.deleteRows(at: [indexPath], with: .automatic)
         default:
             break

@@ -18,4 +18,10 @@ struct MemoData {
         self.subText = subText
         self.imageList = imageList
     }
+
+    func getRawData() -> MemoRawData {
+        var imageDataList = [Data]()
+        imageDataList = imageList.compactMap { $0.jpegData(compressionQuality: 1.0) }
+        return MemoRawData(title: title, subText: subText, imageDataList: imageDataList)
+    }
 }

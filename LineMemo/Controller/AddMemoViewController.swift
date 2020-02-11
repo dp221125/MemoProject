@@ -186,7 +186,6 @@ class AddMemoViewController: UIViewController {
         guard let imageView = sender.view as? UIImageView,
             let cell = imageView.superview?.superview as? MemoImageCollectionViewCell,
             let indexPath = self.collectionView.indexPath(for: cell) else { return }
-        print(indexPath)
         removeAndUpdateImageList(at: indexPath.row, mode: .single)
     }
 
@@ -201,8 +200,12 @@ class AddMemoViewController: UIViewController {
         presentTwoButtonAlertController(title: "메모 추가", message: "해당 메모를 추가하시겠습니까?") { isApproval in
             if isApproval {
                 DispatchQueue.main.async {
-                    CommonData.shared.addMemoData(memoData)
-                    debugPrint(CommonData.shared.memoDataList)
+                    do {
+                        try UserDataManager.shared.addMemoData(memoData)
+                    } catch {
+                        debugPrint("Adding Error")
+                    }
+                    debugPrint(UserDataManager.shared.memoDataList)
                     self.updateMainMemoList()
                     self.navigationController?.popViewController(animated: true)
                 }

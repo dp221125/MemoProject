@@ -14,6 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
+
+        UserDataManager.shared.loadMemoDataList()
+
         let mainStoryboard = UIStoryboard(name: UIIdentifier.Storyboard.main, bundle: nil)
         let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: UIIdentifier.Storyboard.mainNavigationController) as? UINavigationController
 
