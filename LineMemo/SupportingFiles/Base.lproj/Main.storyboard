@@ -35,7 +35,7 @@
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MainTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deO-af-PC7">
                                                                     <rect key="frame" x="0.0" y="0.0" width="299" height="41.5"/>
-                                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -121,8 +121,17 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HT1-hR-FQi">
                                 <rect key="frame" x="10" y="302.5" width="394" height="549.5"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNe-Se-Bq2">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="5kN-no-khV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZeL-nn-syU">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
+                                        <rect key="frame" x="0.0" y="40" width="394" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -132,15 +141,17 @@
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAi-QL-C6U">
-                                        <rect key="frame" x="0.0" y="60" width="394" height="1"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gH-8s-qi9">
+                                        <rect key="frame" x="0.0" y="100" width="394" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="okk-fj-Gzb"/>
+                                            <constraint firstAttribute="height" constant="30" id="rOx-ZK-XO0"/>
                                         </constraints>
-                                    </view>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" editable="NO" text="Sub Text" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4O-fj-YAH">
-                                        <rect key="frame" x="0.0" y="71" width="394" height="478.5"/>
+                                        <rect key="frame" x="0.0" y="140" width="394" height="409.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -150,11 +161,13 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ZeL-nn-syU" firstAttribute="leading" secondItem="HT1-hR-FQi" secondAttribute="leading" id="6n9-9I-uj6"/>
+                                    <constraint firstItem="2gH-8s-qi9" firstAttribute="leading" secondItem="HT1-hR-FQi" secondAttribute="leadingMargin" id="9Nd-Xe-iyb"/>
+                                    <constraint firstAttribute="trailing" secondItem="gNe-Se-Bq2" secondAttribute="trailing" id="GKs-D9-cdr"/>
                                     <constraint firstAttribute="trailing" secondItem="ZeL-nn-syU" secondAttribute="trailing" id="Kq2-V4-Gyj"/>
                                     <constraint firstItem="I4O-fj-YAH" firstAttribute="leading" secondItem="HT1-hR-FQi" secondAttribute="leading" id="Ksw-f2-xqJ"/>
-                                    <constraint firstItem="KAi-QL-C6U" firstAttribute="leading" secondItem="HT1-hR-FQi" secondAttribute="leading" id="LfU-BM-d1S"/>
                                     <constraint firstAttribute="trailing" secondItem="I4O-fj-YAH" secondAttribute="trailing" id="PgH-YY-BfD"/>
-                                    <constraint firstAttribute="trailing" secondItem="KAi-QL-C6U" secondAttribute="trailing" id="aLq-Ee-s8J"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="2gH-8s-qi9" secondAttribute="trailing" id="i0D-zM-el4"/>
+                                    <constraint firstItem="gNe-Se-Bq2" firstAttribute="leading" secondItem="HT1-hR-FQi" secondAttribute="leading" id="oKC-bK-A88"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNZ-sS-J4H">
@@ -226,7 +239,7 @@
                                 <collectionViewLayout key="collectionViewLayout" id="r6Y-YW-Rep" customClass="MemoImageCollectionViewFlowLayout" customModule="LineMemo" customModuleProvider="target"/>
                                 <cells/>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="4K4-WR-XuJ">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4K4-WR-XuJ">
                                 <rect key="frame" x="10" y="302.5" width="394" height="529.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpf-0L-cn6">
@@ -239,7 +252,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RJ2-mE-ot0">
-                                        <rect key="frame" x="0.0" y="47" width="394" height="50"/>
+                                        <rect key="frame" x="0.0" y="40" width="394" height="50"/>
                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="z1N-Ev-p0n"/>
@@ -248,7 +261,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OyT-Vl-4ZC">
-                                        <rect key="frame" x="0.0" y="114" width="394" height="30"/>
+                                        <rect key="frame" x="0.0" y="100" width="394" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="HKb-pe-BEB"/>
                                         </constraints>
@@ -257,7 +270,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BI6-oE-pe1">
-                                        <rect key="frame" x="0.0" y="161" width="394" height="368.5"/>
+                                        <rect key="frame" x="0.0" y="140" width="394" height="389.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

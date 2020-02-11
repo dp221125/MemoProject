@@ -65,6 +65,7 @@ extension MainMemoViewController: UITableViewDelegate {
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         UserDataManager.shared.configureEditingMemoIndex(at: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: UIIdentifier.Segue.goToDetailMemoView, sender: UserDataManager.shared.memoDataList[indexPath.row])
     }
 
