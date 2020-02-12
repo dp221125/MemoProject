@@ -17,6 +17,10 @@ final class RequestImage {
     // MARK: Property
 
     var delegate: RequestImageDelegate?
+
+    // MARK: Initializer
+
+    private init() {}
 }
 
 // MARK: - RequestImage

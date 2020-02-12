@@ -19,6 +19,10 @@ final class ToastView {
     private var backgroundView = UIView()
     private var contentView = UIView()
     private var textLabel = UILabel()
+
+    // MARK: Initializer
+
+    private init() {}
 }
 
 // MARK: - Configuration

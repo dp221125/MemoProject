@@ -29,6 +29,10 @@ final class UserDataManager {
             }
         }
     }
+
+    // MARK: Initializer
+
+    private init() {}
 }
 
 // MARK: - Configuration
