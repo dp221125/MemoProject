@@ -74,6 +74,10 @@ extension DetailMemoViewController: BaseViewController {
         configureImagePickerController()
     }
 
+    func configureMemoData(_ memoData: MemoData) {
+        originMemoData = memoData
+    }
+
     private func configureImagePickerController() {
         imagePickerController.delegate = self
     }
@@ -91,10 +95,6 @@ extension DetailMemoViewController: BaseViewController {
     private func configureCollectionView() {
         collectionView.register(UINib(nibName: UIIdentifier.Nib.CollectionViewCell.memoImage, bundle: nil), forCellWithReuseIdentifier: UIIdentifier.Cell.Collection.memoImage)
         collectionView.dataSource = self
-    }
-
-    func configureMemoData(_ memoData: MemoData) {
-        originMemoData = memoData
     }
 
     private func configureTitleTextField() {

@@ -21,7 +21,7 @@ class AddMemoViewController: UIViewController {
     @IBOutlet var subTextView: UITextView!
     @IBOutlet var addMemoBarButtonItem: UIBarButtonItem!
 
-    private let addImageTapGestureRecognizer = UITapGestureRecognizer()
+    private lazy var addImageTapGestureRecognizer = UITapGestureRecognizer()
 
     private lazy var selectImageAlertController = UIAlertController(title: "사진 등록방법 선택", message: "사진 등록방법을 선택하세요.", preferredStyle: .actionSheet)
 
