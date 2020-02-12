@@ -50,13 +50,59 @@ class AddMemoViewController: UIViewController {
         configureTextField()
         configureTextView()
         configureAddMemoBarButtonItem()
-        configureEditImageBarButtonItem()
-        addImageTapGestureRecognizer.addTarget(self, action: #selector(addImageInCollectionViewCellPressed(_:)))
+        configureTapGestureRecognizer()
+    }
+}
+
+// MARK: Event
+
+extension AddMemoViewController {
+    @objc func addImageInCollectionViewCellPressed(_: UITapGestureRecognizer) {
+        present(selectImageAlertController, animated: true)
     }
 
-    // MARK: - Configuration
+    @objc func deleteImageButtonInCollectionViewCellPressed(_ sender: UITapGestureRecognizer) {
+        guard let imageView = sender.view as? UIImageView,
+            let cell = imageView.superview?.superview as? MemoImageCollectionViewCell,
+            let indexPath = self.collectionView.indexPath(for: cell) else { return }
+        removeAndUpdateImageList(at: indexPath.row, mode: .single)
+    }
 
-    private func configureEditImageBarButtonItem() {}
+    @IBAction func addMemoBarButtonItemPressed(_: UIBarButtonItem) {
+        view.endEditing(true)
+        guard let title = titleTextField.text,
+            let subText = subTextView.text else { return }
+
+        let imageList = imageViewList.filter { $0 != .addImage }
+
+        let memoData = MemoData(title: title, subText: subText, imageList: imageList)
+        presentTwoButtonAlertController(title: "메모 추가", message: "해당 메모를 추가하시겠습니까?") { isApproval in
+            if isApproval {
+                DispatchQueue.main.async {
+                    do {
+                        try UserDataManager.shared.addMemoData(memoData)
+                        self.navigationController?.presentToastView("메모 저장에 성공했습니다.")
+                    } catch {
+                        self.navigationController?.presentToastView("메모 저장에 실패했습니다.\n\(error)")
+                    }
+                    self.updateMainMemoList()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+    }
+
+    override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
+        view.endEditing(true)
+    }
+}
+
+// MARK: Configuration
+
+extension AddMemoViewController {
+    private func configureTapGestureRecognizer() {
+        addImageTapGestureRecognizer.addTarget(self, action: #selector(addImageInCollectionViewCellPressed(_:)))
+    }
 
     private func configureAddMemoBarButtonItem() {
         addMemoBarButtonItem.isEnabled = false
@@ -83,13 +129,6 @@ class AddMemoViewController: UIViewController {
     private func configureTextField() {
         titleTextField.configureTextField(mode: .edit)
         titleTextField.delegate = self
-    }
-
-    private func checkInputData() {
-        guard let titleText = titleTextField.text,
-            let subText = subTextView.text else { return }
-        isValidInputData = !titleText.trimmingCharacters(in: .whitespaces).isEmpty
-            && !subText.trimmingCharacters(in: .whitespaces).isEmpty
     }
 
     private func configureAlertController() {
@@ -151,6 +190,13 @@ class AddMemoViewController: UIViewController {
         selectImageAlertController.addAction(cancelAlertAction)
     }
 
+    private func checkInputData() {
+        guard let titleText = titleTextField.text,
+            let subText = subTextView.text else { return }
+        isValidInputData = !titleText.trimmingCharacters(in: .whitespaces).isEmpty
+            && !subText.trimmingCharacters(in: .whitespaces).isEmpty
+    }
+
     private func insertAndUpdateImageList(at index: Int, image: UIImage) {
         DispatchQueue.main.async {
             self.imageViewList.insert(image, at: index)
@@ -172,49 +218,6 @@ class AddMemoViewController: UIViewController {
                 self.collectionView.reloadData()
             }
         }
-    }
-
-    // MARK: Transition
-
-    // MARK: - Event
-
-    @objc func addImageInCollectionViewCellPressed(_: UITapGestureRecognizer) {
-        present(selectImageAlertController, animated: true)
-    }
-
-    @objc func deleteImageButtonInCollectionViewCellPressed(_ sender: UITapGestureRecognizer) {
-        guard let imageView = sender.view as? UIImageView,
-            let cell = imageView.superview?.superview as? MemoImageCollectionViewCell,
-            let indexPath = self.collectionView.indexPath(for: cell) else { return }
-        removeAndUpdateImageList(at: indexPath.row, mode: .single)
-    }
-
-    @IBAction func addMemoBarButtonItemPressed(_: UIBarButtonItem) {
-        view.endEditing(true)
-        guard let title = titleTextField.text,
-            let subText = subTextView.text else { return }
-
-        let imageList = imageViewList.filter { $0 != .addImage }
-
-        let memoData = MemoData(title: title, subText: subText, imageList: imageList)
-        presentTwoButtonAlertController(title: "메모 추가", message: "해당 메모를 추가하시겠습니까?") { isApproval in
-            if isApproval {
-                DispatchQueue.main.async {
-                    do {
-                        try UserDataManager.shared.addMemoData(memoData)
-                        self.navigationController?.presentToastView("메모 저장에 성공했습니다.")
-                    } catch {
-                        self.navigationController?.presentToastView("메모 저장에 실패했습니다.\n\(error)")
-                    }
-                    self.updateMainMemoList()
-                    self.navigationController?.popViewController(animated: true)
-                }
-            }
-        }
-    }
-
-    override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
-        view.endEditing(true)
     }
 }
 

@@ -36,20 +36,6 @@ class DetailMemoViewController: UIViewController {
 
     private var imageMode = MemoMode.view {
         didSet {
-            switch imageMode {
-            case .view:
-                cancelEditBarButtonItem.isEnabled = false
-                saveEditBarButtonItem.isEnabled = true
-                saveEditBarButtonItem.title = "편집"
-                titleTextField.isEnabled = false
-                subTextView.isEditable = false
-            case .edit:
-                cancelEditBarButtonItem.isEnabled = true
-                saveEditBarButtonItem.title = "저장"
-                titleTextField.isEnabled = true
-                subTextView.isEditable = true
-            }
-
             configureByMemoMode(mode: imageMode)
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -120,8 +106,17 @@ class DetailMemoViewController: UIViewController {
         subTextView.configureTextView(mode: mode)
         switch imageMode {
         case .view:
+            cancelEditBarButtonItem.isEnabled = false
+            saveEditBarButtonItem.isEnabled = true
+            titleTextField.isEnabled = false
+            subTextView.isEditable = false
+            saveEditBarButtonItem.title = "편집"
             editingMemoData.imageList = editingMemoData.imageList.filter { $0 != .addImage }
         case .edit:
+            cancelEditBarButtonItem.isEnabled = true
+            titleTextField.isEnabled = true
+            subTextView.isEditable = true
+            saveEditBarButtonItem.title = "저장"
             insertAndUpdateImageList(at: 0, image: .addImage, mode: .whole)
         }
     }

@@ -11,13 +11,16 @@ import UIKit
 extension UIView {
     func configureBasicBorder() {
         clipsToBounds = true
-        layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 1
         layer.cornerRadius = 10
+        UIView.animate(withDuration: 0.3, animations: {
+            self.layer.borderColor = UIColor.black.cgColor
+        })
     }
 
     func removeBorder() {
-        layer.borderWidth = 0
-        layer.borderColor = UIColor.clear.cgColor
+        UIView.animate(withDuration: 0.3, animations: {
+            self.layer.borderColor = UIColor.clear.cgColor
+        })
     }
 }

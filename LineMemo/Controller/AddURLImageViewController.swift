@@ -72,10 +72,12 @@ class AddURLImageViewController: UIViewController {
     }
 
     @IBAction func cancelBarButtonItemPressed(_: UIBarButtonItem) {
+        view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
 
     @IBAction func addImageButtonPressed(_: UIButton) {
+        view.endEditing(true)
         guard let requestedURL = self.textField.text else { return }
         RequestImage.shared.requestFromURL(requestedURL) { success, image in
             if success {
@@ -87,6 +89,10 @@ class AddURLImageViewController: UIViewController {
                 self.navigationController?.presentToastView("해당 URL 이미지를 불러오는데 실패했습니다.")
             }
         }
+    }
+
+    override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
