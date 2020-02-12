@@ -28,6 +28,10 @@ class MainMemoViewController: UIViewController {
     // MARK: - Configuration
 
     private func configureTableView() {
+        let mainMemoTableViewCellNib = UINib(nibName: UIIdentifier.Nib.TableViewCell.mainMemo, bundle: nil)
+
+        tableView.register(mainMemoTableViewCellNib, forCellReuseIdentifier: UIIdentifier.Cell.Table.main)
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelectionDuringEditing = false
@@ -52,7 +56,7 @@ extension MainMemoViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let mainTableViewCell = tableView.dequeueReusableCell(withIdentifier: UIIdentifier.Cell.Table.main, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
+        guard let mainTableViewCell = tableView.dequeueReusableCell(withIdentifier: UIIdentifier.Cell.Table.main, for: indexPath) as? MainMemoTableViewCell else { return UITableViewCell() }
         mainTableViewCell.configureCell(UserDataManager.shared.memoDataList[indexPath.row])
         return mainTableViewCell
     }

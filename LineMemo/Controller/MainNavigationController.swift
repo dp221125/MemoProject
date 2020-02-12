@@ -23,10 +23,8 @@ class MainNavigationController: UINavigationController {
         }
     }
 
-    @objc func keyboardWillShow(_ sender: NSNotification) {
-        if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            topViewController?.view.frame.origin.y = -keyboardSize.height / 2
-        }
+    @objc func keyboardWillShow(_: NSNotification) {
+        topViewController?.view.frame.origin.y = -ViewSize.Height.imageSection
     }
 
     @objc func keyboardWillHide(_: NSNotification) {

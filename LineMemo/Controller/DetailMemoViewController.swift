@@ -97,7 +97,7 @@ class DetailMemoViewController: UIViewController {
     }
 
     private func configureCollectionView() {
-        collectionView.register(UINib(nibName: UIIdentifier.Nib.memoImageCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: UIIdentifier.Cell.Collection.memoImage)
+        collectionView.register(UINib(nibName: UIIdentifier.Nib.CollectionViewCell.memoImage, bundle: nil), forCellWithReuseIdentifier: UIIdentifier.Cell.Collection.memoImage)
         collectionView.delegate = self
         collectionView.dataSource = self
     }

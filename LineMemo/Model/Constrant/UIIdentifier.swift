@@ -11,7 +11,7 @@ import Foundation
 struct UIIdentifier {
     struct Cell {
         struct Table {
-            static let main = "MainTableViewCell"
+            static let main = "MainMemoTableViewCell"
         }
 
         struct Collection {
@@ -20,7 +20,13 @@ struct UIIdentifier {
     }
 
     struct Nib {
-        static let memoImageCollectionViewCell = "MemoImageCollectionViewCell"
+        struct TableViewCell {
+            static let mainMemo = "MainMemoTableViewCell"
+        }
+
+        struct CollectionViewCell {
+            static let memoImage = "MemoImageCollectionViewCell"
+        }
     }
 
     struct Storyboard {

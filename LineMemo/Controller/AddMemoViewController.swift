@@ -67,9 +67,9 @@ class AddMemoViewController: UIViewController {
     }
 
     private func configureCollectionView() {
-        let memoImageCollectionViewCell = UINib(nibName: UIIdentifier.Nib.memoImageCollectionViewCell, bundle: nil)
+        let memoImageCollectionViewCell = UINib(nibName: UIIdentifier.Nib.CollectionViewCell.memoImage, bundle: nil)
 
-        collectionView.register(memoImageCollectionViewCell, forCellWithReuseIdentifier: UIIdentifier.Nib.memoImageCollectionViewCell)
+        collectionView.register(memoImageCollectionViewCell, forCellWithReuseIdentifier: UIIdentifier.Nib.CollectionViewCell.memoImage)
 
         collectionView.delegate = self
         collectionView.dataSource = self
