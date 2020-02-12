@@ -142,7 +142,7 @@
 				07B6DFA123F3193800B870CF /* UserDataManager.swift */,
 				07DD9E7123F19945009B95A0 /* RequestImage.swift */,
 				0746F6FC23F3EC9100617A16 /* ToastView.swift */,
-				07BFEE8B23F28F9900877D8F /* Constrant */,
+				07BFEE8B23F28F9900877D8F /* Constant */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -192,7 +192,7 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		07BFEE8B23F28F9900877D8F /* Constrant */ = {
+		07BFEE8B23F28F9900877D8F /* Constant */ = {
 			isa = PBXGroup;
 			children = (
 				0794F87023F13F3300D16463 /* MemoData.swift */,
@@ -202,7 +202,7 @@
 				0746F6F423F3D0F700617A16 /* ViewSize.swift */,
 				0794F87723F140C700D16463 /* UIIdentifier.swift */,
 			);
-			path = Constrant;
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		07DD9E7523F19B20009B95A0 /* Protocol */ = {
