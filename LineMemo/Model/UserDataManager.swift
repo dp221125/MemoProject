@@ -41,7 +41,7 @@ final class UserDataManager {
             userDefaults.set(data, forKey: UserDataManager.DataKey.memoList.keyString)
             loadMemoDataList()
         } catch {
-            debugPrint("Encoding Error")
+            throw error
         }
     }
 

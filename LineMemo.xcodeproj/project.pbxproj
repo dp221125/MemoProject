@@ -10,6 +10,8 @@
 		0746F6F523F3D0F700617A16 /* ViewSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746F6F423F3D0F700617A16 /* ViewSize.swift */; };
 		0746F6F823F3D17300617A16 /* MainMemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746F6F623F3D17300617A16 /* MainMemoTableViewCell.swift */; };
 		0746F6F923F3D17300617A16 /* MainMemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0746F6F723F3D17300617A16 /* MainMemoTableViewCell.xib */; };
+		0746F6FD23F3EC9100617A16 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746F6FC23F3EC9100617A16 /* ToastView.swift */; };
+		0746F6FF23F3F92700617A16 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746F6FE23F3F92700617A16 /* UINavigationController.swift */; };
 		075172EB23F1CF4200959180 /* DetailMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075172EA23F1CF4200959180 /* DetailMemoViewController.swift */; };
 		075172F123F1D97200959180 /* MemoImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */; };
 		077E94A123F19DAE00103AC9 /* UIActivityIndicatorView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */; };
@@ -45,6 +47,8 @@
 		0746F6F423F3D0F700617A16 /* ViewSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSize.swift; sourceTree = "<group>"; };
 		0746F6F623F3D17300617A16 /* MainMemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMemoTableViewCell.swift; sourceTree = "<group>"; };
 		0746F6F723F3D17300617A16 /* MainMemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMemoTableViewCell.xib; sourceTree = "<group>"; };
+		0746F6FC23F3EC9100617A16 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		0746F6FE23F3F92700617A16 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		075172EA23F1CF4200959180 /* DetailMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMemoViewController.swift; sourceTree = "<group>"; };
 		075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+.swift"; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			children = (
 				07B6DFA123F3193800B870CF /* UserDataManager.swift */,
 				07DD9E7123F19945009B95A0 /* RequestImage.swift */,
+				0746F6FC23F3EC9100617A16 /* ToastView.swift */,
 				07BFEE8B23F28F9900877D8F /* Constrant */,
 			);
 			path = Model;
@@ -182,6 +187,7 @@
 				0794F88A23F170D600D16463 /* UIViewController+.swift */,
 				0794F88C23F182C300D16463 /* UIView+.swift */,
 				077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */,
+				0746F6FE23F3F92700617A16 /* UINavigationController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -288,9 +294,11 @@
 				07B6DFA223F3193800B870CF /* UserDataManager.swift in Sources */,
 				07DD9E7423F19B1B009B95A0 /* RequestImageDelegate.swift in Sources */,
 				0746F6F523F3D0F700617A16 /* ViewSize.swift in Sources */,
+				0746F6FF23F3F92700617A16 /* UINavigationController.swift in Sources */,
 				07BFEE9323F2CC4500877D8F /* UpdateMode.swift in Sources */,
 				0794F87E23F14E2C00D16463 /* AddMemoViewController.swift in Sources */,
 				078141C123F2D33400D9A9CD /* UITextView+.swift in Sources */,
+				0746F6FD23F3EC9100617A16 /* ToastView.swift in Sources */,
 				0794F87823F140C700D16463 /* UIIdentifier.swift in Sources */,
 				07BFEE9523F2D1CD00877D8F /* UITextField+.swift in Sources */,
 				07DD9E7223F19945009B95A0 /* RequestImage.swift in Sources */,

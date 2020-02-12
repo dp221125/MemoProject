@@ -77,7 +77,6 @@ class DetailMemoViewController: UIViewController {
         configureAlertController()
         configureAddImageTapGestureRecognizer()
         configureImagePickerController()
-        debugPrint("now memoData : \(originMemoData)")
     }
 
     // MARK: - Configuration
@@ -249,7 +248,6 @@ class DetailMemoViewController: UIViewController {
     }
 
     @IBAction func editBarButtonItemPressed(_: UIBarButtonItem) {
-        debugPrint("Edit BarButtonItem Pressed")
         switch imageMode {
         case .view:
             imageMode = .edit
@@ -261,8 +259,9 @@ class DetailMemoViewController: UIViewController {
             originMemoData = editingMemoData
             do {
                 try UserDataManager.shared.updateMemoData(memoData: originMemoData, at: UserDataManager.shared.editingMemoIndex)
+                navigationController?.presentToastView("메모 저장에 성공했습니다.")
             } catch {
-                debugPrint("Updating Error")
+                navigationController?.presentToastView("메모 저장에 실패했습니다.\n\(error)")
             }
 
             updateMainMemoList()

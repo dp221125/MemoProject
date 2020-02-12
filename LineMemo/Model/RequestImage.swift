@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RequestImage {
+final class RequestImage {
     static let shared = RequestImage()
 
     var delegate: RequestImageDelegate?

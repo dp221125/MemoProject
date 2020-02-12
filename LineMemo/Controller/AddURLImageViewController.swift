@@ -83,6 +83,8 @@ class AddURLImageViewController: UIViewController {
                     self.delegate?.sendData(image)
                     self.dismiss(animated: true, completion: nil)
                 }
+            } else {
+                self.navigationController?.presentToastView("해당 URL 이미지를 불러오는데 실패했습니다.")
             }
         }
     }

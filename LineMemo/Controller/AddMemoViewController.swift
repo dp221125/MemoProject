@@ -202,10 +202,10 @@ class AddMemoViewController: UIViewController {
                 DispatchQueue.main.async {
                     do {
                         try UserDataManager.shared.addMemoData(memoData)
+                        self.navigationController?.presentToastView("메모 저장에 성공했습니다.")
                     } catch {
-                        debugPrint("Adding Error")
+                        self.navigationController?.presentToastView("메모 저장에 실패했습니다.\n\(error)")
                     }
-                    debugPrint(UserDataManager.shared.memoDataList)
                     self.updateMainMemoList()
                     self.navigationController?.popViewController(animated: true)
                 }
