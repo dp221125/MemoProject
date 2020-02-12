@@ -26,12 +26,12 @@
                         <rect key="frame" x="3" y="3" width="114" height="107"/>
                     </imageView>
                     <imageView hidden="YES" clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete" translatesAutoresizingMaskIntoConstraints="NO" id="8EL-0R-9Mj">
-                        <rect key="frame" x="97" y="3" width="20" height="20"/>
+                        <rect key="frame" x="87" y="3" width="30" height="30"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="10M-2b-UbS"/>
-                            <constraint firstAttribute="width" constant="20" id="Bjl-Xa-cvm"/>
+                            <constraint firstAttribute="width" constant="30" id="Yxl-fj-VrC"/>
+                            <constraint firstAttribute="height" constant="30" id="rpw-LW-UDD"/>
                         </constraints>
                     </imageView>
                 </subviews>

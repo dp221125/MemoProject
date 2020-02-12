@@ -10,6 +10,6 @@ import UIKit
 
 class ViewSize {
     struct Height {
-        static let imageSection: CGFloat = 230
+        static let imageSection: CGFloat = 200
     }
 }

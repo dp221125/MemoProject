@@ -9,8 +9,12 @@
 import UIKit
 
 class MemoImageCollectionViewCell: UICollectionViewCell {
+    // MARK: UI
+
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var deleteImageView: UIImageView!
+
+    // MARK: Life Cycle
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +23,9 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
     // MARK: Method
 
     func configureCell(image: UIImage, imageMode: MemoMode, indexPath: IndexPath) {
+        photoImageView.configureBasicBorder()
+        deleteImageView.configureBasicBorder()
+
         switch imageMode {
         case .view:
             deleteImageView.isHidden = true

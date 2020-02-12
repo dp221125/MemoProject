@@ -18,6 +18,8 @@ class MainMemoTableViewCell: UITableViewCell {
     }
 
     func configureCell(_ memoData: MemoData) {
+        thumbnailImageView.layer.cornerRadius = 5
+
         mainTitleLabel.text = memoData.title
         subTextLabel.text = memoData.subText
 

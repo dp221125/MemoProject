@@ -9,5 +9,5 @@
 import UIKit
 
 extension UIImage {
-    static let addImage = #imageLiteral(resourceName: "plus")
+    static let addImage = #imageLiteral(resourceName: "addPhoto")
 }

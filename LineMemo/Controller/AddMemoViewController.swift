@@ -30,7 +30,7 @@ class AddMemoViewController: UIViewController {
 
     // MARK: Properties
 
-    private var imageViewList: [UIImage] = [#imageLiteral(resourceName: "plus")]
+    private var imageViewList: [UIImage] = [UIImage.addImage]
 
     private var isValidInputData = false {
         didSet {

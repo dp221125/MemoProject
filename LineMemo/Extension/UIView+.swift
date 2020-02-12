@@ -15,4 +15,9 @@ extension UIView {
         layer.borderWidth = 1
         layer.cornerRadius = 10
     }
+
+    func removeBorder() {
+        layer.borderWidth = 0
+        layer.borderColor = UIColor.clear.cgColor
+    }
 }

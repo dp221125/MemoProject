@@ -17,7 +17,7 @@ extension UITextField {
         switch editingMode {
         case .view:
             borderStyle = .none
-            layer.borderWidth = 0
+            removeBorder()
             isEnabled = false
         case .edit:
             configureBasicBorder()

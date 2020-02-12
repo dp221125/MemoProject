@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--메모장-->
+        <!--메인화면-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainMemoViewController" customModule="LineMemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="메모장" id="V26-Be-95P">
+                    <navigationItem key="navigationItem" title="메인화면" id="V26-Be-95P">
                         <barButtonItem key="rightBarButtonItem" title="메모작성" id="lU7-Zj-OEJ">
                             <connections>
                                 <action selector="addMemoBarButtonItemPressed:" destination="BYZ-38-t0r" id="EQB-6B-v8Z"/>
@@ -48,7 +48,7 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="115.84821428571428"/>
         </scene>
-        <!--메모장-->
+        <!--상세보기-->
         <scene sceneID="bbA-T5-acn">
             <objects>
                 <viewController id="YSz-N6-AgJ" customClass="DetailMemoViewController" customModule="LineMemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,16 +57,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8pf-NC-gpx">
-                                <rect key="frame" x="0.0" y="118" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="118" width="414" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNZ-sS-J4H">
-                                        <rect key="frame" x="10" y="0.0" width="394" height="20.5"/>
+                                        <rect key="frame" x="10" y="0.0" width="394" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="UQh-4Z-wXI"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fDE-Ug-MaF">
-                                        <rect key="frame" x="0.0" y="30.5" width="414" height="169.5"/>
+                                        <rect key="frame" x="0.0" y="30" width="414" height="140"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewLayout key="collectionViewLayout" id="fTl-Pd-Lsk" customClass="MemoImageCollectionViewFlowLayout" customModule="LineMemo" customModuleProvider="target"/>
@@ -77,12 +80,12 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="HNZ-sS-J4H" secondAttribute="trailing" constant="10" id="APA-4n-Zq0"/>
                                     <constraint firstItem="HNZ-sS-J4H" firstAttribute="leading" secondItem="8pf-NC-gpx" secondAttribute="leadingMargin" constant="10" id="Ayf-6P-OiR"/>
                                     <constraint firstItem="fDE-Ug-MaF" firstAttribute="leading" secondItem="8pf-NC-gpx" secondAttribute="leadingMargin" id="J41-JJ-p2d"/>
-                                    <constraint firstAttribute="height" constant="200" id="fn4-pV-ieC"/>
+                                    <constraint firstAttribute="height" constant="170" id="fn4-pV-ieC"/>
                                     <constraint firstItem="fDE-Ug-MaF" firstAttribute="trailing" secondItem="8pf-NC-gpx" secondAttribute="trailingMargin" id="tbJ-vc-X0c"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HT1-hR-FQi">
-                                <rect key="frame" x="0.0" y="328" width="414" height="524"/>
+                                <rect key="frame" x="0.0" y="298" width="414" height="534"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNe-Se-Bq2">
                                         <rect key="frame" x="10" y="0.0" width="394" height="30"/>
@@ -114,7 +117,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" editable="NO" text="Sub Text" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4O-fj-YAH">
-                                        <rect key="frame" x="10" y="140" width="394" height="384"/>
+                                        <rect key="frame" x="10" y="140" width="394" height="394"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,13 +143,13 @@
                             <constraint firstItem="8pf-NC-gpx" firstAttribute="top" secondItem="V7a-7a-CRu" secondAttribute="top" constant="30" id="SAX-jL-Kth"/>
                             <constraint firstAttribute="trailing" secondItem="8pf-NC-gpx" secondAttribute="trailing" id="XTq-Ka-Bah"/>
                             <constraint firstItem="HT1-hR-FQi" firstAttribute="top" secondItem="8pf-NC-gpx" secondAttribute="bottom" constant="10" id="boy-9O-ypP"/>
-                            <constraint firstItem="V7a-7a-CRu" firstAttribute="bottom" secondItem="HT1-hR-FQi" secondAttribute="bottom" constant="10" id="i88-sL-3qb"/>
+                            <constraint firstItem="V7a-7a-CRu" firstAttribute="bottom" secondItem="HT1-hR-FQi" secondAttribute="bottom" constant="30" id="i88-sL-3qb"/>
                             <constraint firstItem="HT1-hR-FQi" firstAttribute="leading" secondItem="V7a-7a-CRu" secondAttribute="leading" id="qOi-79-Ws0"/>
                             <constraint firstItem="V7a-7a-CRu" firstAttribute="trailing" secondItem="HT1-hR-FQi" secondAttribute="trailing" id="qTp-97-Cko"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V7a-7a-CRu"/>
                     </view>
-                    <navigationItem key="navigationItem" title="메모장" id="ema-e7-Sii">
+                    <navigationItem key="navigationItem" title="상세보기" id="ema-e7-Sii">
                         <rightBarButtonItems>
                             <barButtonItem title="편집" id="F7i-di-DfS">
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -182,7 +185,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vtp-4y-7wR">
-                                <rect key="frame" x="0.0" y="118" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="118" width="414" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzC-AD-qHk">
                                         <rect key="frame" x="10" y="0.0" width="394" height="20"/>
@@ -194,7 +197,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="70K-DU-2ln">
-                                        <rect key="frame" x="0.0" y="30" width="414" height="170"/>
+                                        <rect key="frame" x="0.0" y="30" width="414" height="140"/>
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewLayout key="collectionViewLayout" id="r6Y-YW-Rep" customClass="MemoImageCollectionViewFlowLayout" customModule="LineMemo" customModuleProvider="target"/>
@@ -206,11 +209,11 @@
                                     <constraint firstItem="70K-DU-2ln" firstAttribute="trailing" secondItem="Vtp-4y-7wR" secondAttribute="trailingMargin" id="QRa-H6-3cc"/>
                                     <constraint firstItem="70K-DU-2ln" firstAttribute="leading" secondItem="Vtp-4y-7wR" secondAttribute="leadingMargin" id="QdT-dS-xou"/>
                                     <constraint firstItem="mzC-AD-qHk" firstAttribute="leading" secondItem="Vtp-4y-7wR" secondAttribute="leading" constant="10" id="dhz-gr-YEF"/>
-                                    <constraint firstAttribute="height" constant="200" id="w0H-z9-ZfN"/>
+                                    <constraint firstAttribute="height" constant="170" id="w0H-z9-ZfN"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4K4-WR-XuJ">
-                                <rect key="frame" x="0.0" y="328" width="414" height="504"/>
+                                <rect key="frame" x="0.0" y="298" width="414" height="534"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpf-0L-cn6">
                                         <rect key="frame" x="10" y="0.0" width="394" height="30"/>
@@ -240,7 +243,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BI6-oE-pe1">
-                                        <rect key="frame" x="10" y="140" width="394" height="364"/>
+                                        <rect key="frame" x="10" y="140" width="394" height="394"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
