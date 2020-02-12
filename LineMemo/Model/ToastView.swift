@@ -8,6 +8,9 @@
 
 import UIKit
 
+// MARK: - ToastView
+
+/// * 저장/오류 등을 알려주는 토스트 뷰
 final class ToastView {
     static let shared = ToastView()
 
@@ -16,9 +19,11 @@ final class ToastView {
     private var backgroundView = UIView()
     private var contentView = UIView()
     private var textLabel = UILabel()
+}
 
-    // MARK: Configuration
+// MARK: - Configuration
 
+extension ToastView {
     private func congifureToastView(_ view: UIView, message: String) {
         backgroundView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         backgroundView.center = view.center
@@ -35,6 +40,7 @@ final class ToastView {
 
         textLabel.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
         textLabel.numberOfLines = 2
+        textLabel.adjustsFontSizeToFitWidth = true
         textLabel.textColor = .white
         textLabel.center = contentView.center
         textLabel.text = message

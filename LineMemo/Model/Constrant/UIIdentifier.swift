@@ -8,17 +8,8 @@
 
 import Foundation
 
+/// * UI 식별자 정의
 struct UIIdentifier {
-    struct Cell {
-        struct Table {
-            static let main = "MainMemoTableViewCell"
-        }
-
-        struct Collection {
-            static let memoImage = "MemoImageCollectionViewCell"
-        }
-    }
-
     struct Nib {
         struct TableViewCell {
             static let mainMemo = "MainMemoTableViewCell"
@@ -40,5 +31,15 @@ struct UIIdentifier {
         static let goToDetailMemoView = "goToDetailMemoView"
         static let goToAddURLImageView = "goToAddURLImageView"
         static let unwindToAddMemoView = "unwindToAddMemoView"
+    }
+
+    struct Cell {
+        struct Table {
+            static let main = "MainMemoTableViewCell"
+        }
+
+        struct Collection {
+            static let memoImage = "MemoImageCollectionViewCell"
+        }
     }
 }

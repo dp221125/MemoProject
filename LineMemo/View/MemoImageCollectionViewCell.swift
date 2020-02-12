@@ -8,6 +8,9 @@
 
 import UIKit
 
+// MARK: - MemoImageCollectionViewCell
+
+/// * 메모 이미지 컬렉션뷰 셀
 class MemoImageCollectionViewCell: UICollectionViewCell {
     // MARK: UI
 

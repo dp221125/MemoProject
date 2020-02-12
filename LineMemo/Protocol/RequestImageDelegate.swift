@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// * RequestImage 델리게이트
 protocol RequestImageDelegate: class {
     func requestImageDidBegin()
     func requestImageDidFinished()

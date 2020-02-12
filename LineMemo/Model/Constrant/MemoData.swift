@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// * 메모데이터
 struct MemoData {
     var title: String
     var subText: String

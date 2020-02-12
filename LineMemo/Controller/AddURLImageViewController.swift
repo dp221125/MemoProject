@@ -8,7 +8,9 @@
 
 import UIKit
 
-// MARK: - Main
+// MARK: - AddURLImageViewController
+
+/// * URL 이미지 추가 뷰컨트롤러
 
 class AddURLImageViewController: UIViewController {
     // MARK: UI
@@ -19,7 +21,7 @@ class AddURLImageViewController: UIViewController {
 
     // MARK: Properties
 
-    var delegate: CanSendDataDelegate?
+    var delegate: SendDataDelegate?
 
     private var isInputData = false {
         didSet {

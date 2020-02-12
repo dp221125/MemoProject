@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--메인화면-->
+        <!--메모 리스트-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainMemoViewController" customModule="LineMemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,8 +30,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="메인화면" id="V26-Be-95P">
-                        <barButtonItem key="rightBarButtonItem" title="메모작성" id="lU7-Zj-OEJ">
+                    <navigationItem key="navigationItem" title="메모 리스트" id="V26-Be-95P">
+                        <barButtonItem key="rightBarButtonItem" title="메모추가" id="lU7-Zj-OEJ">
                             <connections>
                                 <action selector="addMemoBarButtonItemPressed:" destination="BYZ-38-t0r" id="EQB-6B-v8Z"/>
                             </connections>
@@ -48,7 +48,7 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="115.84821428571428"/>
         </scene>
-        <!--상세보기-->
+        <!--메모 상세보기-->
         <scene sceneID="bbA-T5-acn">
             <objects>
                 <viewController id="YSz-N6-AgJ" customClass="DetailMemoViewController" customModule="LineMemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,7 +149,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V7a-7a-CRu"/>
                     </view>
-                    <navigationItem key="navigationItem" title="상세보기" id="ema-e7-Sii">
+                    <navigationItem key="navigationItem" title="메모 상세보기" id="ema-e7-Sii">
                         <rightBarButtonItems>
                             <barButtonItem title="편집" id="F7i-di-DfS">
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -176,7 +176,7 @@
             </objects>
             <point key="canvasLocation" x="1964" y="885"/>
         </scene>
-        <!--메모추가-->
+        <!--메모 추가-->
         <scene sceneID="x1O-6k-bpV">
             <objects>
                 <viewController id="VfV-Qo-eFX" customClass="AddMemoViewController" customModule="LineMemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -275,8 +275,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4JY-aZ-18j"/>
                     </view>
-                    <navigationItem key="navigationItem" title="메모추가" id="faU-q4-4Bq">
-                        <barButtonItem key="rightBarButtonItem" title="메모추가" id="fiz-b9-FEl">
+                    <navigationItem key="navigationItem" title="메모 추가" id="faU-q4-4Bq">
+                        <barButtonItem key="rightBarButtonItem" title="저장" id="fiz-b9-FEl">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addMemoBarButtonItemPressed:" destination="VfV-Qo-eFX" id="kdJ-eF-nmj"/>

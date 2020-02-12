@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// ViewController 공통 메서드를 정의한 프로토콜
+/// * ViewController 공통 메서드 정의 프로토콜
 protocol BaseViewController: class {
     func configureViewController()
 }

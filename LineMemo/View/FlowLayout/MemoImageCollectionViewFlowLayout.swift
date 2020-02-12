@@ -8,6 +8,9 @@
 
 import UIKit
 
+// MARK: - MemoImageCollectionViewFlowLayout
+
+/// * 이미지 컬렉션뷰 FlowLayout 정의
 class MemoImageCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()

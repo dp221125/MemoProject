@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// * UserDefaults 저장 용 메모데이터
 struct MemoRawData: Codable {
     var title: String
     var subText: String

@@ -8,7 +8,9 @@
 
 import UIKit
 
-// MARK: - Main
+// MARK: - MainMemoViewController
+
+/// * 메인 메모리스트 뷰컨트롤러
 
 class MainMemoViewController: UIViewController {
     // MARK: UI
@@ -88,7 +90,7 @@ extension MainMemoViewController: UITableViewDataSource {
 
 extension MainMemoViewController: UITableViewDelegate {
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return CellHeight.mainTableView
+        return ViewSize.Height.mainTableView
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {

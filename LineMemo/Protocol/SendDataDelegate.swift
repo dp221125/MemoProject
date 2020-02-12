@@ -8,6 +8,7 @@
 
 import UIKit
 
-protocol CanSendDataDelegate: class {
+/// * ViewController 간 데이터 전송 목적 프로토콜
+protocol SendDataDelegate: class {
     func sendData<T>(_ data: T)
 }

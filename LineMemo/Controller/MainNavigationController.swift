@@ -8,8 +8,9 @@
 
 import UIKit
 
-// MARK: - Main
+// MARK: - MainNavigationController
 
+/// * 메인 네비게이션 컨트롤러
 class MainNavigationController: UINavigationController {
     // MARK: Life Cycle
 

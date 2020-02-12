@@ -8,15 +8,20 @@
 
 import UIKit
 
+// MARK: - RequestImage
+
+/// * 이미지 요청 Singleton Class
 final class RequestImage {
     static let shared = RequestImage()
 
     // MARK: Property
 
     var delegate: RequestImageDelegate?
+}
 
-    // MARK: Request Method
+// MARK: - RequestImage
 
+extension RequestImage {
     func requestFromURL(_ urlString: String, completion: @escaping (Bool, UIImage?) -> Void) {
         delegate?.requestImageDidBegin()
 

@@ -8,6 +8,9 @@
 
 import UIKit
 
+// MARK: - MainMemoTableViewCell
+
+/// * 메모 리스트 테이블뷰 셀
 class MainMemoTableViewCell: UITableViewCell {
     // MARK: UI
 

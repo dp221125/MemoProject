@@ -8,6 +8,9 @@
 
 import Foundation
 
+// MARK: - UserDataManager
+
+/// * 유저 메모정보 관리자 Singleton Class
 final class UserDataManager {
     static let shared = UserDataManager()
 
@@ -26,9 +29,11 @@ final class UserDataManager {
             }
         }
     }
+}
 
-    // MARK: Configuration
+// MARK: - Configuration
 
+extension UserDataManager {
     func save(_ data: MemoRawData) throws {
         var dataList = try load()
         dataList.append(data)

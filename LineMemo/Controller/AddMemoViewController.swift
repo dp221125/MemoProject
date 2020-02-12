@@ -10,8 +10,9 @@ import AVFoundation
 import Photos
 import UIKit
 
-// MARK: - Main
+// MARK: - AddMemoViewController
 
+/// * 메모 추가 뷰컨트롤러
 class AddMemoViewController: UIViewController {
     // MARK: UI
 
@@ -225,7 +226,7 @@ extension AddMemoViewController {
 
 // MARK: - CanSendDataDelegate
 
-extension AddMemoViewController: CanSendDataDelegate {
+extension AddMemoViewController: SendDataDelegate {
     func sendData<T>(_ data: T) {
         guard let urlImage = data as? UIImage else { return }
         insertAndUpdateImageList(at: 1, image: urlImage)

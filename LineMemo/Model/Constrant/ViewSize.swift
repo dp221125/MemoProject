@@ -8,8 +8,10 @@
 
 import UIKit
 
+/// *  View Size 정의
 class ViewSize {
     struct Height {
         static let imageSection: CGFloat = 200
+        static let mainTableView: CGFloat = 100
     }
 }
