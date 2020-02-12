@@ -10,6 +10,8 @@ import AVFoundation
 import Photos
 import UIKit
 
+// MARK: - Main
+
 class AddMemoViewController: UIViewController {
     // MARK: UI
 
@@ -38,9 +40,7 @@ class AddMemoViewController: UIViewController {
         }
     }
 
-    // MARK: Method
-
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +54,7 @@ class AddMemoViewController: UIViewController {
     }
 }
 
-// MARK: Event
+// MARK: - Event
 
 extension AddMemoViewController {
     @objc func addImageInCollectionViewCellPressed(_: UITapGestureRecognizer) {
@@ -97,7 +97,7 @@ extension AddMemoViewController {
     }
 }
 
-// MARK: Configuration
+// MARK: - Configuration
 
 extension AddMemoViewController {
     private func configureTapGestureRecognizer() {
@@ -116,8 +116,6 @@ extension AddMemoViewController {
         let memoImageCollectionViewCell = UINib(nibName: UIIdentifier.Nib.CollectionViewCell.memoImage, bundle: nil)
 
         collectionView.register(memoImageCollectionViewCell, forCellWithReuseIdentifier: UIIdentifier.Nib.CollectionViewCell.memoImage)
-
-        collectionView.delegate = self
         collectionView.dataSource = self
     }
 
@@ -221,12 +219,16 @@ extension AddMemoViewController {
     }
 }
 
+// MARK: - CanSendDataDelegate
+
 extension AddMemoViewController: CanSendDataDelegate {
     func sendData<T>(_ data: T) {
         guard let urlImage = data as? UIImage else { return }
         insertAndUpdateImageList(at: 1, image: urlImage)
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension AddMemoViewController: UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
@@ -250,9 +252,11 @@ extension AddMemoViewController: UICollectionViewDataSource {
     }
 }
 
-extension AddMemoViewController: UICollectionViewDelegate {}
+// MARK: - UINavigationControllerDelegate
 
 extension AddMemoViewController: UINavigationControllerDelegate {}
+
+// MARK: - UIImagePickerControllerDelegate
 
 extension AddMemoViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
@@ -262,11 +266,15 @@ extension AddMemoViewController: UIImagePickerControllerDelegate {
     }
 }
 
+// MARK: - UITextViewDelegate
+
 extension AddMemoViewController: UITextViewDelegate {
     func textViewDidChange(_: UITextView) {
         checkInputData()
     }
 }
+
+// MARK: - UITextFieldDelegate
 
 extension AddMemoViewController: UITextFieldDelegate {
     func textField(_: UITextField, shouldChangeCharactersIn _: NSRange, replacementString _: String) -> Bool {
