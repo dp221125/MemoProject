@@ -27,7 +27,7 @@ final class UserDataManager {
         }
     }
 
-    // MARK: Method
+    // MARK: Configuration
 
     func save(_ data: MemoRawData) throws {
         var dataList = try load()

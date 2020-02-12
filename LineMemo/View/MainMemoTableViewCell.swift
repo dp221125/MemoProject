@@ -9,13 +9,19 @@
 import UIKit
 
 class MainMemoTableViewCell: UITableViewCell {
+    // MARK: UI
+
     @IBOutlet var mainTitleLabel: UILabel!
     @IBOutlet var subTextLabel: UILabel!
     @IBOutlet var thumbnailImageView: UIImageView!
 
+    // MARK: Life Cycle
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+
+    // MARK: Configuration
 
     func configureCell(_ memoData: MemoData) {
         thumbnailImageView.layer.cornerRadius = 5

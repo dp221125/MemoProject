@@ -20,7 +20,7 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    // MARK: Method
+    // MARK: Configuration
 
     func configureCell(image: UIImage, imageMode: MemoMode, indexPath: IndexPath) {
         photoImageView.configureBasicBorder()

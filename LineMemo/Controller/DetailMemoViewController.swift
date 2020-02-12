@@ -10,6 +10,8 @@ import AVFoundation
 import Photos
 import UIKit
 
+// MARK: - Main
+
 class DetailMemoViewController: UIViewController {
     // MARK: UI
 
@@ -49,12 +51,18 @@ class DetailMemoViewController: UIViewController {
         }
     }
 
-    // MARK: Method
-
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViewController()
+    }
+}
+
+// MARK: - Configuration
+
+extension DetailMemoViewController {
+    private func configureViewController() {
         initializeMemoData()
         configureCollectionView()
         configureTitleTextField()
@@ -64,8 +72,6 @@ class DetailMemoViewController: UIViewController {
         configureAddImageTapGestureRecognizer()
         configureImagePickerController()
     }
-
-    // MARK: - Configuration
 
     private func configureImagePickerController() {
         imagePickerController.delegate = self
@@ -83,7 +89,6 @@ class DetailMemoViewController: UIViewController {
 
     private func configureCollectionView() {
         collectionView.register(UINib(nibName: UIIdentifier.Nib.CollectionViewCell.memoImage, bundle: nil), forCellWithReuseIdentifier: UIIdentifier.Cell.Collection.memoImage)
-        collectionView.delegate = self
         collectionView.dataSource = self
     }
 
@@ -225,9 +230,11 @@ class DetailMemoViewController: UIViewController {
             let subText = subTextView.text else { return }
         isInputData = !titleText.trimmingCharacters(in: .whitespaces).isEmpty && !subText.trimmingCharacters(in: .whitespaces).isEmpty
     }
+}
 
-    // MARK: - Event
+// MARK: - Event
 
+extension DetailMemoViewController {
     @objc func titleTextEditingChanged(_: UITextField) {
         checkInputData()
     }
@@ -274,12 +281,16 @@ class DetailMemoViewController: UIViewController {
     }
 }
 
+// MARK: - CanSendDataDelegate
+
 extension DetailMemoViewController: CanSendDataDelegate {
     func sendData<T>(_ data: T) {
         guard let urlImage = data as? UIImage else { return }
         insertAndUpdateImageList(at: 1, image: urlImage, mode: .single)
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension DetailMemoViewController: UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
@@ -308,7 +319,7 @@ extension DetailMemoViewController: UICollectionViewDataSource {
     }
 }
 
-extension DetailMemoViewController: UICollectionViewDelegate {}
+// MARK: - UITextViewDelegate
 
 extension DetailMemoViewController: UITextViewDelegate {
     func textViewDidChange(_: UITextView) {
@@ -316,7 +327,12 @@ extension DetailMemoViewController: UITextViewDelegate {
     }
 }
 
+// MARK: - UINavigationControllerDelegate
+
 extension DetailMemoViewController: UINavigationControllerDelegate {}
+
+// MARK: - UIImagePickerControllerDelegate
+
 extension DetailMemoViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }

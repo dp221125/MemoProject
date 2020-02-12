@@ -11,7 +11,11 @@ import UIKit
 final class RequestImage {
     static let shared = RequestImage()
 
+    // MARK: Property
+
     var delegate: RequestImageDelegate?
+
+    // MARK: Request Method
 
     func requestFromURL(_ urlString: String, completion: @escaping (Bool, UIImage?) -> Void) {
         delegate?.requestImageDidBegin()

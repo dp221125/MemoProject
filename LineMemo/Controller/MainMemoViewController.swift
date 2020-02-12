@@ -8,25 +8,25 @@
 
 import UIKit
 
+// MARK: - Main
+
 class MainMemoViewController: UIViewController {
-    // MARK: - UI
+    // MARK: UI
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var addMemoBarButtonItem: UIBarButtonItem!
 
-    // MARK: - Properties
-
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
     }
+}
 
-    // MARK: Method
+// MARK: - Configuration
 
-    // MARK: - Configuration
-
+extension MainMemoViewController {
     private func configureTableView() {
         let mainMemoTableViewCellNib = UINib(nibName: UIIdentifier.Nib.TableViewCell.mainMemo, bundle: nil)
 
@@ -42,13 +42,17 @@ class MainMemoViewController: UIViewController {
             let memoData = sender as? MemoData else { return }
         detailMemoViewController.configureMemoData(memoData)
     }
+}
 
-    // MARK: - Event
+// MARK: - Event
 
+extension MainMemoViewController {
     @IBAction func addMemoBarButtonItemPressed(_: UIBarButtonItem) {
         performSegue(withIdentifier: UIIdentifier.Segue.goToAddMemoView, sender: nil)
     }
 }
+
+// MARK: - UITableViewDataSource
 
 extension MainMemoViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -59,22 +63,6 @@ extension MainMemoViewController: UITableViewDataSource {
         guard let mainTableViewCell = tableView.dequeueReusableCell(withIdentifier: UIIdentifier.Cell.Table.main, for: indexPath) as? MainMemoTableViewCell else { return UITableViewCell() }
         mainTableViewCell.configureCell(UserDataManager.shared.memoDataList[indexPath.row])
         return mainTableViewCell
-    }
-}
-
-extension MainMemoViewController: UITableViewDelegate {
-    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return CellHeight.mainTableView
-    }
-
-    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        UserDataManager.shared.configureEditingMemoIndex(at: indexPath.row)
-        tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: UIIdentifier.Segue.goToDetailMemoView, sender: UserDataManager.shared.memoDataList[indexPath.row])
-    }
-
-    func tableView(_: UITableView, editingStyleForRowAt _: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
     }
 
     func tableView(_: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -89,5 +77,23 @@ extension MainMemoViewController: UITableViewDelegate {
         default:
             break
         }
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension MainMemoViewController: UITableViewDelegate {
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
+        return CellHeight.mainTableView
+    }
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UserDataManager.shared.configureEditingMemoIndex(at: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: UIIdentifier.Segue.goToDetailMemoView, sender: UserDataManager.shared.memoDataList[indexPath.row])
+    }
+
+    func tableView(_: UITableView, editingStyleForRowAt _: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
     }
 }

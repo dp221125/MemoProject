@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - Main
+
 class AddURLImageViewController: UIViewController {
     // MARK: UI
 
@@ -18,6 +20,7 @@ class AddURLImageViewController: UIViewController {
     // MARK: Properties
 
     var delegate: CanSendDataDelegate?
+
     private var isInputData = false {
         didSet {
             addImageButton.isEnabled = isInputData
@@ -32,22 +35,22 @@ class AddURLImageViewController: UIViewController {
         }
     }
 
-    // MARK: Method
-
-    // MARK: - Life Cycle
+    // MARK: Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViewController()
+    }
+}
+
+// MARK: - Configuration
+
+extension AddURLImageViewController {
+    private func configureViewController() {
+        RequestImage.shared.delegate = self
         configureTextField()
         configureAddImageButton()
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        RequestImage.shared.delegate = self
-    }
-
-    // MARK: - Configuration
 
     private func configureTextField() {
         textField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
@@ -58,15 +61,15 @@ class AddURLImageViewController: UIViewController {
         addImageButton.configureBasicBorder()
     }
 
-    // MARK: - Normal
-
     private func checkInputData() {
         guard let urlText = textField.text else { return }
         isInputData = !urlText.trimmingCharacters(in: .whitespaces).isEmpty
     }
+}
 
-    // MARK: - Event
+// MARK: - Event
 
+extension AddURLImageViewController {
     @objc func textFieldEditingChanged(_: UITextField) {
         checkInputData()
     }
@@ -86,7 +89,9 @@ class AddURLImageViewController: UIViewController {
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
-                self.navigationController?.presentToastView("해당 URL 이미지를 불러오는데 실패했습니다.")
+                DispatchQueue.main.async {
+                    self.navigationController?.presentToastView("해당 URL 이미지를 불러오는데 실패했습니다.")
+                }
             }
         }
     }
@@ -95,6 +100,8 @@ class AddURLImageViewController: UIViewController {
         view.endEditing(true)
     }
 }
+
+// MARK: - RequestImageDelegate
 
 extension AddURLImageViewController: RequestImageDelegate {
     func requestImageDidBegin() {
