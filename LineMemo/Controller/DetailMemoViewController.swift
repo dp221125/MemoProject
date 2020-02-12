@@ -61,8 +61,8 @@ class DetailMemoViewController: UIViewController {
 
 // MARK: - Configuration
 
-extension DetailMemoViewController {
-    private func configureViewController() {
+extension DetailMemoViewController: BaseViewController {
+    func configureViewController() {
         initializeMemoData()
         configureCollectionView()
         configureTitleTextField()

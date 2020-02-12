@@ -45,8 +45,8 @@ class AddURLImageViewController: UIViewController {
 
 // MARK: - Configuration
 
-extension AddURLImageViewController {
-    private func configureViewController() {
+extension AddURLImageViewController: BaseViewController {
+    func configureViewController() {
         RequestImage.shared.delegate = self
         configureTextField()
         configureAddImageButton()

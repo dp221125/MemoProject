@@ -12,6 +12,7 @@
 		0746F6F923F3D17300617A16 /* MainMemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0746F6F723F3D17300617A16 /* MainMemoTableViewCell.xib */; };
 		0746F6FD23F3EC9100617A16 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746F6FC23F3EC9100617A16 /* ToastView.swift */; };
 		0746F6FF23F3F92700617A16 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746F6FE23F3F92700617A16 /* UINavigationController.swift */; };
+		0746F70123F4050C00617A16 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746F70023F4050C00617A16 /* BaseViewController.swift */; };
 		075172EB23F1CF4200959180 /* DetailMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075172EA23F1CF4200959180 /* DetailMemoViewController.swift */; };
 		075172F123F1D97200959180 /* MemoImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */; };
 		077E94A123F19DAE00103AC9 /* UIActivityIndicatorView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */; };
@@ -49,6 +50,7 @@
 		0746F6F723F3D17300617A16 /* MainMemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMemoTableViewCell.xib; sourceTree = "<group>"; };
 		0746F6FC23F3EC9100617A16 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		0746F6FE23F3F92700617A16 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		0746F70023F4050C00617A16 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		075172EA23F1CF4200959180 /* DetailMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMemoViewController.swift; sourceTree = "<group>"; };
 		075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+.swift"; sourceTree = "<group>"; };
@@ -197,9 +199,9 @@
 			children = (
 				0794F87023F13F3300D16463 /* MemoData.swift */,
 				07B6DFA523F31B5800B870CF /* MemoRawData.swift */,
-				0746F6F423F3D0F700617A16 /* ViewSize.swift */,
 				07BFEE8C23F28FAA00877D8F /* MemoMode.swift */,
 				07BFEE9223F2CC4500877D8F /* UpdateMode.swift */,
+				0746F6F423F3D0F700617A16 /* ViewSize.swift */,
 				07DD9E6D23F19000009B95A0 /* UISize.swift */,
 				0794F87723F140C700D16463 /* UIIdentifier.swift */,
 			);
@@ -211,6 +213,7 @@
 			children = (
 				07DD9E7323F19B1B009B95A0 /* RequestImageDelegate.swift */,
 				07BFEE9023F2BDD800877D8F /* CanSendDataDelegate.swift */,
+				0746F70023F4050C00617A16 /* BaseViewController.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				07B6DFA223F3193800B870CF /* UserDataManager.swift in Sources */,
 				07DD9E7423F19B1B009B95A0 /* RequestImageDelegate.swift in Sources */,
 				0746F6F523F3D0F700617A16 /* ViewSize.swift in Sources */,
+				0746F70123F4050C00617A16 /* BaseViewController.swift in Sources */,
 				0746F6FF23F3F92700617A16 /* UINavigationController.swift in Sources */,
 				07BFEE9323F2CC4500877D8F /* UpdateMode.swift in Sources */,
 				0794F87E23F14E2C00D16463 /* AddMemoViewController.swift in Sources */,

@@ -15,14 +15,18 @@ class MainNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        configureViewController()
     }
 }
 
 // MARK: - Configuration
 
-extension MainNavigationController {
+extension MainNavigationController: BaseViewController {
+    func configureViewController() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
     func reloadMainMemoList() {
         guard let mainViewController = self.viewControllers.first as? MainMemoViewController else { return }
         DispatchQueue.main.async {

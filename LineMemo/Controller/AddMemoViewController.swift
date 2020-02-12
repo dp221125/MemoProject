@@ -50,8 +50,8 @@ class AddMemoViewController: UIViewController {
 
 // MARK: - Configuration
 
-extension AddMemoViewController {
-    private func configureViewController() {
+extension AddMemoViewController: BaseViewController {
+    func configureViewController() {
         configureCollectionView()
         configureAlertController()
         configureimagePickerController()

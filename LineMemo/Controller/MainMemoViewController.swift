@@ -20,13 +20,17 @@ class MainMemoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
+        configureViewController()
     }
 }
 
 // MARK: - Configuration
 
-extension MainMemoViewController {
+extension MainMemoViewController: BaseViewController {
+    func configureViewController() {
+        configureTableView()
+    }
+
     private func configureTableView() {
         let mainMemoTableViewCellNib = UINib(nibName: UIIdentifier.Nib.TableViewCell.mainMemo, bundle: nil)
 
