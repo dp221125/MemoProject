@@ -46,9 +46,9 @@ class DetailMemoViewController: UIViewController {
         }
     }
 
-    private var isInputData = true {
+    private var isValidInputData = true {
         didSet {
-            self.saveEditBarButtonItem.isEnabled = isInputData
+            self.saveEditBarButtonItem.isEnabled = isValidInputData
         }
     }
 
@@ -229,7 +229,8 @@ extension DetailMemoViewController: BaseViewController {
     private func checkInputData() {
         guard let titleText = titleTextField.text,
             let subText = subTextView.text else { return }
-        isInputData = !titleText.trimmingCharacters(in: .whitespaces).isEmpty && !subText.trimmingCharacters(in: .whitespaces).isEmpty
+        isValidInputData = !titleText.trimmingCharacters(in: .whitespaces).isEmpty &&
+            (subTextView.textColor == .black && !subText.trimmingCharacters(in: .whitespaces).isEmpty)
     }
 }
 

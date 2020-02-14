@@ -88,7 +88,7 @@ extension AddMemoViewController: BaseViewController {
 
     private func configureTextField() {
         titleTextField.configureTextField(mode: .edit)
-        titleTextField.delegate = self
+        titleTextField.addTarget(self, action: #selector(titleTextEditingChanged(_:)), for: .editingChanged)
     }
 
     private func configureAlertController() {
@@ -153,8 +153,7 @@ extension AddMemoViewController: BaseViewController {
     private func checkInputData() {
         guard let titleText = titleTextField.text,
             let subText = subTextView.text else { return }
-        isValidInputData = !titleText.trimmingCharacters(in: .whitespaces).isEmpty
-            && !subText.trimmingCharacters(in: .whitespaces).isEmpty
+        isValidInputData = !titleText.trimmingCharacters(in: .whitespaces).isEmpty && (subTextView.textColor == .black && !subText.trimmingCharacters(in: .whitespaces).isEmpty)
     }
 
     private func insertAndUpdateImageList(at index: Int, image: UIImage) {
@@ -184,6 +183,10 @@ extension AddMemoViewController: BaseViewController {
 // MARK: - Event
 
 extension AddMemoViewController {
+    @objc func titleTextEditingChanged(_: UITextField) {
+        checkInputData()
+    }
+
     @objc func addImageInCollectionViewCellPressed(_: UITapGestureRecognizer) {
         present(selectImageAlertController, animated: true)
     }
@@ -290,14 +293,5 @@ extension AddMemoViewController: UITextViewDelegate {
             textView.text = ""
             textView.textColor = .black
         }
-    }
-}
-
-// MARK: - UITextFieldDelegate
-
-extension AddMemoViewController: UITextFieldDelegate {
-    func textField(_: UITextField, shouldChangeCharactersIn _: NSRange, replacementString _: String) -> Bool {
-        checkInputData()
-        return true
     }
 }
