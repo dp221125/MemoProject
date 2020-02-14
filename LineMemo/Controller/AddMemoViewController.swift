@@ -212,7 +212,7 @@ extension AddMemoViewController {
                         try UserDataManager.shared.addMemoData(memoData)
                         self.navigationController?.presentToastView("메모 저장에 성공했습니다.")
                     } catch {
-                        self.navigationController?.presentToastView("메모 저장에 실패했습니다.\n\(error)")
+                        self.navigationController?.presentToastView("메모 저장에 실패했습니다.\n\(String(describing: (error as? UserDataError)?.message))")
                     }
                     self.updateMainMemoList()
                     self.navigationController?.popViewController(animated: true)

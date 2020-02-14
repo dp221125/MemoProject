@@ -50,7 +50,7 @@ extension UserDataManager {
             userDefaults.set(data, forKey: UserDataManager.DataKey.memoList.keyString)
             loadMemoDataList()
         } catch {
-            throw error
+            throw UserDataError.saveFailed
         }
     }
 
@@ -61,7 +61,7 @@ extension UserDataManager {
             memoDataList = memoRawDataList.compactMap { $0.getMemoData() }
             return memoRawDataList
         } catch {
-            throw error
+            throw UserDataError.loadFailed
         }
     }
 
@@ -77,7 +77,7 @@ extension UserDataManager {
             dataList.remove(at: index)
             try save(dataList)
         } catch {
-            throw error
+            throw UserDataError.removeFailed
         }
     }
 
@@ -91,7 +91,7 @@ extension UserDataManager {
         do {
             try save(dataList)
         } catch {
-            throw error
+            throw UserDataError.saveFailed
         }
     }
 
@@ -101,7 +101,7 @@ extension UserDataManager {
         do {
             try save(dataList)
         } catch {
-            throw error
+            throw UserDataError.saveFailed
         }
     }
 }

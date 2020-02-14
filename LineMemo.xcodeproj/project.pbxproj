@@ -16,6 +16,7 @@
 		075172EB23F1CF4200959180 /* DetailMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075172EA23F1CF4200959180 /* DetailMemoViewController.swift */; };
 		075172F123F1D97200959180 /* MemoImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */; };
 		077D58B623F6A0C90060C111 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D58B523F6A0C90060C111 /* UIButton+.swift */; };
+		077D58C923F6FFB70060C111 /* UserDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D58C823F6FFB70060C111 /* UserDataError.swift */; };
 		077E94A123F19DAE00103AC9 /* UIActivityIndicatorView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */; };
 		078141C123F2D33400D9A9CD /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078141C023F2D33400D9A9CD /* UITextView+.swift */; };
 		0794F85B23F13CE000D16463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85A23F13CE000D16463 /* AppDelegate.swift */; };
@@ -54,6 +55,7 @@
 		075172EA23F1CF4200959180 /* DetailMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMemoViewController.swift; sourceTree = "<group>"; };
 		075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		077D58B523F6A0C90060C111 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		077D58C823F6FFB70060C111 /* UserDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataError.swift; sourceTree = "<group>"; };
 		077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+.swift"; sourceTree = "<group>"; };
 		078141C023F2D33400D9A9CD /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		0794F85723F13CE000D16463 /* LineMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		077D58CA23F700760060C111 /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				0794F87023F13F3300D16463 /* MemoData.swift */,
+				07B6DFA523F31B5800B870CF /* MemoRawData.swift */,
+				07BFEE8C23F28FAA00877D8F /* MemoMode.swift */,
+			);
+			path = UserData;
+			sourceTree = "<group>";
+		};
+		077D58CB23F7007B0060C111 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				077D58C823F6FFB70060C111 /* UserDataError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		0794F84E23F13CE000D16463 = {
 			isa = PBXGroup;
 			children = (
@@ -198,9 +218,8 @@
 		07BFEE8B23F28F9900877D8F /* Constant */ = {
 			isa = PBXGroup;
 			children = (
-				0794F87023F13F3300D16463 /* MemoData.swift */,
-				07B6DFA523F31B5800B870CF /* MemoRawData.swift */,
-				07BFEE8C23F28FAA00877D8F /* MemoMode.swift */,
+				077D58CB23F7007B0060C111 /* Error */,
+				077D58CA23F700760060C111 /* UserData */,
 				07BFEE9223F2CC4500877D8F /* UpdateMode.swift */,
 				0746F6F423F3D0F700617A16 /* ViewSize.swift */,
 				0794F87723F140C700D16463 /* UIIdentifier.swift */,
@@ -313,6 +332,7 @@
 				07DD9E7023F192CB009B95A0 /* AddURLImageViewController.swift in Sources */,
 				077D58B623F6A0C90060C111 /* UIButton+.swift in Sources */,
 				0794F87123F13F3400D16463 /* MemoData.swift in Sources */,
+				077D58C923F6FFB70060C111 /* UserDataError.swift in Sources */,
 				0794F85B23F13CE000D16463 /* AppDelegate.swift in Sources */,
 				07B6DFA623F31B5800B870CF /* MemoRawData.swift in Sources */,
 				0794F85D23F13CE000D16463 /* SceneDelegate.swift in Sources */,

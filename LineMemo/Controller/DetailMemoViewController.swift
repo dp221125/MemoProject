@@ -265,7 +265,7 @@ extension DetailMemoViewController {
                 try UserDataManager.shared.updateMemoData(memoData: originMemoData, at: UserDataManager.shared.editingMemoIndex)
                 navigationController?.presentToastView("메모 저장에 성공했습니다.")
             } catch {
-                navigationController?.presentToastView("메모 저장에 실패했습니다.\n\(error)")
+                navigationController?.presentToastView("메모 저장에 실패했습니다.\n\(String(describing: (error as? UserDataError)?.message))")
             }
 
             updateMainMemoList()

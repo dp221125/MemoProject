@@ -78,7 +78,7 @@ extension MainMemoViewController: UITableViewDataSource {
                 try UserDataManager.shared.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             } catch {
-                navigationController?.presentToastView("메모 삭제에 실패했습니다.\n\(error)")
+                navigationController?.presentToastView("메모 삭제에 실패했습니다.\n\(String(describing: (error as? UserDataError)?.message))")
             }
         default:
             break
