@@ -92,7 +92,7 @@ extension AddMemoViewController: BaseViewController {
     }
 
     private func configureAlertController() {
-        /// 사진촬영을 선택 시 이벤트 정의
+        /// * 사진촬영 선택 시 이벤트 정의
         let takePictureAlertAction = UIAlertAction(title: "사진 찍기", style: .default) { _ in
             let cameraType = AVMediaType.video
             let cameraStatus = AVCaptureDevice.authorizationStatus(for: cameraType)
@@ -110,7 +110,7 @@ extension AddMemoViewController: BaseViewController {
             }
         }
 
-        /// 앨범사진을 선택 시 이벤트 정의
+        /// * 앨범사진 선택 시 이벤트 정의
         let getAlbumAlertAction = UIAlertAction(title: "앨범 사진 가져오기", style: .default, handler: { _ in
             let albumAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
 
@@ -133,7 +133,6 @@ extension AddMemoViewController: BaseViewController {
         })
 
         let getPictureFromURLAction = UIAlertAction(title: "URL로 등록하기", style: .default) { _ in
-            // URL 이미지등록 화면으로 이동
             DispatchQueue.main.async { [weak self] in
                 let mainStoryboard = UIStoryboard(name: UIIdentifier.Storyboard.main, bundle: nil)
                 guard let addURLImageNavigationController = mainStoryboard.instantiateViewController(withIdentifier: UIIdentifier.Storyboard.addURLImageNavigationController) as? UINavigationController else { return }

@@ -25,7 +25,7 @@ class AddURLImageViewController: UIViewController {
 
     private var isInputData = false {
         didSet {
-            addImageButton.isEnabled = isInputData
+            addImageButton.configureButton(isInputData)
         }
     }
 
@@ -60,6 +60,7 @@ extension AddURLImageViewController: BaseViewController {
     }
 
     private func configureAddImageButton() {
+        addImageButton.configureButton(false)
         addImageButton.configureBasicBorder()
     }
 
