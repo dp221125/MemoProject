@@ -64,7 +64,7 @@ extension ToastView {
         UIView.animate(withDuration: 0.5, animations: {
             self.contentView.alpha = 0.8
         }) { _ in
-            UIView.animate(withDuration: 0.3, delay: 0.5, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0.3, animations: {
                 self.contentView.alpha = 0
             }) { _ in
                 DispatchQueue.main.async {

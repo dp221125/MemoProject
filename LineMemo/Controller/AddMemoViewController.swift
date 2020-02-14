@@ -277,6 +277,20 @@ extension AddMemoViewController: UITextViewDelegate {
     func textViewDidChange(_: UITextView) {
         checkInputData()
     }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text?.trimmingCharacters(in: .whitespaces).isEmpty ?? true {
+            textView.textColor = .lightGray
+            textView.text = "메모 내용을 입력해주세요."
+        }
+    }
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .lightGray {
+            textView.text = ""
+            textView.textColor = .black
+        }
+    }
 }
 
 // MARK: - UITextFieldDelegate

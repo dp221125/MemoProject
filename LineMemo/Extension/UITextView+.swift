@@ -18,5 +18,13 @@ extension UITextView {
             configureBasicBorder()
             isEditable = true
         }
+
+        guard let text = self.text else { return }
+        if text.trimmingCharacters(in: .whitespaces).isEmpty {
+            textColor = .lightGray
+            self.text = "메모 내용을 입력해주세요."
+        } else {
+            textColor = .black
+        }
     }
 }
