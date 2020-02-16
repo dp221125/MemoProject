@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - Properties
+
 extension UIView {
     var safeAreaTopAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
@@ -36,7 +38,11 @@ extension UIView {
         }
         return bottomAnchor
     }
+}
 
+// MARK: - Configuration
+
+extension UIView {
     func configureBasicBorder() {
         clipsToBounds = true
         layer.borderWidth = 1

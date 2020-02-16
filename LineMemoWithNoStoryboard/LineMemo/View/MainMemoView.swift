@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - MainMemoView
 
+/// * 메인 메모리스트 뷰
 class MainMemoView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView()

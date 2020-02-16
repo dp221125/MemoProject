@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - EditMemoView
 
+/// * 메모편집, 메모추가 뷰
 class EditMemoView: UIView {
     // MARK: UI
 

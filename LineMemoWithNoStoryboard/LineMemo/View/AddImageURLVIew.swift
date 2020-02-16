@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - AddImageURLView
 
+/// * 이미지 URL 등록 뷰
 class AddImageURLView: UIView {
     // MARK: UI
 

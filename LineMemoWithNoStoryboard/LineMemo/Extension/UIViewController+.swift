@@ -8,12 +8,18 @@
 
 import UIKit
 
+// MARK: - Configuration
+
 extension UIViewController {
     func updateMainMemoList() {
         guard let navigationController = self.navigationController as? MainNavigationController else { return }
         navigationController.reloadMainMemoList()
     }
+}
 
+// MARK: - Event
+
+extension UIViewController {
     func openCamera(_ imagePickerController: UIImagePickerController) {
         DispatchQueue.main.async {
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
