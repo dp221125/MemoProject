@@ -9,35 +9,34 @@
 import UIKit
 
 extension UIView {
-    
     var safeAreaTopAnchor: NSLayoutYAxisAnchor {
-      if #available(iOS 11.0, *) {
-        return self.safeAreaLayoutGuide.topAnchor
-      }
-      return self.topAnchor
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide.topAnchor
+        }
+        return topAnchor
     }
 
     var safeAreaLeftAnchor: NSLayoutXAxisAnchor {
-      if #available(iOS 11.0, *){
-        return self.safeAreaLayoutGuide.leftAnchor
-      }
-      return self.leftAnchor
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide.leftAnchor
+        }
+        return leftAnchor
     }
 
     var safeAreaRightAnchor: NSLayoutXAxisAnchor {
-      if #available(iOS 11.0, *){
-        return self.safeAreaLayoutGuide.rightAnchor
-      }
-      return self.rightAnchor
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide.rightAnchor
+        }
+        return rightAnchor
     }
 
     var safeAreaBottomAnchor: NSLayoutYAxisAnchor {
-      if #available(iOS 11.0, *) {
-        return self.safeAreaLayoutGuide.bottomAnchor
-      }
-      return self.bottomAnchor
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide.bottomAnchor
+        }
+        return bottomAnchor
     }
-    
+
     func configureBasicBorder() {
         clipsToBounds = true
         layer.borderWidth = 1

@@ -15,7 +15,7 @@ import UIKit
 /// * 메모 상세보기 뷰컨트롤러
 class DetailMemoViewController: UIViewController {
     // MARK: UI
-    
+
     private let mainView = EditMemoView()
     private var cancelBarButtonItem = UIBarButtonItem()
     private var saveEditBarButtonItem = UIBarButtonItem()
@@ -53,9 +53,9 @@ class DetailMemoViewController: UIViewController {
     // MARK: Life Cycle
 
     override func loadView() {
-        self.view = mainView
+        view = mainView
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -66,6 +66,7 @@ class DetailMemoViewController: UIViewController {
 
 extension DetailMemoViewController: ViewControllerSetting {
     func configureViewController() {
+        title = TitleData.detailMemoView
         initializeMemoData()
         configureCollectionView()
         configureTitleTextField()
@@ -88,10 +89,10 @@ extension DetailMemoViewController: ViewControllerSetting {
         cancelBarButtonItem.isEnabled = false
         cancelBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelEditBarButtonItemPressed(_:)))
         cancelBarButtonItem.tintColor = .black
-        
+
         saveEditBarButtonItem = UIBarButtonItem(title: "편집", style: .plain, target: self, action: #selector(editBarButtonItemPressed(_:)))
         saveEditBarButtonItem.tintColor = .black
-        self.navigationItem.rightBarButtonItems = [saveEditBarButtonItem, cancelBarButtonItem]
+        navigationItem.rightBarButtonItems = [saveEditBarButtonItem, cancelBarButtonItem]
     }
 
     private func configureAddImageTapGestureRecognizer() {
@@ -99,35 +100,35 @@ extension DetailMemoViewController: ViewControllerSetting {
     }
 
     private func configureCollectionView() {
-        self.mainView.imageCollectionView.register(UINib(nibName: UIIdentifier.Nib.CollectionViewCell.memoImage, bundle: nil), forCellWithReuseIdentifier: UIIdentifier.Cell.Collection.memoImage)
-        self.mainView.imageCollectionView.dataSource = self
+        mainView.imageCollectionView.register(UINib(nibName: UIIdentifier.Nib.CollectionViewCell.memoImage, bundle: nil), forCellWithReuseIdentifier: UIIdentifier.Cell.Collection.memoImage)
+        mainView.imageCollectionView.dataSource = self
     }
 
     private func configureTitleTextField() {
-        self.mainView.titleTextField.addTarget(self, action: #selector(titleTextEditingChanged(_:)), for: .editingChanged)
-        self.mainView.titleTextField.configureTextField(mode: .view)
+        mainView.titleTextField.addTarget(self, action: #selector(titleTextEditingChanged(_:)), for: .editingChanged)
+        mainView.titleTextField.configureTextField(mode: .view)
     }
 
     private func configureSubTextView() {
-        self.mainView.subTextView.delegate = self
-        self.mainView.subTextView.configureTextView(mode: .view)
+        mainView.subTextView.delegate = self
+        mainView.subTextView.configureTextView(mode: .view)
     }
 
     private func configureByMemoMode(mode: MemoMode) {
-        self.mainView.titleTextField.configureTextField(mode: mode)
-        self.mainView.subTextView.configureTextView(mode: mode)
+        mainView.titleTextField.configureTextField(mode: mode)
+        mainView.subTextView.configureTextView(mode: mode)
         switch imageMode {
         case .view:
             cancelBarButtonItem.isEnabled = false
             saveEditBarButtonItem.isEnabled = true
-            self.mainView.titleTextField.isEnabled = false
-            self.mainView.subTextView.isEditable = false
+            mainView.titleTextField.isEnabled = false
+            mainView.subTextView.isEditable = false
             saveEditBarButtonItem.title = "편집"
             editingMemoData.imageList = editingMemoData.imageList.filter { $0 != .addImage }
         case .edit:
             cancelBarButtonItem.isEnabled = true
-            self.mainView.titleTextField.isEnabled = true
-            self.mainView.subTextView.isEditable = true
+            mainView.titleTextField.isEnabled = true
+            mainView.subTextView.isEditable = true
             saveEditBarButtonItem.title = "저장"
             insertAndUpdateImageList(at: 0, image: .addImage, mode: .whole)
         }
@@ -278,7 +279,7 @@ extension DetailMemoViewController {
             imageMode = .view
         }
     }
-    
+
     @objc func cancelEditBarButtonItemPressed(_: UIBarButtonItem) {
         initializeMemoData()
         imageMode = .view

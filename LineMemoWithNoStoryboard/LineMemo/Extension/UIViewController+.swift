@@ -86,14 +86,15 @@ extension UIViewController {
             }
         }
     }
-    
-    func presentDetailMemoViewController() {
+
+    func presentDetailMemoViewController(_ memoData: MemoData) {
         let detailMemoViewController = DetailMemoViewController()
-        self.navigationController?.pushViewController(detailMemoViewController, animated: true)
+        detailMemoViewController.configureMemoData(memoData)
+        navigationController?.pushViewController(detailMemoViewController, animated: true)
     }
-    
+
     func presentAddMemoViewController() {
         let addMemoViewController = AddMemoViewController()
-        self.navigationController?.pushViewController(addMemoViewController, animated: true)
+        navigationController?.pushViewController(addMemoViewController, animated: true)
     }
 }

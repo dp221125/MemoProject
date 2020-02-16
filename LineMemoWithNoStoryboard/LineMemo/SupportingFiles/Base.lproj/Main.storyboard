@@ -255,16 +255,9 @@
                     <navigationItem key="navigationItem" title="메모 추가" id="faU-q4-4Bq">
                         <barButtonItem key="rightBarButtonItem" title="저장" id="fiz-b9-FEl">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="addMemoBarButtonItemPressed:" destination="VfV-Qo-eFX" id="kdJ-eF-nmj"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addMemoBarButtonItem" destination="fiz-b9-FEl" id="d5N-PG-YIU"/>
-                        <outlet property="collectionView" destination="70K-DU-2ln" id="TMo-F1-a7m"/>
-                        <outlet property="subTextView" destination="BI6-oE-pe1" id="Md4-Pp-62p"/>
-                        <outlet property="titleTextField" destination="RJ2-mE-ot0" id="Ms3-zd-2es"/>
                         <segue destination="NeP-No-x2Y" kind="show" identifier="goToAddURLImageView" id="Huw-pd-QnH"/>
                     </connections>
                 </viewController>
