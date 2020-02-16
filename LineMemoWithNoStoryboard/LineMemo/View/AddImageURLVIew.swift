@@ -78,14 +78,14 @@ extension AddImageURLView: ViewSetting {
         NSLayoutConstraint.activate([
             self.titleLabel.leftAnchor.constraint(equalTo: stackView.safeAreaLeftAnchor, constant: ViewSize.basicInset),
             self.titleLabel.rightAnchor.constraint(equalTo: stackView.safeAreaRightAnchor, constant: -ViewSize.basicInset),
-            self.titleLabel.heightAnchor.constraint(equalToConstant: 50),
+            self.titleLabel.heightAnchor.constraint(equalToConstant: ViewSize.Height.titleLabel),
         ])
 
         urlTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.urlTextField.leftAnchor.constraint(equalTo: stackView.safeAreaLeftAnchor, constant: ViewSize.basicInset),
             self.urlTextField.rightAnchor.constraint(equalTo: stackView.safeAreaRightAnchor, constant: -ViewSize.basicInset),
-            self.urlTextField.heightAnchor.constraint(equalToConstant: 50),
+            self.urlTextField.heightAnchor.constraint(equalToConstant: ViewSize.Height.textField),
         ])
 
         addImageButton.translatesAutoresizingMaskIntoConstraints = false

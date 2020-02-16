@@ -100,51 +100,51 @@ extension EditMemoView: ViewSetting {
     func makeConstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            stackView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            stackView.leftAnchor.constraint(equalTo: self.safeAreaLeftAnchor),
+            stackView.rightAnchor.constraint(equalTo: self.safeAreaRightAnchor),
             stackView.topAnchor.constraint(equalTo: self.safeAreaTopAnchor, constant: 10),
             stackView.bottomAnchor.constraint(equalTo: self.safeAreaBottomAnchor, constant: -10),
         ])
 
         imageLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageLabel.leftAnchor.constraint(equalTo: self.stackView.leftAnchor, constant: 10),
-            imageLabel.rightAnchor.constraint(equalTo: self.stackView.rightAnchor, constant: -10),
+            imageLabel.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: 10),
+            imageLabel.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -10),
             imageLabel.heightAnchor.constraint(equalToConstant: 30),
         ])
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: self.stackView.leftAnchor, constant: 10),
-            titleLabel.rightAnchor.constraint(equalTo: self.stackView.rightAnchor, constant: -10),
+            titleLabel.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: 10),
+            titleLabel.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -10),
             titleLabel.heightAnchor.constraint(equalToConstant: ViewSize.Height.titleLabel),
         ])
 
         subTextLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            subTextLabel.leftAnchor.constraint(equalTo: self.stackView.leftAnchor, constant: 10),
-            subTextLabel.rightAnchor.constraint(equalTo: self.stackView.rightAnchor, constant: -10),
+            subTextLabel.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: ViewSize.basicInset),
+            subTextLabel.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -ViewSize.basicInset),
             subTextLabel.heightAnchor.constraint(equalToConstant: ViewSize.Height.titleLabel),
         ])
 
         imageCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageCollectionView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            imageCollectionView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            imageCollectionView.leftAnchor.constraint(equalTo: self.safeAreaLeftAnchor),
+            imageCollectionView.rightAnchor.constraint(equalTo: self.safeAreaRightAnchor),
             imageCollectionView.heightAnchor.constraint(equalToConstant: ViewSize.Height.imageCollectionView),
         ])
 
         titleTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.titleTextField.leftAnchor.constraint(equalTo: self.stackView.leftAnchor, constant: 10),
-            self.titleTextField.rightAnchor.constraint(equalTo: self.stackView.rightAnchor, constant: -10),
+            self.titleTextField.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: 10),
+            self.titleTextField.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -10),
             self.titleTextField.heightAnchor.constraint(equalToConstant: ViewSize.Height.textField),
         ])
 
         subTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.subTextView.leftAnchor.constraint(equalTo: self.stackView.leftAnchor, constant: 10),
-            self.subTextView.rightAnchor.constraint(equalTo: self.stackView.rightAnchor, constant: -10),
+            self.subTextView.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: 10),
+            self.subTextView.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -10),
         ])
     }
 }

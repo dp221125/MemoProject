@@ -12,6 +12,7 @@ import UIKit
 struct ViewSize {
     static let basicSpacing: CGFloat = 10
     static let basicInset: CGFloat = 10
+
     struct Height {
         static let titleLabel: CGFloat = 30
         static let textField: CGFloat = 50
