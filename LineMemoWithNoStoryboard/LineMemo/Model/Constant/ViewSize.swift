@@ -10,8 +10,13 @@ import UIKit
 
 /// *  View Size 정의
 struct ViewSize {
+    static let basicSpacing: CGFloat = 10
+    static let basicInset: CGFloat = 10
     struct Height {
-        static let imageSection: CGFloat = 200
+        static let titleLabel: CGFloat = 30
+        static let textField: CGFloat = 50
+        static let imageCollectionView: CGFloat = 170
+        static let imageSection: CGFloat = basicSpacing * 2 + titleLabel + imageCollectionView
         static let mainTableView: CGFloat = 100
     }
 }

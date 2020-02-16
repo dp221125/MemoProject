@@ -27,6 +27,8 @@ class MainMemoView: UIView {
     }
 }
 
+// MARK: - Configuration
+
 extension MainMemoView: ViewSetting {
     func addSubviews() {
         addSubview(tableView)

@@ -19,12 +19,7 @@ class MainMemoViewController: UIViewController {
         let mainView = MainMemoView()
         return mainView
     }()
-
-    private let addMemoBarButtonItem: UIBarButtonItem = {
-        let addMemoBarButtonItem = UIBarButtonItem(title: "메모추가", style: .plain, target: self, action: #selector(addMemoBarButtonItemPressed(_:)))
-        return addMemoBarButtonItem
-    }()
-
+    
     // MARK: Life Cycle
 
     override func loadView() {
@@ -46,7 +41,9 @@ extension MainMemoViewController: ViewControllerSetting {
     }
 
     private func configureAddMemoBarButtonItem() {
-        navigationController?.navigationItem.rightBarButtonItem = addMemoBarButtonItem
+        let addMemoBarButtonItem = UIBarButtonItem(title: "메모추가", style: .plain, target: self, action: #selector(addMemoBarButtonItemPressed(_:)))
+        addMemoBarButtonItem.tintColor = .black
+        self.navigationItem.rightBarButtonItem = addMemoBarButtonItem
     }
 
     private func configureTableView() {
@@ -75,7 +72,9 @@ extension MainMemoViewController: ViewControllerSetting {
 // MARK: - Event
 
 extension MainMemoViewController {
-    @objc func addMemoBarButtonItemPressed(_: UIBarButtonItem) {}
+    @objc func addMemoBarButtonItemPressed(_: UIBarButtonItem) {
+        self.presentAddMemoViewController()
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -116,7 +115,7 @@ extension MainMemoViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         UserDataManager.shared.configureEditingMemoIndex(at: indexPath.row)
         mainView.tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: UIIdentifier.Segue.goToDetailMemoView, sender: UserDataManager.shared.memoDataList[indexPath.row])
+        presentDetailMemoViewController()
     }
 
     func tableView(_: UITableView, editingStyleForRowAt _: IndexPath) -> UITableViewCell.EditingStyle {

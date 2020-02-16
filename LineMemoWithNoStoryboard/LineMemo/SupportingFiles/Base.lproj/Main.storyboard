@@ -143,24 +143,10 @@
                         <rightBarButtonItems>
                             <barButtonItem title="편집" id="F7i-di-DfS">
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="editBarButtonItemPressed:" destination="YSz-N6-AgJ" id="Vw1-bF-zaA"/>
-                                </connections>
                             </barButtonItem>
-                            <barButtonItem title="취소" id="bk4-UC-2zr">
-                                <connections>
-                                    <action selector="cancelEditBarButtonItemPressed:" destination="YSz-N6-AgJ" id="VmZ-gP-flx"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem title="취소" id="bk4-UC-2zr"/>
                         </rightBarButtonItems>
                     </navigationItem>
-                    <connections>
-                        <outlet property="cancelEditBarButtonItem" destination="bk4-UC-2zr" id="gCh-YO-05J"/>
-                        <outlet property="collectionView" destination="fDE-Ug-MaF" id="Ysf-V2-i9b"/>
-                        <outlet property="saveEditBarButtonItem" destination="F7i-di-DfS" id="Ctz-sj-J8x"/>
-                        <outlet property="subTextView" destination="I4O-fj-YAH" id="vfV-i3-VcG"/>
-                        <outlet property="titleTextField" destination="ZeL-nn-syU" id="dmE-Fc-1bA"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rx-fW-Iyb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -229,7 +215,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="HKb-pe-BEB"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

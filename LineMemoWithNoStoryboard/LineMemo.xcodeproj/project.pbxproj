@@ -17,6 +17,8 @@
 		075172F123F1D97200959180 /* MemoImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */; };
 		0775887723F91A7200BF4D50 /* MainMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0775887623F91A7200BF4D50 /* MainMemoView.swift */; };
 		0775887923F91B2200BF4D50 /* ViewSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0775887823F91B2200BF4D50 /* ViewSetting.swift */; };
+		0775887B23F92A1700BF4D50 /* EditMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0775887A23F92A1700BF4D50 /* EditMemoView.swift */; };
+		0775887D23F93A9A00BF4D50 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0775887C23F93A9A00BF4D50 /* UIFont+.swift */; };
 		077D58B623F6A0C90060C111 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D58B523F6A0C90060C111 /* UIButton+.swift */; };
 		077D58C923F6FFB70060C111 /* UserDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D58C823F6FFB70060C111 /* UserDataError.swift */; };
 		077E94A123F19DAE00103AC9 /* UIActivityIndicatorView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */; };
@@ -58,6 +60,8 @@
 		075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		0775887623F91A7200BF4D50 /* MainMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMemoView.swift; sourceTree = "<group>"; };
 		0775887823F91B2200BF4D50 /* ViewSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSetting.swift; sourceTree = "<group>"; };
+		0775887A23F92A1700BF4D50 /* EditMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoView.swift; sourceTree = "<group>"; };
+		0775887C23F93A9A00BF4D50 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		077D58B523F6A0C90060C111 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		077D58C823F6FFB70060C111 /* UserDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataError.swift; sourceTree = "<group>"; };
 		077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+.swift"; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 				0794F88123F1584900D16463 /* MemoImageCollectionViewCell.swift */,
 				075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */,
 				0775887623F91A7200BF4D50 /* MainMemoView.swift */,
+				0775887A23F92A1700BF4D50 /* EditMemoView.swift */,
 				0794F88323F15E0C00D16463 /* FlowLayout */,
 			);
 			path = View;
@@ -216,6 +221,7 @@
 				077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */,
 				077D58B523F6A0C90060C111 /* UIButton+.swift */,
 				0746F6FE23F3F92700617A16 /* UINavigationController+.swift */,
+				0775887C23F93A9A00BF4D50 /* UIFont+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 				0746F70123F4050C00617A16 /* ViewControllerSetting.swift in Sources */,
 				0746F6FF23F3F92700617A16 /* UINavigationController+.swift in Sources */,
 				07BFEE9323F2CC4500877D8F /* UpdateMode.swift in Sources */,
+				0775887B23F92A1700BF4D50 /* EditMemoView.swift in Sources */,
 				0794F87E23F14E2C00D16463 /* AddMemoViewController.swift in Sources */,
 				078141C123F2D33400D9A9CD /* UITextView+.swift in Sources */,
 				0746F6FD23F3EC9100617A16 /* ToastView.swift in Sources */,
@@ -333,6 +340,7 @@
 				07DD9E7223F19945009B95A0 /* RequestImage.swift in Sources */,
 				0794F85F23F13CE000D16463 /* MainMemoViewController.swift in Sources */,
 				0775887923F91B2200BF4D50 /* ViewSetting.swift in Sources */,
+				0775887D23F93A9A00BF4D50 /* UIFont+.swift in Sources */,
 				0746F6F823F3D17300617A16 /* MainMemoTableViewCell.swift in Sources */,
 				0794F87A23F1458100D16463 /* MainNavigationController.swift in Sources */,
 				0794F88223F1584900D16463 /* MemoImageCollectionViewCell.swift in Sources */,
