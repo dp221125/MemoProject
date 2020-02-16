@@ -14,6 +14,14 @@ import UIKit
 class MainNavigationController: UINavigationController {
     // MARK: Life Cycle
 
+    let indicatorView: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.style = .whiteLarge
+        activityIndicatorView.color = .lightGray
+
+        return activityIndicatorView
+    }()
+
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
     }
@@ -36,9 +44,21 @@ class MainNavigationController: UINavigationController {
 
 extension MainNavigationController: ViewControllerSetting {
     func configureViewController() {
+        navigationBar.tintColor = .black
+        navigationBar.barStyle = .default
+        navigationBar.barTintColor = .white
+        configureActivityIndicatorView()
+        addKeyboardObserver()
+    }
+
+    private func configureActivityIndicatorView() {
+        indicatorView.center = view.center
+        view.addSubview(indicatorView)
+    }
+
+    private func addKeyboardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        navigationBar.tintColor = .black
     }
 
     func reloadMainMemoList() {

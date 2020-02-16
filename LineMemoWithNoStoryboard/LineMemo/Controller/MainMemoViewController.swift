@@ -74,7 +74,17 @@ extension MainMemoViewController: ViewControllerSetting {
 
 extension MainMemoViewController {
     @objc func addMemoBarButtonItemPressed(_: UIBarButtonItem) {
-        presentAddMemoViewController()
+        presentViewController(destination: AddMemoViewController())
+    }
+}
+
+// MARK: - Transition
+
+extension MainMemoViewController {
+    func presentDetailViewController(indexPath: IndexPath) {
+        let detailMemoViewController = DetailMemoViewController()
+        detailMemoViewController.configureMemoData(UserDataManager.shared.memoDataList[indexPath.row])
+        presentViewController(destination: detailMemoViewController)
     }
 }
 
@@ -116,7 +126,8 @@ extension MainMemoViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         UserDataManager.shared.configureEditingMemoIndex(at: indexPath.row)
         mainView.tableView.deselectRow(at: indexPath, animated: true)
-        presentDetailMemoViewController(UserDataManager.shared.memoDataList[indexPath.row])
+
+        presentDetailViewController(indexPath: indexPath)
     }
 
     func tableView(_: UITableView, editingStyleForRowAt _: IndexPath) -> UITableViewCell.EditingStyle {

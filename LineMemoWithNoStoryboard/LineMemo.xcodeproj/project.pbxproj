@@ -20,6 +20,7 @@
 		0775887B23F92A1700BF4D50 /* EditMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0775887A23F92A1700BF4D50 /* EditMemoView.swift */; };
 		0775887D23F93A9A00BF4D50 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0775887C23F93A9A00BF4D50 /* UIFont+.swift */; };
 		0775887F23F94AF200BF4D50 /* TitleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0775887E23F94AF200BF4D50 /* TitleData.swift */; };
+		0777F11523F9A92900F8FA96 /* AddImageURLVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0777F11423F9A92900F8FA96 /* AddImageURLVIew.swift */; };
 		077D58B623F6A0C90060C111 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D58B523F6A0C90060C111 /* UIButton+.swift */; };
 		077D58C923F6FFB70060C111 /* UserDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D58C823F6FFB70060C111 /* UserDataError.swift */; };
 		077E94A123F19DAE00103AC9 /* UIActivityIndicatorView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */; };
@@ -45,7 +46,7 @@
 		07BFEE9123F2BDD800877D8F /* SendDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE9023F2BDD800877D8F /* SendDataDelegate.swift */; };
 		07BFEE9323F2CC4500877D8F /* UpdateMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE9223F2CC4500877D8F /* UpdateMode.swift */; };
 		07BFEE9523F2D1CD00877D8F /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE9423F2D1CD00877D8F /* UITextField+.swift */; };
-		07DD9E7023F192CB009B95A0 /* AddURLImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E6F23F192CB009B95A0 /* AddURLImageViewController.swift */; };
+		07DD9E7023F192CB009B95A0 /* AddImageURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E6F23F192CB009B95A0 /* AddImageURLViewController.swift */; };
 		07DD9E7223F19945009B95A0 /* RequestImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E7123F19945009B95A0 /* RequestImage.swift */; };
 		07DD9E7423F19B1B009B95A0 /* RequestImageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E7323F19B1B009B95A0 /* RequestImageDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		0775887A23F92A1700BF4D50 /* EditMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoView.swift; sourceTree = "<group>"; };
 		0775887C23F93A9A00BF4D50 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		0775887E23F94AF200BF4D50 /* TitleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleData.swift; sourceTree = "<group>"; };
+		0777F11423F9A92900F8FA96 /* AddImageURLVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageURLVIew.swift; sourceTree = "<group>"; };
 		077D58B523F6A0C90060C111 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		077D58C823F6FFB70060C111 /* UserDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataError.swift; sourceTree = "<group>"; };
 		077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+.swift"; sourceTree = "<group>"; };
@@ -91,7 +93,7 @@
 		07BFEE9023F2BDD800877D8F /* SendDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDataDelegate.swift; sourceTree = "<group>"; };
 		07BFEE9223F2CC4500877D8F /* UpdateMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMode.swift; sourceTree = "<group>"; };
 		07BFEE9423F2D1CD00877D8F /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		07DD9E6F23F192CB009B95A0 /* AddURLImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddURLImageViewController.swift; sourceTree = "<group>"; };
+		07DD9E6F23F192CB009B95A0 /* AddImageURLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageURLViewController.swift; sourceTree = "<group>"; };
 		07DD9E7123F19945009B95A0 /* RequestImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestImage.swift; sourceTree = "<group>"; };
 		07DD9E7323F19B1B009B95A0 /* RequestImageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestImageDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,7 +165,7 @@
 				0794F85E23F13CE000D16463 /* MainMemoViewController.swift */,
 				075172EA23F1CF4200959180 /* DetailMemoViewController.swift */,
 				0794F87D23F14E2C00D16463 /* AddMemoViewController.swift */,
-				07DD9E6F23F192CB009B95A0 /* AddURLImageViewController.swift */,
+				07DD9E6F23F192CB009B95A0 /* AddImageURLViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -182,12 +184,13 @@
 		0794F87423F1406900D16463 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0775887623F91A7200BF4D50 /* MainMemoView.swift */,
+				0775887A23F92A1700BF4D50 /* EditMemoView.swift */,
+				0777F11423F9A92900F8FA96 /* AddImageURLVIew.swift */,
 				0746F6F623F3D17300617A16 /* MainMemoTableViewCell.swift */,
 				0746F6F723F3D17300617A16 /* MainMemoTableViewCell.xib */,
 				0794F88123F1584900D16463 /* MemoImageCollectionViewCell.swift */,
 				075172EF23F1D97200959180 /* MemoImageCollectionViewCell.xib */,
-				0775887623F91A7200BF4D50 /* MainMemoView.swift */,
-				0775887A23F92A1700BF4D50 /* EditMemoView.swift */,
 				0794F88323F15E0C00D16463 /* FlowLayout */,
 			);
 			path = View;
@@ -233,9 +236,9 @@
 			children = (
 				077D58CB23F7007B0060C111 /* Error */,
 				077D58CA23F700760060C111 /* UserData */,
+				0794F87723F140C700D16463 /* UIIdentifier.swift */,
 				07BFEE9223F2CC4500877D8F /* UpdateMode.swift */,
 				0746F6F423F3D0F700617A16 /* ViewSize.swift */,
-				0794F87723F140C700D16463 /* UIIdentifier.swift */,
 				0775887E23F94AF200BF4D50 /* TitleData.swift */,
 			);
 			path = Constant;
@@ -339,6 +342,7 @@
 				0794F87E23F14E2C00D16463 /* AddMemoViewController.swift in Sources */,
 				078141C123F2D33400D9A9CD /* UITextView+.swift in Sources */,
 				0746F6FD23F3EC9100617A16 /* ToastView.swift in Sources */,
+				0777F11523F9A92900F8FA96 /* AddImageURLVIew.swift in Sources */,
 				0794F87823F140C700D16463 /* UIIdentifier.swift in Sources */,
 				07BFEE9523F2D1CD00877D8F /* UITextField+.swift in Sources */,
 				07DD9E7223F19945009B95A0 /* RequestImage.swift in Sources */,
@@ -348,7 +352,7 @@
 				0746F6F823F3D17300617A16 /* MainMemoTableViewCell.swift in Sources */,
 				0794F87A23F1458100D16463 /* MainNavigationController.swift in Sources */,
 				0794F88223F1584900D16463 /* MemoImageCollectionViewCell.swift in Sources */,
-				07DD9E7023F192CB009B95A0 /* AddURLImageViewController.swift in Sources */,
+				07DD9E7023F192CB009B95A0 /* AddImageURLViewController.swift in Sources */,
 				077D58B623F6A0C90060C111 /* UIButton+.swift in Sources */,
 				0794F87123F13F3400D16463 /* MemoData.swift in Sources */,
 				077D58C923F6FFB70060C111 /* UserDataError.swift in Sources */,

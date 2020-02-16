@@ -20,11 +20,6 @@ struct UIIdentifier {
         }
     }
 
-    struct Storyboard {
-        static let main = "Main"
-        static let addURLImageNavigationController = "AddURLImageNavigationController"
-    }
-
     struct Segue {
         static let goToAddMemoView = "goToAddMemoView"
         static let goToDetailMemoView = "goToDetailMemoView"

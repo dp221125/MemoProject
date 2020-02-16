@@ -89,6 +89,7 @@ extension DetailMemoViewController: ViewControllerSetting {
         cancelBarButtonItem.isEnabled = false
         cancelBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelEditBarButtonItemPressed(_:)))
         cancelBarButtonItem.tintColor = .black
+        cancelBarButtonItem.isEnabled = false
 
         saveEditBarButtonItem = UIBarButtonItem(title: "편집", style: .plain, target: self, action: #selector(editBarButtonItemPressed(_:)))
         saveEditBarButtonItem.tintColor = .black
@@ -205,12 +206,10 @@ extension DetailMemoViewController: ViewControllerSetting {
 
         let getPictureFromURLAction = UIAlertAction(title: "URL로 등록하기", style: .default) { _ in
 
-            DispatchQueue.main.async { [weak self] in
-                let mainStoryboard = UIStoryboard(name: UIIdentifier.Storyboard.main, bundle: nil)
-                guard let addURLImageNavigationController = mainStoryboard.instantiateViewController(withIdentifier: UIIdentifier.Storyboard.addURLImageNavigationController) as? UINavigationController else { return }
-                guard let addURLImageViewController = addURLImageNavigationController.viewControllers[0] as? AddURLImageViewController else { return }
-                addURLImageViewController.delegate = self
-                self?.present(addURLImageNavigationController, animated: true)
+            DispatchQueue.main.async {
+                let addImageURLViewController = AddImageURLViewController()
+                addImageURLViewController.delegate = self
+                self.presentViewController(destination: addImageURLViewController)
             }
         }
 

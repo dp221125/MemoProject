@@ -1,5 +1,5 @@
 //
-//  AddURLImageViewController.swift
+//  AddImageURLViewController.swift
 //  LineMemo
 //
 //  Created by MinKyeongTae on 2020/02/10.
@@ -8,16 +8,14 @@
 
 import UIKit
 
-// MARK: - AddURLImageViewController
+// MARK: - AddImageURLViewController
 
 /// * URL 이미지 추가 뷰컨트롤러
 
-class AddURLImageViewController: UIViewController {
+class AddImageURLViewController: UIViewController {
     // MARK: UI
 
-    @IBOutlet var textField: UITextField!
-    @IBOutlet var addImageButton: UIButton!
-    @IBOutlet var indicatorView: UIActivityIndicatorView!
+    private let mainView = AddImageURLView()
 
     // MARK: Properties
 
@@ -25,19 +23,24 @@ class AddURLImageViewController: UIViewController {
 
     private var isInputData = false {
         didSet {
-            addImageButton.configureButton(isInputData)
+            mainView.addImageButton.configureButton(isInputData)
         }
     }
 
     private var isImageRequested = false {
         didSet {
             DispatchQueue.main.async {
-                self.indicatorView.checkIndicatorView(self.isImageRequested)
+                guard let mainNavigationController = self.navigationController as? MainNavigationController else { return }
+                mainNavigationController.indicatorView.checkIndicatorView(self.isImageRequested)
             }
         }
     }
 
     // MARK: Life Cycle
+
+    override func loadView() {
+        view = mainView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,53 +50,52 @@ class AddURLImageViewController: UIViewController {
 
 // MARK: - Configuration
 
-extension AddURLImageViewController: ViewControllerSetting {
+extension AddImageURLViewController: ViewControllerSetting {
     func configureViewController() {
         RequestImage.shared.delegate = self
+        title = TitleData.addImageURLView
         configureTextField()
         configureAddImageButton()
     }
 
     private func configureTextField() {
-        textField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
-        textField.configureBasicBorder()
+        mainView.urlTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        mainView.urlTextField.configureTextField(mode: .edit)
+        mainView.urlTextField.configureBasicBorder()
     }
 
     private func configureAddImageButton() {
-        addImageButton.configureButton(false)
-        addImageButton.configureBasicBorder()
+        mainView.addImageButton.configureButton(false)
+        mainView.addImageButton.configureBasicBorder()
+        mainView.addImageButton.addTarget(self, action: #selector(addImageButtonPressed(_:)), for: .touchUpInside)
     }
 
     private func checkInputData() {
-        guard let urlText = textField.text else { return }
+        guard let urlText = mainView.urlTextField.text else { return }
         isInputData = !urlText.trimmingCharacters(in: .whitespaces).isEmpty
     }
 }
 
 // MARK: - Event
 
-extension AddURLImageViewController {
+extension AddImageURLViewController {
     @objc func textFieldEditingChanged(_: UITextField) {
         checkInputData()
     }
 
-    @IBAction func cancelBarButtonItemPressed(_: UIBarButtonItem) {
+    @objc func addImageButtonPressed(_: UIButton) {
         view.endEditing(true)
-        dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func addImageButtonPressed(_: UIButton) {
-        view.endEditing(true)
-        guard let requestedURL = self.textField.text else { return }
+        guard let requestedURL = self.mainView.urlTextField.text else { return }
         RequestImage.shared.requestFromURL(requestedURL) { success, image in
             if success {
                 DispatchQueue.main.async {
                     self.delegate?.sendData(image)
-                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.presentToastView("URL 이미지 등록에 성공했습니다.")
+                    self.navigationController?.popViewController(animated: true)
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.navigationController?.presentToastView("해당 URL 이미지를 불러오는데 실패했습니다.")
+                    self.navigationController?.presentToastView("URL 이미지 등록에 실패했습니다.")
                 }
             }
         }
@@ -106,7 +108,7 @@ extension AddURLImageViewController {
 
 // MARK: - RequestImageDelegate
 
-extension AddURLImageViewController: RequestImageDelegate {
+extension AddImageURLViewController: RequestImageDelegate {
     func requestImageDidBegin() {
         isImageRequested = true
         beginIgnoringInteractionEvents()
