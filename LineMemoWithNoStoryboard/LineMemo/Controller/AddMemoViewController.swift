@@ -32,7 +32,7 @@ class AddMemoViewController: UIViewController {
 
     // MARK: Properties
 
-    private var imageViewList: [UIImage] = [UIImage.addImage]
+    private var imageViewList: [UIImage] = [.addImage]
 
     private var isValidInputData = false {
         didSet {

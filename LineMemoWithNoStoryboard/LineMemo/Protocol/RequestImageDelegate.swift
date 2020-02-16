@@ -10,7 +10,7 @@ import UIKit
 
 /// * RequestImage 델리게이트
 protocol RequestImageDelegate: class {
-    func requestImageDidBegin()
-    func requestImageDidFinished()
-    func requestImageDidError()
+    func requestImageDidBegin(_ imageRequest: RequestImage)
+    func requestImageDidFinished(_ imageRequest: RequestImage, _ image: UIImage)
+    func requestImageDidError(_ imageRequest: RequestImage, _ error: RequestImageError)
 }

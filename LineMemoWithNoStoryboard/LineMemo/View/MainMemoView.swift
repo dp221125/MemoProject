@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - MainMemoView
+
 class MainMemoView: UIView {
     let tableView: UITableView = {
         let tableView = UITableView()

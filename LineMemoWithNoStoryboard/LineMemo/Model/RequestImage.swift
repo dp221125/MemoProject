@@ -26,32 +26,28 @@ final class RequestImage {
 // MARK: - RequestImage
 
 extension RequestImage {
-    func requestFromURL(_ urlString: String, completion: @escaping (Bool, UIImage?) -> Void) {
-        delegate?.requestImageDidBegin()
+    func requestFromURL(_ urlString: String) {
+        delegate?.requestImageDidBegin(self)
 
         guard let imageURL = URL(string: urlString) else {
-            delegate?.requestImageDidError()
-            completion(false, nil)
+            delegate?.requestImageDidError(self, RequestImageError.invalidURL)
             return
         }
 
         URLSession.shared.dataTask(with: imageURL) { data, _, error in
             if error != nil {
-                self.delegate?.requestImageDidError()
-                completion(false, nil)
+                self.delegate?.requestImageDidError(self, RequestImageError.requestFailed)
                 return
             }
 
             DispatchQueue.main.async {
                 guard let imageData = data,
                     let image = UIImage(data: imageData) else {
-                    self.delegate?.requestImageDidError()
-                    completion(false, nil)
+                    self.delegate?.requestImageDidError(self, RequestImageError.invalidFormat)
                     return
                 }
 
-                self.delegate?.requestImageDidFinished()
-                completion(true, image)
+                self.delegate?.requestImageDidFinished(self, image)
             }
         }.resume()
     }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// * 타이틀 정의
 struct TitleData {
     static let mainMemoView = "메모 리스트"
     static let detailMemoView = "메모 상세보기"

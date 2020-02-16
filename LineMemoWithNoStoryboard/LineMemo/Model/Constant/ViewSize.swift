@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// *  View Size 정의
+/// *  뷰 크기 정의
 struct ViewSize {
     static let basicSpacing: CGFloat = 10
     static let basicInset: CGFloat = 10

@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// * UI 식별자 정의
+/// * UI 식별자
 struct UIIdentifier {
     struct Nib {
         struct TableViewCell {

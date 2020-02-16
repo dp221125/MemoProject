@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// * 유저데이터 에러
 enum UserDataError: Error {
     case loadFailed
     case saveFailed

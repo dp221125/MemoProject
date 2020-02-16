@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// * ViewController 간 데이터 전송 목적 프로토콜
+/// * ViewController 간 데이터 전송 델리게이트
 protocol SendDataDelegate: class {
     func sendData<T>(_ data: T)
 }

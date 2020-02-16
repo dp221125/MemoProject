@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// * 메모보기 방식 정의
+/// * 메모보기 방식
 enum MemoMode: Int {
     case view
     case edit

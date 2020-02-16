@@ -10,11 +10,12 @@ import UIKit
 
 // MARK: - ToastView
 
-/// * 저장/오류 등을 알려주는 토스트 뷰
+/// * 알림목적 토스트 뷰 Singleton class
+
 final class ToastView {
     static let shared = ToastView()
 
-    // MARK: Properties
+    // MARK: UI
 
     private var backgroundView = UIView()
     private var contentView = UIView()
