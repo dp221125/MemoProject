@@ -17,6 +17,7 @@ class MainMemoViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var addMemoBarButtonItem: UIBarButtonItem!
+    @IBOutlet var dataInfoLabel: UILabel!
 
     // MARK: Life Cycle
 
@@ -43,6 +44,16 @@ extension MainMemoViewController: ViewControllerSetting {
         tableView.allowsSelectionDuringEditing = false
     }
 
+    private func configureDataInfoLabel(isMemoData: Bool) {
+        if isMemoData {
+            dataInfoLabel.isHidden = true
+            tableView.separatorStyle = .singleLine
+        } else {
+            dataInfoLabel.isHidden = false
+            tableView.separatorStyle = .none
+        }
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailMemoViewController = segue.destination as? DetailMemoViewController,
             let memoData = sender as? MemoData else { return }
@@ -62,6 +73,7 @@ extension MainMemoViewController {
 
 extension MainMemoViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        configureDataInfoLabel(isMemoData: UserDataManager.shared.memoDataList.isEmpty ? false : true)
         return UserDataManager.shared.memoDataList.count
     }
 
@@ -92,6 +104,10 @@ extension MainMemoViewController: UITableViewDataSource {
 extension MainMemoViewController: UITableViewDelegate {
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return ViewSize.Height.mainTableView
+    }
+
+    func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -15,9 +15,10 @@ class MainMemoView: UIView {
     // MARK: UI
 
     let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = .lightGray
-        tableView.separatorStyle = .none
+        let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = .lightGray
         return tableView
     }()
 
@@ -74,8 +75,10 @@ extension MainMemoView: ViewSetting {
     func configureDataInfoLabel(isMemoData: Bool) {
         if isMemoData {
             dataInfoLabel.isHidden = true
+            tableView.separatorStyle = .singleLine
         } else {
             dataInfoLabel.isHidden = false
+            tableView.separatorStyle = .none
         }
     }
 }

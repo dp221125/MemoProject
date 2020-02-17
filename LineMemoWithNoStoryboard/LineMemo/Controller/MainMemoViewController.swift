@@ -131,6 +131,14 @@ extension MainMemoViewController: UITableViewDelegate {
         return ViewSize.Height.mainTableView
     }
 
+    func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
+        return UIView()
+    }
+
+    func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         UserDataManager.shared.configureEditingMemoIndex(at: indexPath.row)
         mainView.tableView.deselectRow(at: indexPath, animated: true)

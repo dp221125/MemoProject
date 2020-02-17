@@ -16,15 +16,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dNF-vh-kpM">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dNF-vh-kpM">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 메모가 존재하지 않습니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5h-Mp-1n9">
+                                <rect key="frame" x="0.0" y="423" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yb2-se-5qT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="dNF-vh-kpM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0i0-Ps-bei"/>
+                            <constraint firstItem="g5h-Mp-1n9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3oH-Iy-vhg"/>
+                            <constraint firstItem="g5h-Mp-1n9" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="56g-Dn-yb1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dNF-vh-kpM" secondAttribute="bottom" id="DWs-XW-Tx2"/>
+                            <constraint firstItem="g5h-Mp-1n9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HmZ-nV-H9c"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dNF-vh-kpM" secondAttribute="trailing" id="UpD-nu-Dc1"/>
                             <constraint firstItem="dNF-vh-kpM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="w37-sa-Teo"/>
                         </constraints>
@@ -39,6 +52,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addMemoBarButtonItem" destination="lU7-Zj-OEJ" id="fS1-wL-Tck"/>
+                        <outlet property="dataInfoLabel" destination="g5h-Mp-1n9" id="1pv-yp-hlB"/>
                         <outlet property="tableView" destination="dNF-vh-kpM" id="ZOE-VF-tRf"/>
                         <segue destination="VfV-Qo-eFX" kind="show" identifier="goToAddMemoView" id="2JT-ZZ-1ae"/>
                         <segue destination="YSz-N6-AgJ" kind="show" identifier="goToDetailMemoView" id="Q7W-iO-VPY"/>
