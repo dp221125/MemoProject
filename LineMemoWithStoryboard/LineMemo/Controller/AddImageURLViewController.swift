@@ -12,7 +12,7 @@ import UIKit
 
 /// * URL 이미지 추가 뷰컨트롤러
 
-class AddURLImageViewController: UIViewController {
+class AddImageURLViewController: UIViewController {
     // MARK: UI
 
     @IBOutlet var textField: UITextField!
@@ -47,7 +47,7 @@ class AddURLImageViewController: UIViewController {
 
 // MARK: - Configuration
 
-extension AddURLImageViewController: ViewControllerSetting {
+extension AddImageURLViewController: ViewControllerSetting {
     func configureViewController() {
         RequestImage.shared.delegate = self
         configureTextField()
@@ -72,7 +72,7 @@ extension AddURLImageViewController: ViewControllerSetting {
 
 // MARK: - Event
 
-extension AddURLImageViewController {
+extension AddImageURLViewController {
     @objc func textFieldEditingChanged(_: UITextField) {
         checkInputData()
     }
@@ -85,18 +85,7 @@ extension AddURLImageViewController {
     @IBAction func addImageButtonPressed(_: UIButton) {
         view.endEditing(true)
         guard let requestedURL = self.textField.text else { return }
-        RequestImage.shared.requestFromURL(requestedURL) { success, image in
-            if success {
-                DispatchQueue.main.async {
-                    self.delegate?.sendData(image)
-                    self.dismiss(animated: true, completion: nil)
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.navigationController?.presentToastView("해당 URL 이미지를 불러오는데 실패했습니다.")
-                }
-            }
-        }
+        RequestImage.shared.requestFromURL(requestedURL)
     }
 
     override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
@@ -106,19 +95,27 @@ extension AddURLImageViewController {
 
 // MARK: - RequestImageDelegate
 
-extension AddURLImageViewController: RequestImageDelegate {
-    func requestImageDidBegin() {
+extension AddImageURLViewController: RequestImageDelegate {
+    func requestImageDidBegin(_: RequestImage) {
         isImageRequested = true
         beginIgnoringInteractionEvents()
     }
 
-    func requestImageDidFinished() {
+    func requestImageDidFinished(_: RequestImage, _ image: UIImage) {
         isImageRequested = false
         endIgnoringInteractionEvents()
+        DispatchQueue.main.async {
+            self.delegate?.sendData(image)
+            self.navigationController?.presentToastView("URL 이미지 등록에 성공했습니다.")
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
-    func requestImageDidError() {
+    func requestImageDidError(_: RequestImage, _ error: RequestImageError) {
         isImageRequested = false
         endIgnoringInteractionEvents()
+        DispatchQueue.main.async {
+            self.navigationController?.presentToastView("URL 이미지 등록에 실패했습니다.\n\(error.message)")
+        }
     }
 }

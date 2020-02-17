@@ -19,8 +19,9 @@
 		077D58C923F6FFB70060C111 /* UserDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D58C823F6FFB70060C111 /* UserDataError.swift */; };
 		077E94A123F19DAE00103AC9 /* UIActivityIndicatorView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */; };
 		078141C123F2D33400D9A9CD /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078141C023F2D33400D9A9CD /* UITextView+.swift */; };
+		078CF57F23FACA2B0032A731 /* ViewSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078CF57E23FACA2B0032A731 /* ViewSetting.swift */; };
+		078CF58123FACAA00032A731 /* RequestImageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078CF58023FACAA00032A731 /* RequestImageError.swift */; };
 		0794F85B23F13CE000D16463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85A23F13CE000D16463 /* AppDelegate.swift */; };
-		0794F85D23F13CE000D16463 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85C23F13CE000D16463 /* SceneDelegate.swift */; };
 		0794F85F23F13CE000D16463 /* MainMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85E23F13CE000D16463 /* MainMemoViewController.swift */; };
 		0794F86223F13CE000D16463 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0794F86023F13CE000D16463 /* Main.storyboard */; };
 		0794F86423F13CE000D16463 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0794F86323F13CE000D16463 /* Assets.xcassets */; };
@@ -40,7 +41,7 @@
 		07BFEE9123F2BDD800877D8F /* SendDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE9023F2BDD800877D8F /* SendDataDelegate.swift */; };
 		07BFEE9323F2CC4500877D8F /* UpdateMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE9223F2CC4500877D8F /* UpdateMode.swift */; };
 		07BFEE9523F2D1CD00877D8F /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFEE9423F2D1CD00877D8F /* UITextField+.swift */; };
-		07DD9E7023F192CB009B95A0 /* AddURLImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E6F23F192CB009B95A0 /* AddURLImageViewController.swift */; };
+		07DD9E7023F192CB009B95A0 /* AddImageURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E6F23F192CB009B95A0 /* AddImageURLViewController.swift */; };
 		07DD9E7223F19945009B95A0 /* RequestImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E7123F19945009B95A0 /* RequestImage.swift */; };
 		07DD9E7423F19B1B009B95A0 /* RequestImageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DD9E7323F19B1B009B95A0 /* RequestImageDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -58,9 +59,10 @@
 		077D58C823F6FFB70060C111 /* UserDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataError.swift; sourceTree = "<group>"; };
 		077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+.swift"; sourceTree = "<group>"; };
 		078141C023F2D33400D9A9CD /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
+		078CF57E23FACA2B0032A731 /* ViewSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSetting.swift; sourceTree = "<group>"; };
+		078CF58023FACAA00032A731 /* RequestImageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestImageError.swift; sourceTree = "<group>"; };
 		0794F85723F13CE000D16463 /* LineMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0794F85A23F13CE000D16463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0794F85C23F13CE000D16463 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0794F85E23F13CE000D16463 /* MainMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMemoViewController.swift; sourceTree = "<group>"; };
 		0794F86123F13CE000D16463 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0794F86323F13CE000D16463 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,7 +83,7 @@
 		07BFEE9023F2BDD800877D8F /* SendDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDataDelegate.swift; sourceTree = "<group>"; };
 		07BFEE9223F2CC4500877D8F /* UpdateMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMode.swift; sourceTree = "<group>"; };
 		07BFEE9423F2D1CD00877D8F /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		07DD9E6F23F192CB009B95A0 /* AddURLImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddURLImageViewController.swift; sourceTree = "<group>"; };
+		07DD9E6F23F192CB009B95A0 /* AddImageURLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageURLViewController.swift; sourceTree = "<group>"; };
 		07DD9E7123F19945009B95A0 /* RequestImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestImage.swift; sourceTree = "<group>"; };
 		07DD9E7323F19B1B009B95A0 /* RequestImageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestImageDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				077D58C823F6FFB70060C111 /* UserDataError.swift */,
+				078CF58023FACAA00032A731 /* RequestImageError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -135,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				0794F85A23F13CE000D16463 /* AppDelegate.swift */,
-				0794F85C23F13CE000D16463 /* SceneDelegate.swift */,
 				0794F88923F170CD00D16463 /* Extension */,
 				07DD9E7523F19B20009B95A0 /* Protocol */,
 				0794F87323F13FD500D16463 /* Model */,
@@ -153,7 +155,7 @@
 				0794F85E23F13CE000D16463 /* MainMemoViewController.swift */,
 				075172EA23F1CF4200959180 /* DetailMemoViewController.swift */,
 				0794F87D23F14E2C00D16463 /* AddMemoViewController.swift */,
-				07DD9E6F23F192CB009B95A0 /* AddURLImageViewController.swift */,
+				07DD9E6F23F192CB009B95A0 /* AddImageURLViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -233,6 +235,7 @@
 				07DD9E7323F19B1B009B95A0 /* RequestImageDelegate.swift */,
 				07BFEE9023F2BDD800877D8F /* SendDataDelegate.swift */,
 				0746F70023F4050C00617A16 /* ViewControllerSetting.swift */,
+				078CF57E23FACA2B0032A731 /* ViewSetting.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				07B6DFA223F3193800B870CF /* UserDataManager.swift in Sources */,
 				07DD9E7423F19B1B009B95A0 /* RequestImageDelegate.swift in Sources */,
 				0746F6F523F3D0F700617A16 /* ViewSize.swift in Sources */,
+				078CF57F23FACA2B0032A731 /* ViewSetting.swift in Sources */,
 				0746F70123F4050C00617A16 /* ViewControllerSetting.swift in Sources */,
 				0746F6FF23F3F92700617A16 /* UINavigationController+.swift in Sources */,
 				07BFEE9323F2CC4500877D8F /* UpdateMode.swift in Sources */,
@@ -329,13 +333,13 @@
 				0746F6F823F3D17300617A16 /* MainMemoTableViewCell.swift in Sources */,
 				0794F87A23F1458100D16463 /* MainNavigationController.swift in Sources */,
 				0794F88223F1584900D16463 /* MemoImageCollectionViewCell.swift in Sources */,
-				07DD9E7023F192CB009B95A0 /* AddURLImageViewController.swift in Sources */,
+				07DD9E7023F192CB009B95A0 /* AddImageURLViewController.swift in Sources */,
 				077D58B623F6A0C90060C111 /* UIButton+.swift in Sources */,
+				078CF58123FACAA00032A731 /* RequestImageError.swift in Sources */,
 				0794F87123F13F3400D16463 /* MemoData.swift in Sources */,
 				077D58C923F6FFB70060C111 /* UserDataError.swift in Sources */,
 				0794F85B23F13CE000D16463 /* AppDelegate.swift in Sources */,
 				07B6DFA623F31B5800B870CF /* MemoRawData.swift in Sources */,
-				0794F85D23F13CE000D16463 /* SceneDelegate.swift in Sources */,
 				0794F88523F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift in Sources */,
 				07BFEE9123F2BDD800877D8F /* SendDataDelegate.swift in Sources */,
 				07BFEE8D23F28FAA00877D8F /* MemoMode.swift in Sources */,

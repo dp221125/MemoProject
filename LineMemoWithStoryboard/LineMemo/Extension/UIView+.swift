@@ -11,8 +11,8 @@ import UIKit
 extension UIView {
     func configureBasicBorder() {
         clipsToBounds = true
-        layer.borderWidth = 1
-        layer.cornerRadius = 10
+        layer.borderWidth = ViewSize.BorderWidth.basic
+        layer.cornerRadius = ViewSize.CornerRadius.basic
         UIView.animate(withDuration: 0.3, animations: {
             self.layer.borderColor = UIColor.black.cgColor
         })

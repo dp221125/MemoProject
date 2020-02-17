@@ -299,7 +299,7 @@
         <!--URL 이미지 등록-->
         <scene sceneID="8db-Yw-4VO">
             <objects>
-                <viewController id="aiw-5N-fu0" customClass="AddURLImageViewController" customModule="LineMemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aiw-5N-fu0" customClass="AddImageURLViewController" customModule="LineMemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1P5-rC-k8t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

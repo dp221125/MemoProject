@@ -18,7 +18,7 @@ class MainMemoTableViewCell: UITableViewCell {
     @IBOutlet var subTextLabel: UILabel!
     @IBOutlet var thumbnailImageView: UIImageView!
 
-    // MARK: Life Cycle
+    // MARK: Initializer
 
     override func awakeFromNib() {
         super.awakeFromNib()
