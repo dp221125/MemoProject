@@ -40,7 +40,7 @@ extension ToastView {
         contentView.center = CGPoint(x: view.bounds.width / 2, y: view.bounds.height - 100)
         contentView.backgroundColor = .darkGray
         contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = 10
+        contentView.layer.cornerRadius = ViewSize.CornerRadius.basic
         contentView.alpha = 0
 
         textLabel.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)

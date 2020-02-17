@@ -18,6 +18,8 @@ extension UITextView {
             isEditable = false
         case .edit:
             configureBasicBorder()
+            autocorrectionType = .no
+            autocapitalizationType = .none
             isEditable = true
         }
 

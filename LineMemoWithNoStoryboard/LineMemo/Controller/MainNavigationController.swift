@@ -71,10 +71,14 @@ extension MainNavigationController: ViewControllerSetting {
 
 extension MainNavigationController {
     @objc func keyboardWillShow(_: NSNotification) {
-        topViewController?.view.frame.origin.y = -ViewSize.Height.imageSection
+        UIView.animate(withDuration: 0.1, animations: {
+            self.topViewController?.view.frame.origin.y = -ViewSize.Height.imageSection
+        })
     }
 
     @objc func keyboardWillHide(_: NSNotification) {
-        topViewController?.view.frame.origin.y = 0
+        UIView.animate(withDuration: 0.1, animations: {
+            self.topViewController?.view.frame.origin.y = 0
+        })
     }
 }

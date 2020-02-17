@@ -15,7 +15,7 @@ class MemoImageCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
         guard let collectionViewHeight = self.collectionView?.layer.bounds.height else { return }
-        sectionInset = UIEdgeInsets(top: -10, left: 10, bottom: -10, right: 30)
+        sectionInset = UIEdgeInsets(top: -10, left: 10, bottom: -10, right: -10)
         scrollDirection = .horizontal
         collectionView?.isScrollEnabled = true
         let newItemWidth = collectionViewHeight * 0.9

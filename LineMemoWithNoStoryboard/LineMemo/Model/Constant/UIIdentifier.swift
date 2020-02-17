@@ -20,13 +20,6 @@ struct UIIdentifier {
         }
     }
 
-    struct Segue {
-        static let goToAddMemoView = "goToAddMemoView"
-        static let goToDetailMemoView = "goToDetailMemoView"
-        static let goToAddURLImageView = "goToAddURLImageView"
-        static let unwindToAddMemoView = "unwindToAddMemoView"
-    }
-
     struct Cell {
         struct Table {
             static let main = "MainMemoTableViewCell"

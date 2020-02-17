@@ -12,11 +12,15 @@ import UIKit
 
 /// * 메인 메모리스트 뷰
 class MainMemoView: UIView {
+    // MARK: UI
+
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .lightGray
         return tableView
     }()
+
+    // MARK: Initializer
 
     override init(frame: CGRect) {
         super.init(frame: frame)

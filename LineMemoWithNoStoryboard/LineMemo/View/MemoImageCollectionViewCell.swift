@@ -17,7 +17,7 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var deleteImageView: UIImageView!
 
-    // MARK: Life Cycle
+    // MARK: Initializer
 
     override func awakeFromNib() {
         super.awakeFromNib()

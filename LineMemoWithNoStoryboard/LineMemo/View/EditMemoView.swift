@@ -71,7 +71,7 @@ class EditMemoView: UIView {
         return subTextView
     }()
 
-    // MARK: Life Cycle
+    // MARK: Initializer
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -103,21 +103,21 @@ extension EditMemoView: ViewSetting {
         NSLayoutConstraint.activate([
             stackView.leftAnchor.constraint(equalTo: self.safeAreaLeftAnchor),
             stackView.rightAnchor.constraint(equalTo: self.safeAreaRightAnchor),
-            stackView.topAnchor.constraint(equalTo: self.safeAreaTopAnchor, constant: 10),
-            stackView.bottomAnchor.constraint(equalTo: self.safeAreaBottomAnchor, constant: -10),
+            stackView.topAnchor.constraint(equalTo: self.safeAreaTopAnchor, constant: ViewSize.basicInset),
+            stackView.bottomAnchor.constraint(equalTo: self.safeAreaBottomAnchor, constant: -ViewSize.basicInset),
         ])
 
         imageLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageLabel.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: 10),
-            imageLabel.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -10),
-            imageLabel.heightAnchor.constraint(equalToConstant: 30),
+            imageLabel.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: ViewSize.basicInset),
+            imageLabel.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -ViewSize.basicInset),
+            imageLabel.heightAnchor.constraint(equalToConstant: ViewSize.Height.titleLabel),
         ])
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: 10),
-            titleLabel.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -10),
+            titleLabel.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: ViewSize.basicInset),
+            titleLabel.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -ViewSize.basicInset),
             titleLabel.heightAnchor.constraint(equalToConstant: ViewSize.Height.titleLabel),
         ])
 
@@ -137,15 +137,15 @@ extension EditMemoView: ViewSetting {
 
         titleTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.titleTextField.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: 10),
-            self.titleTextField.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -10),
+            self.titleTextField.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: ViewSize.basicInset),
+            self.titleTextField.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -ViewSize.basicInset),
             self.titleTextField.heightAnchor.constraint(equalToConstant: ViewSize.Height.textField),
         ])
 
         subTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.subTextView.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: 10),
-            self.subTextView.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -10),
+            self.subTextView.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: ViewSize.basicInset),
+            self.subTextView.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -ViewSize.basicInset),
         ])
     }
 }

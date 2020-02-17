@@ -45,7 +45,7 @@ class AddImageURLView: UIView {
         return urlTextField
     }()
 
-    // MARK: Life Cycle
+    // MARK: Initializer
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -74,7 +74,7 @@ extension AddImageURLView: ViewSetting {
         NSLayoutConstraint.activate([
             self.stackView.leftAnchor.constraint(equalTo: self.safeAreaLeftAnchor),
             self.stackView.rightAnchor.constraint(equalTo: self.safeAreaRightAnchor),
-            self.stackView.topAnchor.constraint(equalTo: self.safeAreaTopAnchor, constant: 30),
+            self.stackView.topAnchor.constraint(equalTo: self.safeAreaTopAnchor, constant: ViewSize.basicInset * 3),
         ])
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -95,7 +95,7 @@ extension AddImageURLView: ViewSetting {
         NSLayoutConstraint.activate([
             self.addImageButton.leftAnchor.constraint(equalTo: stackView.safeAreaLeftAnchor, constant: ViewSize.basicInset),
             self.addImageButton.rightAnchor.constraint(equalTo: stackView.safeAreaRightAnchor, constant: -ViewSize.basicInset),
-            self.addImageButton.heightAnchor.constraint(equalToConstant: 50),
+            self.addImageButton.heightAnchor.constraint(equalToConstant: ViewSize.Height.button),
         ])
     }
 }

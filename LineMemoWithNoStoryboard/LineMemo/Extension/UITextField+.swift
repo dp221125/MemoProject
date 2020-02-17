@@ -25,6 +25,8 @@ extension UITextField {
             isEnabled = false
         case .edit:
             configureBasicBorder()
+            autocorrectionType = .no
+            autocapitalizationType = .none
             isEnabled = true
         }
     }

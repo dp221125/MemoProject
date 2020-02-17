@@ -18,7 +18,7 @@ class MainMemoTableViewCell: UITableViewCell {
     @IBOutlet var subTextLabel: UILabel!
     @IBOutlet var thumbnailImageView: UIImageView!
 
-    // MARK: Life Cycle
+    // MARK: Initializer
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,7 +27,7 @@ class MainMemoTableViewCell: UITableViewCell {
     // MARK: Configuration
 
     func configureCell(_ memoData: MemoData) {
-        thumbnailImageView.layer.cornerRadius = 5
+        thumbnailImageView.layer.cornerRadius = ViewSize.CornerRadius.thumbnailImageView
 
         mainTitleLabel.text = memoData.title
         subTextLabel.text = memoData.subText

@@ -107,6 +107,7 @@ extension MainMemoViewController: UITableViewDataSource {
             do {
                 try UserDataManager.shared.remove(at: indexPath.row)
                 mainView.tableView.deleteRows(at: [indexPath], with: .automatic)
+                navigationController?.presentToastView("해당 메모가 삭제되었습니다.")
             } catch {
                 navigationController?.presentToastView("메모 삭제에 실패했습니다.\n\(String(describing: (error as? UserDataError)?.message))")
             }
