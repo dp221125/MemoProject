@@ -27,7 +27,6 @@
 		078141C123F2D33400D9A9CD /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078141C023F2D33400D9A9CD /* UITextView+.swift */; };
 		078CF57323F9CEBD0032A731 /* RequestImageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078CF57223F9CEBD0032A731 /* RequestImageError.swift */; };
 		0794F85B23F13CE000D16463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85A23F13CE000D16463 /* AppDelegate.swift */; };
-		0794F85D23F13CE000D16463 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85C23F13CE000D16463 /* SceneDelegate.swift */; };
 		0794F85F23F13CE000D16463 /* MainMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794F85E23F13CE000D16463 /* MainMemoViewController.swift */; };
 		0794F86423F13CE000D16463 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0794F86323F13CE000D16463 /* Assets.xcassets */; };
 		0794F86723F13CE000D16463 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0794F86523F13CE000D16463 /* LaunchScreen.storyboard */; };
@@ -73,7 +72,6 @@
 		078CF57223F9CEBD0032A731 /* RequestImageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestImageError.swift; sourceTree = "<group>"; };
 		0794F85723F13CE000D16463 /* LineMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0794F85A23F13CE000D16463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0794F85C23F13CE000D16463 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0794F85E23F13CE000D16463 /* MainMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMemoViewController.swift; sourceTree = "<group>"; };
 		0794F86323F13CE000D16463 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0794F86623F13CE000D16463 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				0794F85A23F13CE000D16463 /* AppDelegate.swift */,
-				0794F85C23F13CE000D16463 /* SceneDelegate.swift */,
 				0794F88923F170CD00D16463 /* Extension */,
 				07DD9E7523F19B20009B95A0 /* Protocol */,
 				0794F87323F13FD500D16463 /* Model */,
@@ -358,7 +355,6 @@
 				077D58C923F6FFB70060C111 /* UserDataError.swift in Sources */,
 				0794F85B23F13CE000D16463 /* AppDelegate.swift in Sources */,
 				07B6DFA623F31B5800B870CF /* MemoRawData.swift in Sources */,
-				0794F85D23F13CE000D16463 /* SceneDelegate.swift in Sources */,
 				0794F88523F15E1E00D16463 /* MemoImageCollectionViewFlowLayout.swift in Sources */,
 				07BFEE9123F2BDD800877D8F /* SendDataDelegate.swift in Sources */,
 				0775887723F91A7200BF4D50 /* MainMemoView.swift in Sources */,

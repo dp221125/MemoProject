@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainMemoViewController = MainMemoViewController()
         let mainNavigationController = MainNavigationController(rootViewController: mainMemoViewController)
 
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
+
         window?.rootViewController = mainNavigationController
         window?.makeKeyAndVisible()
         return true
