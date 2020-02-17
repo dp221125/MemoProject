@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainStoryboard = UIStoryboard(name: UIIdentifier.Storyboard.main, bundle: nil)
         let mainNavigationController = mainStoryboard.instantiateViewController(withIdentifier: UIIdentifier.Storyboard.mainNavigationController) as? UINavigationController
 
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
+        
         window?.rootViewController = mainNavigationController
         window?.makeKeyAndVisible()
         return true
