@@ -31,8 +31,10 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
 
         switch imageMode {
         case .view:
+            photoImageView.backgroundColor = .black
             deleteImageView.isHidden = true
         case .edit:
+            photoImageView.backgroundColor = indexPath.row == 0 ? .clear : .black
             deleteImageView.isHidden = indexPath.row == 0 ? true : false
         }
         photoImageView.image = image

@@ -179,7 +179,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelEditBarButtonItem" destination="bk4-UC-2zr" id="gCh-YO-05J"/>
+                        <outlet property="cancelBarButtonItem" destination="bk4-UC-2zr" id="gCh-YO-05J"/>
                         <outlet property="collectionView" destination="fDE-Ug-MaF" id="Ysf-V2-i9b"/>
                         <outlet property="saveEditBarButtonItem" destination="F7i-di-DfS" id="Ctz-sj-J8x"/>
                         <outlet property="subTextView" destination="I4O-fj-YAH" id="vfV-i3-VcG"/>

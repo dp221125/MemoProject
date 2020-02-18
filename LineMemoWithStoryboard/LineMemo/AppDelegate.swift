@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
             window?.overrideUserInterfaceStyle = .light
         }
-        
+
         window?.rootViewController = mainNavigationController
         window?.makeKeyAndVisible()
         return true

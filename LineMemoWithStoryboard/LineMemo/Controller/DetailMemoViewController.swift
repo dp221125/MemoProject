@@ -19,7 +19,7 @@ class DetailMemoViewController: UIViewController {
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var subTextView: UITextView!
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var cancelEditBarButtonItem: UIBarButtonItem!
+    @IBOutlet var cancelBarButtonItem: UIBarButtonItem!
     @IBOutlet var saveEditBarButtonItem: UIBarButtonItem!
 
     // MARK: Properties
@@ -84,8 +84,8 @@ extension DetailMemoViewController: ViewControllerSetting {
 
     private func configureBarButtonItems() {
         saveEditBarButtonItem.title = "편집"
-        cancelEditBarButtonItem.title = "취소"
-        cancelEditBarButtonItem.isEnabled = false
+        cancelBarButtonItem.title = "취소"
+        cancelBarButtonItem.isEnabled = false
     }
 
     private func configureAddImageTapGestureRecognizer() {
@@ -112,14 +112,14 @@ extension DetailMemoViewController: ViewControllerSetting {
         subTextView.configureTextView(mode: mode)
         switch imageMode {
         case .view:
-            cancelEditBarButtonItem.isEnabled = false
+            cancelBarButtonItem.isEnabled = false
             saveEditBarButtonItem.isEnabled = true
             titleTextField.isEnabled = false
             subTextView.isEditable = false
             saveEditBarButtonItem.title = "편집"
             editingMemoData.imageList = editingMemoData.imageList.filter { $0 != .addImage }
         case .edit:
-            cancelEditBarButtonItem.isEnabled = true
+            cancelBarButtonItem.isEnabled = true
             titleTextField.isEnabled = true
             subTextView.isEditable = true
             saveEditBarButtonItem.title = "저장"
@@ -352,7 +352,8 @@ extension DetailMemoViewController: UINavigationControllerDelegate {}
 extension DetailMemoViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
-        insertAndUpdateImageList(at: 1, image: selectedImage, mode: .single)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) { [weak self] in
+            self?.insertAndUpdateImageList(at: 1, image: selectedImage, mode: .single)
+        }
     }
 }
