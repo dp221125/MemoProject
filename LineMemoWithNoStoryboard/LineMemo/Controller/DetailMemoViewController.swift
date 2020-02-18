@@ -128,12 +128,14 @@ extension DetailMemoViewController: ViewControllerSetting {
             cancelBarButtonItem.isEnabled = false
             mainView.titleTextField.isEnabled = false
             mainView.subTextView.isEditable = false
+            navigationItem.rightBarButtonItems = [saveEditBarButtonItem]
             editingMemoData.imageList = editingMemoData.imageList.filter { $0 != .addImage }
         case .edit:
             saveEditBarButtonItem.title = "저장"
             cancelBarButtonItem.isEnabled = true
             mainView.titleTextField.isEnabled = true
             mainView.subTextView.isEditable = true
+            navigationItem.rightBarButtonItems = [saveEditBarButtonItem, cancelBarButtonItem]
             insertAndUpdateImageList(at: 0, image: .addImage, mode: .whole)
         }
     }
