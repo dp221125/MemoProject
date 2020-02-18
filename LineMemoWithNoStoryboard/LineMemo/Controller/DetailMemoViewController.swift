@@ -29,6 +29,8 @@ class DetailMemoViewController: UIViewController {
     private lazy var imagePickerController: UIImagePickerController = {
         let imagePickerController = UIImagePickerController()
         imagePickerController.allowsEditing = true
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
         return imagePickerController
     }()
 
@@ -38,8 +40,8 @@ class DetailMemoViewController: UIViewController {
     private var imageMode = MemoMode.view {
         didSet {
             configureByMemoMode(mode: imageMode)
-            DispatchQueue.main.async {
-                self.mainView.imageCollectionView.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.mainView.imageCollectionView.reloadData()
             }
         }
     }
@@ -74,23 +76,24 @@ extension DetailMemoViewController: ViewControllerSetting {
         configureBarButtonItems()
         configureAlertController()
         configureAddImageTapGestureRecognizer()
-        configureImagePickerController()
     }
 
     func configureMemoData(_ memoData: MemoData) {
         originMemoData = memoData
     }
 
-    private func configureImagePickerController() {
-        imagePickerController.delegate = self
+    private func configureBarButtonItems() {
+        configureSaveEditBarButtonItem()
+        configureCancelBarButtonItem()
     }
 
-    private func configureBarButtonItems() {
-        cancelBarButtonItem.isEnabled = false
+    private func configureCancelBarButtonItem() {
         cancelBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelEditBarButtonItemPressed(_:)))
         cancelBarButtonItem.tintColor = .black
         cancelBarButtonItem.isEnabled = false
+    }
 
+    private func configureSaveEditBarButtonItem() {
         saveEditBarButtonItem = UIBarButtonItem(title: "편집", style: .plain, target: self, action: #selector(editBarButtonItemPressed(_:)))
         saveEditBarButtonItem.tintColor = .black
         navigationItem.rightBarButtonItems = [saveEditBarButtonItem, cancelBarButtonItem]
@@ -120,96 +123,98 @@ extension DetailMemoViewController: ViewControllerSetting {
         mainView.subTextView.configureTextView(mode: mode)
         switch imageMode {
         case .view:
-            cancelBarButtonItem.isEnabled = false
+            saveEditBarButtonItem.title = "편집"
             saveEditBarButtonItem.isEnabled = true
+            cancelBarButtonItem.isEnabled = false
             mainView.titleTextField.isEnabled = false
             mainView.subTextView.isEditable = false
-            saveEditBarButtonItem.title = "편집"
             editingMemoData.imageList = editingMemoData.imageList.filter { $0 != .addImage }
         case .edit:
+            saveEditBarButtonItem.title = "저장"
             cancelBarButtonItem.isEnabled = true
             mainView.titleTextField.isEnabled = true
             mainView.subTextView.isEditable = true
-            saveEditBarButtonItem.title = "저장"
             insertAndUpdateImageList(at: 0, image: .addImage, mode: .whole)
         }
     }
 
     private func insertAndUpdateImageList(at index: Int, image: UIImage, mode: UpdateMode) {
-        DispatchQueue.main.async {
-            self.editingMemoData.imageList.insert(image, at: index)
+        DispatchQueue.main.async { [weak self] in
+            self?.editingMemoData.imageList.insert(image, at: index)
             switch mode {
             case .single:
-                self.mainView.imageCollectionView.performBatchUpdates({
-                    self.mainView.imageCollectionView.insertItems(at: [IndexPath(item: index, section: 0)])
+                self?.mainView.imageCollectionView.performBatchUpdates({
+                    self?.mainView.imageCollectionView.insertItems(at: [IndexPath(item: index, section: 0)])
                 }, completion: nil)
             case .whole:
-                self.mainView.imageCollectionView.reloadData()
+                self?.mainView.imageCollectionView.reloadData()
             }
         }
     }
 
     private func removeAndUpdateImageList(at index: Int, mode: UpdateMode) {
-        DispatchQueue.main.async {
-            self.editingMemoData.imageList.remove(at: index)
+        DispatchQueue.main.async { [weak self] in
+            self?.editingMemoData.imageList.remove(at: index)
             switch mode {
             case .single:
-                self.mainView.imageCollectionView.performBatchUpdates({
-                    self.mainView.imageCollectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
+                self?.mainView.imageCollectionView.performBatchUpdates({
+                    self?.mainView.imageCollectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
                 }, completion: nil)
             case .whole:
-                self.mainView.imageCollectionView.reloadData()
+                self?.mainView.imageCollectionView.reloadData()
             }
         }
     }
 
     private func configureAlertController() {
         /// 사진촬영을 선택 시 이벤트 정의
-        let takePictureAlertAction = UIAlertAction(title: "사진 찍기", style: .default) { _ in
+        let takePictureAlertAction = UIAlertAction(title: "사진 찍기", style: .default) { [weak self] _ in
+            guard let imagePickerController = self?.imagePickerController else { return }
             let cameraType = AVMediaType.video
             let cameraStatus = AVCaptureDevice.authorizationStatus(for: cameraType)
             switch cameraStatus {
             case .authorized:
-                self.openCamera(self.imagePickerController)
+                self?.openCamera(imagePickerController)
             case .notDetermined:
                 AVCaptureDevice.requestAccess(for: cameraType, completionHandler: { granted in
                     if granted {
-                        self.openCamera(self.imagePickerController)
+                        self?.openCamera(imagePickerController)
                     }
                 })
             default:
-                self.presentCameraAuthRequestAlertController()
+                self?.presentCameraAuthRequestAlertController()
             }
         }
 
         /// 앨범사진을 선택 시 이벤트 정의
-        let getAlbumAlertAction = UIAlertAction(title: "앨범 사진 가져오기", style: .default, handler: { _ in
+        let getAlbumAlertAction = UIAlertAction(title: "앨범 사진 가져오기", style: .default, handler: { [weak self] _ in
+            guard let imagePickerController = self?.imagePickerController else { return }
             let albumAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
 
             DispatchQueue.main.async {
                 switch albumAuthorizationStatus {
                 case .authorized:
-                    self.openAlbum(self.imagePickerController)
+                    self?.openAlbum(imagePickerController)
                 case .notDetermined:
                     PHPhotoLibrary.requestAuthorization { status in
                         switch status {
                         case .authorized:
-                            self.openAlbum(self.imagePickerController)
+                            self?.openAlbum(imagePickerController)
                         default: break
                         }
                     }
                 default:
-                    self.presentAlbumAuthRequestAlertController()
+                    self?.presentAlbumAuthRequestAlertController()
                 }
             }
         })
 
-        let getPictureFromURLAction = UIAlertAction(title: "URL로 등록하기", style: .default) { _ in
+        let getPictureFromURLAction = UIAlertAction(title: "URL로 등록하기", style: .default) { [weak self] _ in
 
             DispatchQueue.main.async {
                 let addImageURLViewController = AddImageURLViewController()
                 addImageURLViewController.delegate = self
-                self.presentViewController(destination: addImageURLViewController)
+                self?.presentViewController(destination: addImageURLViewController)
             }
         }
 
@@ -302,6 +307,7 @@ extension DetailMemoViewController: SendDataDelegate {
 
 extension DetailMemoViewController: UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
+        mainView.configureImageInfoLabel(isImageData: editingMemoData.imageList.isEmpty ? false : true)
         return editingMemoData.imageList.count
     }
 
@@ -358,7 +364,12 @@ extension DetailMemoViewController: UINavigationControllerDelegate {}
 extension DetailMemoViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
-        insertAndUpdateImageList(at: 1, image: selectedImage, mode: .single)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) { [weak self] in
+            self?.insertAndUpdateImageList(at: 1, image: selectedImage, mode: .single)
+        }
+    }
+
+    func imagePickerControllerDidCancel(_: UIImagePickerController) {
+        dismiss(animated: true)
     }
 }

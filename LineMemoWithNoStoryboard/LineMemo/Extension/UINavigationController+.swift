@@ -10,8 +10,9 @@ import UIKit
 
 extension UINavigationController {
     func presentToastView(_ message: String) {
-        DispatchQueue.main.async {
-            ToastView.shared.presentShortMessage(self.view, message: message)
+        DispatchQueue.main.async { [weak self] in
+            guard let view = self?.view else { return }
+            ToastView.shared.presentShortMessage(view, message: message)
         }
     }
 }

@@ -23,6 +23,17 @@ class EditMemoView: UIView {
         return stackView
     }()
 
+    private let imageInfoLabel: UILabel = {
+        let imageInfoLabel = UILabel()
+        imageInfoLabel.textColor = .black
+        imageInfoLabel.font = UIFont.subFont()
+        imageInfoLabel.textAlignment = .center
+        imageInfoLabel.adjustsFontSizeToFitWidth = true
+        imageInfoLabel.text = "이미지가 존재하지 않습니다."
+        imageInfoLabel.isHidden = true
+        return imageInfoLabel
+    }()
+
     private let imageLabel: UILabel = {
         let photoLabel = UILabel()
         photoLabel.textColor = .black
@@ -52,7 +63,9 @@ class EditMemoView: UIView {
         imageCollectionView.isScrollEnabled = true
         imageCollectionView.isUserInteractionEnabled = true
         imageCollectionView.alwaysBounceHorizontal = true
-        imageCollectionView.backgroundColor = .lightGray
+        imageCollectionView.backgroundColor = .clear
+        imageCollectionView.layer.borderColor = UIColor.lightGray.cgColor
+        imageCollectionView.layer.borderWidth = ViewSize.BorderWidth.basic
         let memoImageCollectionViewCell = UINib(nibName: UIIdentifier.Nib.CollectionViewCell.memoImage, bundle: nil)
         imageCollectionView.register(memoImageCollectionViewCell, forCellWithReuseIdentifier: UIIdentifier.Nib.CollectionViewCell.memoImage)
         return imageCollectionView
@@ -96,6 +109,7 @@ extension EditMemoView: ViewSetting {
         stackView.addArrangedSubview(subTextLabel)
         stackView.addArrangedSubview(subTextView)
         addSubview(stackView)
+        addSubview(imageInfoLabel)
     }
 
     func makeConstraints() {
@@ -147,5 +161,22 @@ extension EditMemoView: ViewSetting {
             self.subTextView.leftAnchor.constraint(equalTo: self.stackView.safeAreaLeftAnchor, constant: ViewSize.basicInset),
             self.subTextView.rightAnchor.constraint(equalTo: self.stackView.safeAreaRightAnchor, constant: -ViewSize.basicInset),
         ])
+
+        imageInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.imageInfoLabel.leftAnchor.constraint(equalTo: stackView.safeAreaLeftAnchor),
+            self.imageInfoLabel.rightAnchor.constraint(equalTo: stackView.safeAreaRightAnchor),
+            self.imageInfoLabel.centerYAnchor.constraint(equalTo: self.imageCollectionView.centerYAnchor),
+            self.imageInfoLabel.centerXAnchor.constraint(equalTo: self.imageCollectionView.centerXAnchor),
+            self.imageInfoLabel.heightAnchor.constraint(equalToConstant: ViewSize.Height.titleLabel),
+        ])
+    }
+
+    func configureImageInfoLabel(isImageData: Bool) {
+        if isImageData {
+            imageInfoLabel.isHidden = true
+        } else {
+            imageInfoLabel.isHidden = false
+        }
     }
 }

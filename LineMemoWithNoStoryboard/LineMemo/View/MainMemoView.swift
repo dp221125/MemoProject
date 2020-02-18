@@ -75,10 +75,8 @@ extension MainMemoView: ViewSetting {
     func configureDataInfoLabel(isMemoData: Bool) {
         if isMemoData {
             dataInfoLabel.isHidden = true
-            tableView.separatorStyle = .singleLine
         } else {
             dataInfoLabel.isHidden = false
-            tableView.separatorStyle = .none
         }
     }
 }

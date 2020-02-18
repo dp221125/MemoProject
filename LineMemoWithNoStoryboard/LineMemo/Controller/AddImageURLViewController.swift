@@ -105,18 +105,18 @@ extension AddImageURLViewController: RequestImageDelegate {
     func requestImageDidFinished(_: RequestImage, _ image: UIImage) {
         isImageRequested = false
         endIgnoringInteractionEvents()
-        DispatchQueue.main.async {
-            self.delegate?.sendData(image)
-            self.navigationController?.presentToastView("URL 이미지 등록에 성공했습니다.")
-            self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.delegate?.sendData(image)
+            self?.navigationController?.presentToastView("URL 이미지 등록에 성공했습니다.")
+            self?.navigationController?.popViewController(animated: true)
         }
     }
 
     func requestImageDidError(_: RequestImage, _ error: RequestImageError) {
         isImageRequested = false
         endIgnoringInteractionEvents()
-        DispatchQueue.main.async {
-            self.navigationController?.presentToastView("URL 이미지 등록에 실패했습니다.\n\(error.message)")
+        DispatchQueue.main.async { [weak self] in
+            self?.navigationController?.presentToastView("URL 이미지 등록에 실패했습니다.\n\(error.message)")
         }
     }
 }

@@ -20,12 +20,6 @@ class MainMemoViewController: UIViewController {
         return mainView
     }()
 
-    private var isMemoData = false {
-        didSet {
-            self.mainView.configureDataInfoLabel(isMemoData: isMemoData)
-        }
-    }
-
     // MARK: Life Cycle
 
     override func loadView() {
@@ -64,8 +58,8 @@ extension MainMemoViewController: ViewControllerSetting {
     }
 
     func reloadMemoData() {
-        DispatchQueue.main.async {
-            self.mainView.tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.mainView.tableView.reloadData()
         }
     }
 
@@ -98,7 +92,7 @@ extension MainMemoViewController {
 
 extension MainMemoViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        isMemoData = UserDataManager.shared.memoDataList.count == 0 ? false : true
+        mainView.configureDataInfoLabel(isMemoData: UserDataManager.shared.memoDataList.isEmpty ? false : true)
         return UserDataManager.shared.memoDataList.count
     }
 

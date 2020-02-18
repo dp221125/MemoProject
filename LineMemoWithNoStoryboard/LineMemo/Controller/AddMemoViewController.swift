@@ -96,50 +96,52 @@ extension AddMemoViewController: ViewControllerSetting {
 
     private func configureAlertController() {
         /// * 사진촬영 선택 시 이벤트 정의
-        let takePictureAlertAction = UIAlertAction(title: "사진 찍기", style: .default) { _ in
+        let takePictureAlertAction = UIAlertAction(title: "사진 찍기", style: .default) { [weak self] _ in
+            guard let imagePickerController = self?.imagePickerController else { return }
             let cameraType = AVMediaType.video
             let cameraStatus = AVCaptureDevice.authorizationStatus(for: cameraType)
             switch cameraStatus {
             case .authorized:
-                self.openCamera(self.imagePickerController)
+                self?.openCamera(imagePickerController)
             case .notDetermined:
                 AVCaptureDevice.requestAccess(for: cameraType, completionHandler: { granted in
                     if granted {
-                        self.openCamera(self.imagePickerController)
+                        self?.openCamera(imagePickerController)
                     }
                 })
             default:
-                self.presentCameraAuthRequestAlertController()
+                self?.presentCameraAuthRequestAlertController()
             }
         }
 
         /// * 앨범사진 선택 시 이벤트 정의
-        let getAlbumAlertAction = UIAlertAction(title: "앨범 사진 가져오기", style: .default, handler: { _ in
+        let getAlbumAlertAction = UIAlertAction(title: "앨범 사진 가져오기", style: .default, handler: { [weak self] _ in
+            guard let imagePickerController = self?.imagePickerController else { return }
             let albumAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
 
             DispatchQueue.main.async {
                 switch albumAuthorizationStatus {
                 case .authorized:
-                    self.openAlbum(self.imagePickerController)
+                    self?.openAlbum(imagePickerController)
                 case .notDetermined:
                     PHPhotoLibrary.requestAuthorization { status in
                         switch status {
                         case .authorized:
-                            self.openAlbum(self.imagePickerController)
+                            self?.openAlbum(imagePickerController)
                         default: break
                         }
                     }
                 default:
-                    self.presentAlbumAuthRequestAlertController()
+                    self?.presentAlbumAuthRequestAlertController()
                 }
             }
         })
 
         let getPictureFromURLAction = UIAlertAction(title: "URL로 등록하기", style: .default) { _ in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 let addImageURLViewController = AddImageURLViewController()
                 addImageURLViewController.delegate = self
-                self.presentViewController(destination: addImageURLViewController)
+                self?.presentViewController(destination: addImageURLViewController)
             }
         }
 
@@ -157,24 +159,24 @@ extension AddMemoViewController: ViewControllerSetting {
     }
 
     private func insertAndUpdateImageList(at index: Int, image: UIImage) {
-        DispatchQueue.main.async {
-            self.imageViewList.insert(image, at: index)
-            self.mainView.imageCollectionView.performBatchUpdates({
-                self.mainView.imageCollectionView.insertItems(at: [IndexPath(item: index, section: 0)])
+        DispatchQueue.main.async { [weak self] in
+            self?.imageViewList.insert(image, at: index)
+            self?.mainView.imageCollectionView.performBatchUpdates({
+                self?.mainView.imageCollectionView.insertItems(at: [IndexPath(item: index, section: 0)])
             }, completion: nil)
         }
     }
 
     private func removeAndUpdateImageList(at index: Int, mode: UpdateMode) {
-        DispatchQueue.main.async {
-            self.imageViewList.remove(at: index)
+        DispatchQueue.main.async { [weak self] in
+            self?.imageViewList.remove(at: index)
             switch mode {
             case .single:
-                self.mainView.imageCollectionView.performBatchUpdates({
-                    self.mainView.imageCollectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
+                self?.mainView.imageCollectionView.performBatchUpdates({
+                    self?.mainView.imageCollectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
                 }, completion: nil)
             case .whole:
-                self.mainView.imageCollectionView.reloadData()
+                self?.mainView.imageCollectionView.reloadData()
             }
         }
     }
@@ -206,17 +208,17 @@ extension AddMemoViewController {
         let imageList = imageViewList.filter { $0 != .addImage }
 
         let memoData = MemoData(title: title, subText: subText, imageList: imageList)
-        presentTwoButtonAlertController(title: "메모 추가", message: "해당 메모를 추가하시겠습니까?") { isApproval in
+        presentTwoButtonAlertController(title: "메모 추가", message: "해당 메모를 추가하시겠습니까?") { [weak self] isApproval in
             if isApproval {
                 DispatchQueue.main.async {
                     do {
                         try UserDataManager.shared.addMemoData(memoData)
-                        self.navigationController?.presentToastView("메모 저장에 성공했습니다.")
+                        self?.navigationController?.presentToastView("메모 저장에 성공했습니다.")
                     } catch {
-                        self.navigationController?.presentToastView("메모 저장에 실패했습니다.\n\(String(describing: (error as? UserDataError)?.message))")
+                        self?.navigationController?.presentToastView("메모 저장에 실패했습니다.\n\(String(describing: (error as? UserDataError)?.message))")
                     }
-                    self.updateMainMemoList()
-                    self.navigationController?.popViewController(animated: true)
+                    self?.updateMainMemoList()
+                    self?.navigationController?.popViewController(animated: true)
                 }
             }
         }
@@ -240,6 +242,7 @@ extension AddMemoViewController: SendDataDelegate {
 
 extension AddMemoViewController: UICollectionViewDataSource {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
+        mainView.configureImageInfoLabel(isImageData: imageViewList.isEmpty ? false : true)
         return imageViewList.count
     }
 
@@ -269,8 +272,9 @@ extension AddMemoViewController: UINavigationControllerDelegate {}
 extension AddMemoViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
-        insertAndUpdateImageList(at: 1, image: selectedImage)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) { [weak self] in
+            self?.insertAndUpdateImageList(at: 1, image: selectedImage)
+        }
     }
 }
 

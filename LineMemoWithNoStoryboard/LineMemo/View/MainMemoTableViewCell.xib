@@ -18,19 +18,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="37g-SG-ben">
-                        <rect key="frame" x="25" y="16" width="299" height="94"/>
+                        <rect key="frame" x="25" y="11.5" width="299" height="93"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W9D-6W-eRG">
-                                <rect key="frame" x="0.0" y="0.0" width="224.5" height="94"/>
+                                <rect key="frame" x="0.0" y="0.0" width="224.5" height="93"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3I-4s-7bn">
-                                        <rect key="frame" x="0.0" y="0.0" width="224.5" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="224.5" height="27.5"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaH-lG-hxw">
-                                        <rect key="frame" x="0.0" y="38" width="224.5" height="56"/>
+                                        <rect key="frame" x="0.0" y="37.5" width="224.5" height="55.5"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -44,12 +44,13 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="F3I-4s-7bn" secondAttribute="trailing" id="vWl-rX-Dc5"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d6c-0t-Jvj">
-                                <rect key="frame" x="234.5" y="0.0" width="64.5" height="94"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d6c-0t-Jvj">
+                                <rect key="frame" x="234.5" y="0.0" width="64.5" height="93"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="d6c-0t-Jvj" firstAttribute="top" secondItem="37g-SG-ben" secondAttribute="top" id="STK-8F-Jhb"/>
                             <constraint firstItem="W9D-6W-eRG" firstAttribute="top" secondItem="37g-SG-ben" secondAttribute="topMargin" id="TXJ-cD-TdK"/>
                             <constraint firstAttribute="bottom" secondItem="d6c-0t-Jvj" secondAttribute="bottom" id="eTu-SA-Ym4"/>
                             <constraint firstAttribute="bottomMargin" secondItem="W9D-6W-eRG" secondAttribute="bottom" id="pjk-TF-b8Z"/>
@@ -59,9 +60,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="37g-SG-ben" secondAttribute="trailing" constant="5" id="4IF-5X-Ccg"/>
-                    <constraint firstItem="37g-SG-ben" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="5" id="QLd-O7-QI2"/>
+                    <constraint firstItem="37g-SG-ben" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.8" id="hM8-0e-gny"/>
                     <constraint firstItem="37g-SG-ben" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="kZ2-oe-neD"/>
-                    <constraint firstItem="37g-SG-ben" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="q2n-Ln-HT8"/>
+                    <constraint firstItem="37g-SG-ben" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ynj-ki-rVm"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

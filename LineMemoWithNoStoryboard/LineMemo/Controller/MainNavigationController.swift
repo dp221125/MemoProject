@@ -75,8 +75,8 @@ extension MainNavigationController {
             return
         }
 
-        UIView.animate(withDuration: 0.1, animations: {
-            self.topViewController?.view.frame.origin.y = -ViewSize.Height.imageSection
+        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+            self?.topViewController?.view.frame.origin.y = -ViewSize.Height.imageSection
         })
     }
 
@@ -85,8 +85,8 @@ extension MainNavigationController {
             return
         }
 
-        UIView.animate(withDuration: 0.1, animations: {
-            self.topViewController?.view.frame.origin.y = 0
+        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+            self?.topViewController?.view.frame.origin.y = 0
         })
     }
 }

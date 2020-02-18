@@ -71,9 +71,9 @@ extension UIViewController {
     }
 
     func openAlbum(_ imagePickerController: UIImagePickerController) {
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async {
             imagePickerController.sourceType = .photoLibrary
-            self?.present(imagePickerController, animated: true, completion: nil)
+            self.present(imagePickerController, animated: true, completion: nil)
         }
     }
 
