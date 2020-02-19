@@ -46,12 +46,15 @@ class LineMemoUITests: XCTestCase {
 
         insertMemoText(title: "Insert Title Text", subText: "Insert Sub Text")
         hideKeyboard()
+        sleep(1)
 
         // MARK: 메모저장
 
         saveMemo()
 
         // MARK: 저장메모 확인
+
+        sleep(1)
 
         selectMainMemoTableViewLastRowCell()
     }
@@ -102,11 +105,11 @@ class LineMemoUITests: XCTestCase {
         app.tables.cells.element(boundBy: index).tap()
     }
 
-    func pressButton(identifier: String) {
+    private func pressButton(identifier: String) {
         app.buttons[identifier].tap()
     }
 
-    func saveMemo() {
+    private func saveMemo() {
         app.buttons["저장"].tap()
         let allowButton = app.buttons["네"]
         if allowButton.waitForExistence(timeout: 3.0) {
@@ -114,18 +117,18 @@ class LineMemoUITests: XCTestCase {
         }
     }
 
-    func selectMainMemoTableViewLastRowCell() {
+    private func selectMainMemoTableViewLastRowCell() {
         let mainMemoTableView = app.tables.matching(identifier: XCTIdentifier.MainMemoView.memoTableView)
         if mainMemoTableView.cells.count == 0 { return }
         mainMemoTableView.cells.element(boundBy: mainMemoTableView.cells.count - 1).tap()
     }
 
-//    func testLaunchPerformance() {
-//        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-//            // This measures how long it takes to launch your application.
-//            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-//                XCUIApplication().launch()
-//            }
-//        }
-//    }
+    func testLaunchPerformance() {
+        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
+            // This measures how long it takes to launch your application.
+            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
+                XCUIApplication().launch()
+            }
+        }
+    }
 }
