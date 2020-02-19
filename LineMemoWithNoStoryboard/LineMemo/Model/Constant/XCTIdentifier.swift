@@ -18,9 +18,9 @@ struct XCTIdentifier {
         static let authRequestControllerView = "authRequestAlertControllerView"
         static let addImageControllerView = "addImageAlertView"
         static let getAlbumAction = "getAlbumAlertAction"
+        static let presentAddImageURLViewAction = "getImageFromURLAction"
         static let getCameraAction = "getCameraAlertAction"
         static let cancelAction = "cancelAlertAction"
-        static let getImageFromURLAction = "getImageFromURLAction"
     }
 
     struct AddMemoView {
@@ -29,5 +29,10 @@ struct XCTIdentifier {
         static let mainView = "addMemoView"
         static let titleTextField = "titleTextField"
         static let subTextView = "subTextView"
+    }
+
+    struct AddImageURLView {
+        static let addButton = "addImageURLButton"
+        static let urlTextField = "urlTextField"
     }
 }

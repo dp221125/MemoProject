@@ -33,6 +33,7 @@ class AddImageURLView: UIView {
 
     let addImageButton: UIButton = {
         let addButton = UIButton()
+        addButton.accessibilityIdentifier = XCTIdentifier.AddImageURLView.addButton
         addButton.setTitleColor(.white, for: .normal)
         addButton.setTitleColor(.darkGray, for: .highlighted)
         addButton.setTitle("이미지 등록하기", for: .normal)
@@ -41,6 +42,7 @@ class AddImageURLView: UIView {
 
     let urlTextField: UITextField = {
         let urlTextField = UITextField()
+        urlTextField.accessibilityIdentifier = XCTIdentifier.AddImageURLView.urlTextField
         urlTextField.placeholder = "이미지 URL을 입력해주세요."
         return urlTextField
     }()

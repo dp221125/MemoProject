@@ -149,7 +149,7 @@ extension AddMemoViewController: ViewControllerSetting {
                 self?.presentViewController(destination: addImageURLViewController)
             }
         }
-        getPictureFromURLAction.activateXCTIdentifier(XCTIdentifier.Alert.getImageFromURLAction)
+        getPictureFromURLAction.activateXCTIdentifier(XCTIdentifier.Alert.presentAddImageURLViewAction)
 
         let cancelAlertAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         addImageAlertController.addAction(getCameraAlertAction)

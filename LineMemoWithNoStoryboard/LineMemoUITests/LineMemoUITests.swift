@@ -27,20 +27,12 @@ class LineMemoUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testAddingMemoDataWithAlbumImage() {
+    // MARK: - 이미지 x + 메모 추가 테스트
+
+    func testAddingMemoDataWithoutImage() {
         // MARK: AddMemoView 이동
 
         pressAddMemoBarButton()
-
-        // MARK: 메모 Image 선택
-
-        pressAddImageCell()
-        mornitorAlbumAuthAlertController()
-        getAlbum()
-
-        selectTableViewCell(at: 0)
-        selectCollectionViewItemCell(at: 1)
-        pressButton(identifier: "Choose")
 
         // MARK: 메모내용 입력
 
@@ -51,12 +43,85 @@ class LineMemoUITests: XCTestCase {
         // MARK: 메모저장
 
         saveMemo()
+        sleep(1)
 
         // MARK: 저장메모 확인
 
+        selectMainMemoTableViewLastRowCell()
+    }
+
+    // MARK: - URL이미지 + 메모 추가 테스트
+
+    func testAddingMemoDataWithURLImage() {
+        let sampleImageURL = "https://homepages.cae.wisc.edu/~ece533/images/cat.png"
+
+        // MARK: AddMemoView 이동
+
+        pressAddMemoBarButton()
+
+        // MARK: 메모 URL Image 추가
+
+        pressAddImageCell()
+        presentAddImageURLView()
+        getURLImage(url: sampleImageURL)
+
+        // MARK: 메모내용 입력
+
+        insertMemoText(title: "Insert Title Text", subText: "Insert Sub Text")
+        hideKeyboard()
         sleep(1)
 
+        // MARK: 메모저장
+
+        saveMemo()
+        sleep(1)
+
+        // MARK: 저장메모 확인
+
         selectMainMemoTableViewLastRowCell()
+    }
+
+    // MARK: - 앨범 이미지 + 메모 추가 테스트
+
+    func testAddingMemoDataWithAlbumImage() {
+        // MARK: AddMemoView 이동
+
+        pressAddMemoBarButton()
+
+        // MARK: 메모 Image 선택
+
+        pressAddImageCell()
+        mornitorAlbumAuthAlertController()
+        getAlbumImage()
+
+        // MARK: 메모내용 입력
+
+        insertMemoText(title: "Insert Title Text", subText: "Insert Sub Text")
+        hideKeyboard()
+        sleep(1)
+
+        // MARK: 메모저장
+
+        saveMemo()
+        sleep(1)
+
+        // MARK: 저장메모 확인
+
+        selectMainMemoTableViewLastRowCell()
+    }
+
+    private func getURLImage(url imageURL: String) {
+        let urlTextField = app.textFields.matching(identifier: XCTIdentifier.AddImageURLView.urlTextField).firstMatch
+        let addURLImageButton = app.buttons.matching(identifier: XCTIdentifier.AddImageURLView.addButton).firstMatch
+        let editMemoView = app.otherElements.matching(identifier: XCTIdentifier.AddMemoView.mainView).firstMatch
+
+        urlTextField.tap()
+        urlTextField.typeText(imageURL)
+        addURLImageButton.tap()
+
+        if !editMemoView.waitForExistence(timeout: TimeInterval(10.0)) {
+            fatalError("There is Long Delay while getting URL Image")
+        }
     }
 
     private func pressAddMemoBarButton() {
@@ -70,9 +135,17 @@ class LineMemoUITests: XCTestCase {
         addImageCell.tap()
     }
 
-    private func getAlbum() {
+    private func getAlbumImage() {
         app.sheets.buttons.matching(identifier: XCTIdentifier.Alert.getAlbumAction).firstMatch.tap()
         app.tap()
+
+        selectTableViewCell(at: 0)
+        selectCollectionViewItemCell(at: 1)
+        pressButton(identifier: "Choose")
+    }
+
+    private func presentAddImageURLView() {
+        app.sheets.buttons.matching(identifier: XCTIdentifier.Alert.presentAddImageURLViewAction).firstMatch.tap()
     }
 
     private func mornitorAlbumAuthAlertController() {
@@ -87,7 +160,7 @@ class LineMemoUITests: XCTestCase {
         addMemoMainView.tap()
     }
 
-    private func insertMemoText(title: String, subText: String) {
+    private func insertMemoText(title: String = "titleText", subText: String = "SubText") {
         let titleTextField = app.textFields.matching(identifier: XCTIdentifier.AddMemoView.titleTextField).firstMatch
         let subTextView = app.textViews.matching(identifier: XCTIdentifier.AddMemoView.subTextView).firstMatch
 
