@@ -39,6 +39,8 @@ class LineMemoUITests: XCTestCase {
     func testDeletingMemoData() {
         let memoTableView = app.tables.matching(identifier: XCTIdentifier.MainMemoView.memoTableView).firstMatch
 
+        // MARK: 셀 메모 데이터 순차 확인 & 삭제
+
         while memoTableView.cells.count > 0 {
             sleep(1)
             checkFirstTableViewCellData(element: memoTableView)

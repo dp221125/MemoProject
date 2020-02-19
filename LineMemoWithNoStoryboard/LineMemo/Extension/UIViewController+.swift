@@ -21,23 +21,23 @@ extension UIViewController {
 
 extension UIViewController {
     func openCamera(_ imagePickerController: UIImagePickerController) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 imagePickerController.sourceType = .camera
-                self.present(imagePickerController, animated: true, completion: nil)
+                self?.present(imagePickerController, animated: true, completion: nil)
             }
         }
     }
 
     func presentAlbumAuthRequestAlertController() {
-        DispatchQueue.main.async {
-            self.presentAuthRequestAlertController(title: "앨범 접근권한 필요", message: "앨범사용을 위해 앨범 접근권한이 필요합니다.")
+        DispatchQueue.main.async { [weak self] in
+            self?.presentAuthRequestAlertController(title: "앨범 접근권한 필요", message: "앨범사용을 위해 앨범 접근권한이 필요합니다.")
         }
     }
 
     func presentCameraAuthRequestAlertController() {
-        DispatchQueue.main.async {
-            self.presentAuthRequestAlertController(title: "카메라 권한 필요", message: "사진촬영을 위해 카메라 권한을 허용해주세요.")
+        DispatchQueue.main.async { [weak self] in
+            self?.presentAuthRequestAlertController(title: "카메라 권한 필요", message: "사진촬영을 위해 카메라 권한을 허용해주세요.")
         }
     }
 
@@ -73,9 +73,9 @@ extension UIViewController {
     }
 
     func openAlbum(_ imagePickerController: UIImagePickerController) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             imagePickerController.sourceType = .photoLibrary
-            self.present(imagePickerController, animated: true, completion: nil)
+            self?.present(imagePickerController, animated: true, completion: nil)
         }
     }
 

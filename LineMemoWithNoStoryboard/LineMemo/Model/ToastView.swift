@@ -62,16 +62,16 @@ extension ToastView {
     func presentShortMessage(_ view: UIView, message: String) {
         congifureToastView(view, message: message)
 
-        UIView.animate(withDuration: 0.5, animations: {
-            self.contentView.alpha = 0.8
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            self?.contentView.alpha = 0.8
         }) { _ in
-            UIView.animate(withDuration: 0.3, delay: 0.3, animations: {
-                self.contentView.alpha = 0
+            UIView.animate(withDuration: 0.3, delay: 0.3, animations: { [weak self] in
+                self?.contentView.alpha = 0
             }) { _ in
-                DispatchQueue.main.async {
-                    self.textLabel.removeFromSuperview()
-                    self.contentView.removeFromSuperview()
-                    self.backgroundView.removeFromSuperview()
+                DispatchQueue.main.async { [weak self] in
+                    self?.textLabel.removeFromSuperview()
+                    self?.contentView.removeFromSuperview()
+                    self?.backgroundView.removeFromSuperview()
                 }
             }
         }
