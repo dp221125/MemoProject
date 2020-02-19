@@ -169,8 +169,11 @@ extension AddMemoViewController: ViewControllerSetting {
         DispatchQueue.main.async { [weak self] in
             self?.imageViewList.insert(image, at: index)
             self?.mainView.imageCollectionView.performBatchUpdates({
+                self?.beginIgnoringInteractionEvents()
                 self?.mainView.imageCollectionView.insertItems(at: [IndexPath(item: index, section: 0)])
-            }, completion: nil)
+            }) { _ in
+                self?.endIgnoringInteractionEvents()
+            }
         }
     }
 
@@ -180,8 +183,11 @@ extension AddMemoViewController: ViewControllerSetting {
             switch mode {
             case .single:
                 self?.mainView.imageCollectionView.performBatchUpdates({
+                    self?.beginIgnoringInteractionEvents()
                     self?.mainView.imageCollectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
-                }, completion: nil)
+                }) { _ in
+                    self?.endIgnoringInteractionEvents()
+                }
             case .whole:
                 self?.mainView.imageCollectionView.reloadData()
             }

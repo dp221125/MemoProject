@@ -21,14 +21,13 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        deleteImageView.alpha = 0.8
+        photoImageView.configureBasicBorder()
     }
 
     // MARK: Configuration
 
     func configureCell(image: UIImage, imageMode: MemoMode, indexPath: IndexPath) {
-        photoImageView.configureBasicBorder()
-        deleteImageView.configureBasicBorder()
-
         switch imageMode {
         case .view:
             photoImageView.backgroundColor = .black

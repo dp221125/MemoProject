@@ -22,13 +22,12 @@ class MainMemoTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        thumbnailImageView.layer.cornerRadius = ViewSize.CornerRadius.thumbnailImageView
     }
 
     // MARK: Configuration
 
     func configureCell(_ memoData: MemoData) {
-        thumbnailImageView.layer.cornerRadius = ViewSize.CornerRadius.thumbnailImageView
-
         mainTitleLabel.text = memoData.title
         subTextLabel.text = memoData.subText
 
