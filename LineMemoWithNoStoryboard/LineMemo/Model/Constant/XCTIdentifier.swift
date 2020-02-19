@@ -23,7 +23,7 @@ struct XCTIdentifier {
         static let cancelAction = "cancelAlertAction"
     }
 
-    struct AddMemoView {
+    struct EditMemoView {
         static let imageCollectionView = "imageCollectionView"
         static let addImageCell = "addImageCell"
         static let mainView = "addMemoView"

@@ -11,6 +11,10 @@ import XCTest
 class LineMemoUITests: XCTestCase {
     let app = XCUIApplication() // 테스트를 위한 UIApplication
 
+    private let sampleImageURL = "https://homepages.cae.wisc.edu/~ece533/images/cat.png"
+
+    // MARK: - SetUp
+
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         // In UI tests it is usually best to stop immediately when a failure occurs.
@@ -23,12 +27,28 @@ class LineMemoUITests: XCTestCase {
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
+    // MARK: - TearDown
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    // MARK: - 메모 데이터 확인 + 삭제 테스트
+
+    /// * 존재 메모데이터 순차 확인 및 제거 로직 테스트
+    func testDeletingMemoData() {
+        let memoTableView = app.tables.matching(identifier: XCTIdentifier.MainMemoView.memoTableView).firstMatch
+
+        while memoTableView.cells.count > 0 {
+            sleep(1)
+            checkFirstTableViewCellData(element: memoTableView)
+            deleteFirstMemoTableViewCell(element: memoTableView)
+        }
+    }
+
     // MARK: - 이미지 x + 메모 추가 테스트
 
+    /// * 이미지 없이 메모 추가 로직 테스트
     func testAddingMemoDataWithoutImage() {
         // MARK: AddMemoView 이동
 
@@ -52,9 +72,8 @@ class LineMemoUITests: XCTestCase {
 
     // MARK: - URL이미지 + 메모 추가 테스트
 
+    /// * URL 이미지 등록 포함 메모 추가 로직 테스트
     func testAddingMemoDataWithURLImage() {
-        let sampleImageURL = "https://homepages.cae.wisc.edu/~ece533/images/cat.png"
-
         // MARK: AddMemoView 이동
 
         pressAddMemoBarButton()
@@ -83,6 +102,7 @@ class LineMemoUITests: XCTestCase {
 
     // MARK: - 앨범 이미지 + 메모 추가 테스트
 
+    /// * 앨범 이미지 등록 포함 메모 추가 로직 테스트
     func testAddingMemoDataWithAlbumImage() {
         // MARK: AddMemoView 이동
 
@@ -110,10 +130,22 @@ class LineMemoUITests: XCTestCase {
         selectMainMemoTableViewLastRowCell()
     }
 
+    private func checkFirstTableViewCellData(element: XCUIElement) {
+        let firstCell = element.cells.element(boundBy: 0)
+        firstCell.tap()
+        app.buttons["메모 리스트"].tap()
+    }
+
+    private func deleteFirstMemoTableViewCell(element: XCUIElement) {
+        let firstCell = element.cells
+        firstCell.element(boundBy: 0).swipeLeft()
+        firstCell.element(boundBy: 0).buttons["Delete"].tap()
+    }
+
     private func getURLImage(url imageURL: String) {
         let urlTextField = app.textFields.matching(identifier: XCTIdentifier.AddImageURLView.urlTextField).firstMatch
         let addURLImageButton = app.buttons.matching(identifier: XCTIdentifier.AddImageURLView.addButton).firstMatch
-        let editMemoView = app.otherElements.matching(identifier: XCTIdentifier.AddMemoView.mainView).firstMatch
+        let editMemoView = app.otherElements.matching(identifier: XCTIdentifier.EditMemoView.mainView).firstMatch
 
         urlTextField.tap()
         urlTextField.typeText(imageURL)
@@ -130,8 +162,8 @@ class LineMemoUITests: XCTestCase {
     }
 
     private func pressAddImageCell() {
-        let imageCollectionView = app.collectionViews.matching(identifier: XCTIdentifier.AddMemoView.imageCollectionView).firstMatch
-        let addImageCell = imageCollectionView.cells.matching(identifier: XCTIdentifier.AddMemoView.addImageCell).firstMatch
+        let imageCollectionView = app.collectionViews.matching(identifier: XCTIdentifier.EditMemoView.imageCollectionView).firstMatch
+        let addImageCell = imageCollectionView.cells.matching(identifier: XCTIdentifier.EditMemoView.addImageCell).firstMatch
         addImageCell.tap()
     }
 
@@ -156,13 +188,13 @@ class LineMemoUITests: XCTestCase {
     }
 
     private func hideKeyboard() {
-        let addMemoMainView = app.otherElements.matching(identifier: XCTIdentifier.AddMemoView.mainView).firstMatch
+        let addMemoMainView = app.otherElements.matching(identifier: XCTIdentifier.EditMemoView.mainView).firstMatch
         addMemoMainView.tap()
     }
 
     private func insertMemoText(title: String = "titleText", subText: String = "SubText") {
-        let titleTextField = app.textFields.matching(identifier: XCTIdentifier.AddMemoView.titleTextField).firstMatch
-        let subTextView = app.textViews.matching(identifier: XCTIdentifier.AddMemoView.subTextView).firstMatch
+        let titleTextField = app.textFields.matching(identifier: XCTIdentifier.EditMemoView.titleTextField).firstMatch
+        let subTextView = app.textViews.matching(identifier: XCTIdentifier.EditMemoView.subTextView).firstMatch
 
         titleTextField.tap()
         titleTextField.typeText(title)
