@@ -15,10 +15,11 @@ struct XCTIdentifier {
     }
 
     struct Alert {
-        static let addImageAlertView = "addImageAlertView"
-        static let getAlbumAlertAction = "getAlbumAlertAction"
-        static let getCameraAlertAction = "getCameraAlertAction"
-        static let cancelAlertAction = "cancelAlertAction"
+        static let authRequestControllerView = "authRequestAlertControllerView"
+        static let addImageControllerView = "addImageAlertView"
+        static let getAlbumAction = "getAlbumAlertAction"
+        static let getCameraAction = "getCameraAlertAction"
+        static let cancelAction = "cancelAlertAction"
         static let getImageFromURLAction = "getImageFromURLAction"
     }
 

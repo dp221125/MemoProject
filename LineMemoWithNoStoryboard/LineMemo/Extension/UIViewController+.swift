@@ -43,6 +43,8 @@ extension UIViewController {
 
     func presentAuthRequestAlertController(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.isAccessibilityElement = true
+
         let getAuthAction = UIAlertAction(title: "네", style: .default) { _ in
             if let appSettingURL = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(appSettingURL, options: [:], completionHandler: nil)

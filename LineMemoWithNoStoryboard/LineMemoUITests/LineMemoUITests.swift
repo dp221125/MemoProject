@@ -28,48 +28,93 @@ class LineMemoUITests: XCTestCase {
     }
 
     func testAddingMemoDataWithAlbumImage() {
-        let addMemoMainView = app.otherElements.matching(identifier: XCTIdentifier.AddMemoView.mainView).firstMatch
-        let imageCollectionView = app.collectionViews.matching(identifier: XCTIdentifier.AddMemoView.imageCollectionView).firstMatch
-        let addImageCell = imageCollectionView.cells.matching(identifier: XCTIdentifier.AddMemoView.addImageCell).firstMatch
-        let titleTextField = app.textFields.matching(identifier: XCTIdentifier.AddMemoView.titleTextField).firstMatch
-        let subTextView = app.textViews.matching(identifier: XCTIdentifier.AddMemoView.subTextView).firstMatch
-
-        // 메모추가버튼을 클릭한다.
-        let addMemoBarButton = app.buttons.matching(identifier: XCTIdentifier.MainMemoView.addMemoBarButton).firstMatch
-        XCTAssertTrue(addMemoBarButton.exists)
-        addMemoBarButton.tap()
-
         // MARK: AddMemoView 이동
 
-        titleTextField.tap()
-        titleTextField.typeText("Insert Title Text")
-        subTextView.tap()
-        subTextView.typeText("Insert Sub Text")
-        addMemoMainView.tap()
-        addImageCell.tap()
-        app.sheets.buttons.matching(identifier: XCTIdentifier.Alert.getAlbumAlertAction).firstMatch.tap()
-        app.tables.cells.element(boundBy: 0).tap()
+        pressAddMemoBarButton()
+
+        // MARK: 메모 Image 선택
+
+        pressAddImageCell()
+        mornitorAlbumAuthAlertController()
+        getAlbum()
+
+        selectTableViewCell(at: 0)
         selectCollectionViewItemCell(at: 1)
-        pressChooseButton()
+        pressButton(identifier: "Choose")
+
+        // MARK: 메모내용 입력
+
+        insertMemoText(title: "Insert Title Text", subText: "Insert Sub Text")
+        hideKeyboard()
+
+        // MARK: 메모저장
+
         saveMemo()
+
+        // MARK: 저장메모 확인
+
         selectMainMemoTableViewLastRowCell()
     }
 
+    private func pressAddMemoBarButton() {
+        let addMemoBarButton = app.buttons.matching(identifier: XCTIdentifier.MainMemoView.addMemoBarButton).firstMatch
+        addMemoBarButton.tap()
+    }
+
+    private func pressAddImageCell() {
+        let imageCollectionView = app.collectionViews.matching(identifier: XCTIdentifier.AddMemoView.imageCollectionView).firstMatch
+        let addImageCell = imageCollectionView.cells.matching(identifier: XCTIdentifier.AddMemoView.addImageCell).firstMatch
+        addImageCell.tap()
+    }
+
+    private func getAlbum() {
+        app.sheets.buttons.matching(identifier: XCTIdentifier.Alert.getAlbumAction).firstMatch.tap()
+        app.tap()
+    }
+
+    private func mornitorAlbumAuthAlertController() {
+        addUIInterruptionMonitor(withDescription: "AlbumAuthAlertControllerPresented") { alert -> Bool in
+            alert.buttons["OK"].tap()
+            return true
+        }
+    }
+
+    private func hideKeyboard() {
+        let addMemoMainView = app.otherElements.matching(identifier: XCTIdentifier.AddMemoView.mainView).firstMatch
+        addMemoMainView.tap()
+    }
+
+    private func insertMemoText(title: String, subText: String) {
+        let titleTextField = app.textFields.matching(identifier: XCTIdentifier.AddMemoView.titleTextField).firstMatch
+        let subTextView = app.textViews.matching(identifier: XCTIdentifier.AddMemoView.subTextView).firstMatch
+
+        titleTextField.tap()
+        titleTextField.typeText(title)
+        subTextView.tap()
+        subTextView.typeText(subText)
+    }
+
     private func selectCollectionViewItemCell(at index: Int) {
-        let collectionView = app.collectionViews.firstMatch
-        collectionView.cells.element(boundBy: index).tap()
+        app.collectionViews.firstMatch.cells.element(boundBy: index).tap()
     }
 
-    private func pressChooseButton() {
-        app.buttons["Choose"].tap()
+    private func selectTableViewCell(at index: Int) {
+        app.tables.cells.element(boundBy: index).tap()
     }
 
-    private func saveMemo() {
+    func pressButton(identifier: String) {
+        app.buttons[identifier].tap()
+    }
+
+    func saveMemo() {
         app.buttons["저장"].tap()
-        app.buttons["네"].tap()
+        let allowButton = app.buttons["네"]
+        if allowButton.waitForExistence(timeout: 3.0) {
+            allowButton.tap()
+        }
     }
 
-    private func selectMainMemoTableViewLastRowCell() {
+    func selectMainMemoTableViewLastRowCell() {
         let mainMemoTableView = app.tables.matching(identifier: XCTIdentifier.MainMemoView.memoTableView)
         if mainMemoTableView.cells.count == 0 { return }
         mainMemoTableView.cells.element(boundBy: mainMemoTableView.cells.count - 1).tap()
