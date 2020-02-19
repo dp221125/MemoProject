@@ -10,6 +10,7 @@ import Foundation
 
 /// * View 설정 메서드 정의 프로토콜
 protocol ViewSetting: class {
+    func configureView()
     func addSubviews()
     func makeConstraints()
 }

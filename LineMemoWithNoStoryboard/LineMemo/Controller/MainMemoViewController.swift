@@ -44,6 +44,7 @@ extension MainMemoViewController: ViewControllerSetting {
     private func configureAddMemoBarButtonItem() {
         let addMemoBarButtonItem = UIBarButtonItem(title: "메모추가", style: .plain, target: self, action: #selector(addMemoBarButtonItemPressed(_:)))
         addMemoBarButtonItem.tintColor = .black
+        addMemoBarButtonItem.activateXCTIdentifier(XCTIdentifier.MainMemoView.addMemoBarButton)
         navigationItem.rightBarButtonItem = addMemoBarButtonItem
     }
 

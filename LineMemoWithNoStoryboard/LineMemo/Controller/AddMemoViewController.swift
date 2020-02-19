@@ -22,7 +22,10 @@ class AddMemoViewController: UIViewController {
 
     private lazy var addImageTapGestureRecognizer = UITapGestureRecognizer()
 
-    private lazy var selectImageAlertController = UIAlertController(title: "사진 등록방법 선택", message: "사진 등록방법을 선택하세요.", preferredStyle: .actionSheet)
+    private lazy var addImageAlertController: UIAlertController = {
+        let addImageAlertController = UIAlertController(title: "사진 등록방법 선택", message: "사진 등록방법을 선택하세요.", preferredStyle: .actionSheet)
+        return addImageAlertController
+    }()
 
     private lazy var imagePickerController: UIImagePickerController = {
         let imagePickerController = UIImagePickerController()
@@ -96,7 +99,7 @@ extension AddMemoViewController: ViewControllerSetting {
 
     private func configureAlertController() {
         /// * 사진촬영 선택 시 이벤트 정의
-        let takePictureAlertAction = UIAlertAction(title: "사진 찍기", style: .default) { [weak self] _ in
+        let getCameraAlertAction = UIAlertAction(title: "사진 찍기", style: .default) { [weak self] _ in
             guard let imagePickerController = self?.imagePickerController else { return }
             let cameraType = AVMediaType.video
             let cameraStatus = AVCaptureDevice.authorizationStatus(for: cameraType)
@@ -113,6 +116,7 @@ extension AddMemoViewController: ViewControllerSetting {
                 self?.presentCameraAuthRequestAlertController()
             }
         }
+        getCameraAlertAction.activateXCTIdentifier(XCTIdentifier.Alert.getCameraAlertAction)
 
         /// * 앨범사진 선택 시 이벤트 정의
         let getAlbumAlertAction = UIAlertAction(title: "앨범 사진 가져오기", style: .default, handler: { [weak self] _ in
@@ -136,6 +140,7 @@ extension AddMemoViewController: ViewControllerSetting {
                 }
             }
         })
+        getAlbumAlertAction.activateXCTIdentifier(XCTIdentifier.Alert.getAlbumAlertAction)
 
         let getPictureFromURLAction = UIAlertAction(title: "URL로 등록하기", style: .default) { _ in
             DispatchQueue.main.async { [weak self] in
@@ -144,12 +149,14 @@ extension AddMemoViewController: ViewControllerSetting {
                 self?.presentViewController(destination: addImageURLViewController)
             }
         }
+        getPictureFromURLAction.activateXCTIdentifier(XCTIdentifier.Alert.getImageFromURLAction)
 
         let cancelAlertAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        selectImageAlertController.addAction(takePictureAlertAction)
-        selectImageAlertController.addAction(getAlbumAlertAction)
-        selectImageAlertController.addAction(getPictureFromURLAction)
-        selectImageAlertController.addAction(cancelAlertAction)
+        addImageAlertController.addAction(getCameraAlertAction)
+        addImageAlertController.addAction(getAlbumAlertAction)
+        addImageAlertController.addAction(getPictureFromURLAction)
+        addImageAlertController.addAction(cancelAlertAction)
+        cancelAlertAction.activateXCTIdentifier(XCTIdentifier.Alert.cancelAlertAction)
     }
 
     private func checkInputData() {
@@ -190,7 +197,7 @@ extension AddMemoViewController {
     }
 
     @objc func addImageInCollectionViewCellPressed(_: UITapGestureRecognizer) {
-        present(selectImageAlertController, animated: true)
+        present(addImageAlertController, animated: true)
     }
 
     @objc func deleteImageButtonInCollectionViewCellPressed(_ sender: UITapGestureRecognizer) {

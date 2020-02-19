@@ -60,6 +60,7 @@ class EditMemoView: UIView {
 
     let imageCollectionView: UICollectionView = {
         let imageCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: MemoImageCollectionViewFlowLayout())
+        imageCollectionView.accessibilityIdentifier = XCTIdentifier.AddMemoView.imageCollectionView
         imageCollectionView.isScrollEnabled = true
         imageCollectionView.isUserInteractionEnabled = true
         imageCollectionView.alwaysBounceHorizontal = true
@@ -75,12 +76,14 @@ class EditMemoView: UIView {
         let titleTextField = UITextField()
         titleTextField.textColor = .black
         titleTextField.font = UIFont.mainFont()
+        titleTextField.accessibilityIdentifier = XCTIdentifier.AddMemoView.titleTextField
         return titleTextField
     }()
 
     let subTextView: UITextView = {
         let subTextView = UITextView()
         subTextView.font = UIFont.mainFont()
+        subTextView.accessibilityIdentifier = XCTIdentifier.AddMemoView.subTextView
         return subTextView
     }()
 
@@ -88,9 +91,7 @@ class EditMemoView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
-        addSubviews()
-        makeConstraints()
+        configureView()
     }
 
     required init?(coder: NSCoder) {
@@ -101,6 +102,13 @@ class EditMemoView: UIView {
 // MARK: - Configuration
 
 extension EditMemoView: ViewSetting {
+    func configureView() {
+        accessibilityIdentifier = XCTIdentifier.AddMemoView.mainView
+        backgroundColor = .white
+        addSubviews()
+        makeConstraints()
+    }
+
     func addSubviews() {
         stackView.addArrangedSubview(imageLabel)
         stackView.addArrangedSubview(imageCollectionView)

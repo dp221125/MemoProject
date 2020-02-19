@@ -36,8 +36,7 @@ class MainMemoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        addSubviews()
-        makeConstraints()
+        configureView()
     }
 
     required init?(coder: NSCoder) {
@@ -48,6 +47,12 @@ class MainMemoView: UIView {
 // MARK: - Configuration
 
 extension MainMemoView: ViewSetting {
+    func configureView() {
+        tableView.accessibilityIdentifier = XCTIdentifier.MainMemoView.memoTableView
+        addSubviews()
+        makeConstraints()
+    }
+
     func addSubviews() {
         addSubview(tableView)
         addSubview(dataInfoLabel)

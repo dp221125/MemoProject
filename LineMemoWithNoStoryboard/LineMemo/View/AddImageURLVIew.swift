@@ -49,9 +49,7 @@ class AddImageURLView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
-        addSubviews()
-        makeConstraints()
+        configureView()
     }
 
     required init?(coder: NSCoder) {
@@ -62,6 +60,12 @@ class AddImageURLView: UIView {
 // MARK: - Configuration
 
 extension AddImageURLView: ViewSetting {
+    func configureView() {
+        backgroundColor = .white
+        addSubviews()
+        makeConstraints()
+    }
+
     func addSubviews() {
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(urlTextField)
