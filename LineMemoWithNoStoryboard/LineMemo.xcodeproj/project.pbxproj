@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		073D410323FEC41500FFEB16 /* ImageEditingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073D410223FEC41500FFEB16 /* ImageEditingMode.swift */; };
+		073D410423FEC47600FFEB16 /* ImageEditingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073D410223FEC41500FFEB16 /* ImageEditingMode.swift */; };
 		0746F6F523F3D0F700617A16 /* ViewSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746F6F423F3D0F700617A16 /* ViewSize.swift */; };
 		0746F6F823F3D17300617A16 /* MainMemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0746F6F623F3D17300617A16 /* MainMemoTableViewCell.swift */; };
 		0746F6F923F3D17300617A16 /* MainMemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0746F6F723F3D17300617A16 /* MainMemoTableViewCell.xib */; };
@@ -41,7 +43,6 @@
 		0799E98423FC29B800339FBA /* LineMemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799E98323FC29B800339FBA /* LineMemoUITests.swift */; };
 		0799E98E23FD188500339FBA /* XCTIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799E98D23FD188500339FBA /* XCTIdentifier.swift */; };
 		0799E99223FD1B7B00339FBA /* XCTIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799E98D23FD188500339FBA /* XCTIdentifier.swift */; };
-		0799E99623FD3B5500339FBA /* UIAlertAction+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799E99523FD3B5500339FBA /* UIAlertAction+.swift */; };
 		0799E99823FD3B9000339FBA /* UIBarItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799E99723FD3B9000339FBA /* UIBarItem+.swift */; };
 		07B6DFA223F3193800B870CF /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B6DFA123F3193800B870CF /* UserDataManager.swift */; };
 		07B6DFA623F31B5800B870CF /* MemoRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B6DFA523F31B5800B870CF /* MemoRawData.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		073D410223FEC41500FFEB16 /* ImageEditingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditingMode.swift; sourceTree = "<group>"; };
 		0746F6F423F3D0F700617A16 /* ViewSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSize.swift; sourceTree = "<group>"; };
 		0746F6F623F3D17300617A16 /* MainMemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMemoTableViewCell.swift; sourceTree = "<group>"; };
 		0746F6F723F3D17300617A16 /* MainMemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMemoTableViewCell.xib; sourceTree = "<group>"; };
@@ -103,7 +105,6 @@
 		0799E98323FC29B800339FBA /* LineMemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineMemoUITests.swift; sourceTree = "<group>"; };
 		0799E98523FC29B800339FBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0799E98D23FD188500339FBA /* XCTIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTIdentifier.swift; sourceTree = "<group>"; };
-		0799E99523FD3B5500339FBA /* UIAlertAction+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+.swift"; sourceTree = "<group>"; };
 		0799E99723FD3B9000339FBA /* UIBarItem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarItem+.swift"; sourceTree = "<group>"; };
 		07B6DFA123F3193800B870CF /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		07B6DFA523F31B5800B870CF /* MemoRawData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRawData.swift; sourceTree = "<group>"; };
@@ -250,7 +251,6 @@
 				078141C023F2D33400D9A9CD /* UITextView+.swift */,
 				0794F88A23F170D600D16463 /* UIViewController+.swift */,
 				0794F88C23F182C300D16463 /* UIView+.swift */,
-				0799E99523FD3B5500339FBA /* UIAlertAction+.swift */,
 				0799E99723FD3B9000339FBA /* UIBarItem+.swift */,
 				077E94A023F19DAE00103AC9 /* UIActivityIndicatorView+.swift */,
 				077D58B523F6A0C90060C111 /* UIButton+.swift */,
@@ -276,6 +276,7 @@
 				077D58CA23F700760060C111 /* UserData */,
 				0794F87723F140C700D16463 /* UIIdentifier.swift */,
 				0799E98D23FD188500339FBA /* XCTIdentifier.swift */,
+				073D410223FEC41500FFEB16 /* ImageEditingMode.swift */,
 				07BFEE9223F2CC4500877D8F /* UpdateMode.swift */,
 				0746F6F423F3D0F700617A16 /* ViewSize.swift */,
 				0775887E23F94AF200BF4D50 /* TitleData.swift */,
@@ -416,10 +417,10 @@
 				0777F11523F9A92900F8FA96 /* AddImageURLVIew.swift in Sources */,
 				0794F87823F140C700D16463 /* UIIdentifier.swift in Sources */,
 				07BFEE9523F2D1CD00877D8F /* UITextField+.swift in Sources */,
+				073D410323FEC41500FFEB16 /* ImageEditingMode.swift in Sources */,
 				07DD9E7223F19945009B95A0 /* RequestImage.swift in Sources */,
 				0794F85F23F13CE000D16463 /* MainMemoViewController.swift in Sources */,
 				0775887923F91B2200BF4D50 /* ViewSetting.swift in Sources */,
-				0799E99623FD3B5500339FBA /* UIAlertAction+.swift in Sources */,
 				0775887D23F93A9A00BF4D50 /* UIFont+.swift in Sources */,
 				0746F6F823F3D17300617A16 /* MainMemoTableViewCell.swift in Sources */,
 				0794F87A23F1458100D16463 /* MainNavigationController.swift in Sources */,
@@ -446,6 +447,7 @@
 			files = (
 				0799E99223FD1B7B00339FBA /* XCTIdentifier.swift in Sources */,
 				0799E98423FC29B800339FBA /* LineMemoUITests.swift in Sources */,
+				073D410423FEC47600FFEB16 /* ImageEditingMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

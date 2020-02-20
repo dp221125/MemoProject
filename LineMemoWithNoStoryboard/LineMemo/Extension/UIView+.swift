@@ -61,6 +61,5 @@ extension UIView {
     func activateXCTIdentifier(_ identifier: String) {
         isAccessibilityElement = true
         accessibilityIdentifier = identifier
-        accessibilityLabel = identifier
     }
 }

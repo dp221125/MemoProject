@@ -14,6 +14,7 @@ class LineMemoUITests: XCTestCase {
     private let app = XCUIApplication() // 테스트를 위한 UIApplication
 
     private let sampleImageURL = "https://homepages.cae.wisc.edu/~ece533/images/cat.png"
+    private var imageEditingMode: ImageEditingMode = .noImage
 
     // MARK: - SetUp
 
@@ -37,106 +38,75 @@ class LineMemoUITests: XCTestCase {
 
     // MARK: - TEST Method
 
+    // MARK: - 메모추가 로직 테스트
+
+    func testAddingMemoData() {
+        // 이미지 추가유형 선택
+
+        imageEditingMode = .urlImage
+
+        // AddMemoView 이동
+
+        pressAddMemoBarButton()
+
+        // 메모데이터 편집
+
+        switch imageEditingMode {
+        case .noImage:
+            break
+        case .albumImage:
+            addAlbumImage()
+        case .urlImage:
+            addURLImage()
+        }
+
+        insertMemoText(title: "Insert Title Text", subText: "Insert Sub Text")
+        sleep(1)
+
+        // 메모저장
+
+        saveMemo()
+        sleep(1)
+
+        // 저장메모 확인
+
+        selectMainMemoTableViewLastRowCell()
+    }
+
     // MARK: - 메모편집 로직 테스트
 
-    func testEditingMemoDataWithoutImage() {
-        let memoDataCells = app.tables.matching(identifier: XCTIdentifier.MainMemoView.memoTableView).cells
-        XCTAssert(memoDataCells.count > 0, "There's no memoDataCell")
+    func testEditingMemoData() {
+        // 이미지 추가유형 선택
 
-        let firstCell = memoDataCells.element(boundBy: 0)
-        firstCell.tap()
+        imageEditingMode = .urlImage
+
+        // 첫번제 메모 선택
+
+        pressFirstMemoTableViewCell()
+
+        // 메모데이터 편집
 
         app.buttons["편집"].tap()
+
+        // 기존 메모이미지 삭제
+
+        // 새 메모이미지 추가
+
+        switch imageEditingMode {
+        case .noImage:
+            break
+        case .albumImage:
+            addAlbumImage()
+        case .urlImage:
+            addURLImage()
+        }
+
+        // 메모 텍스트 입역 및 메인화면 이동
+
         editMemoText()
-        hideKeyboard()
         app.buttons["저장"].tap()
         app.buttons["메모 리스트"].tap()
-
         sleep(1)
-    }
-
-    // MARK: - 이미지 x + 메모추가 로직 테스트
-
-    /// * 이미지 없이 메모 추가 로직 테스트
-    func testAddingMemoDataWithoutImage() {
-        // AddMemoView 이동
-
-        pressAddMemoBarButton()
-
-        // 메모내용 입력
-
-        insertMemoText(title: "Insert Title Text", subText: "Insert Sub Text")
-        hideKeyboard()
-        sleep(1)
-
-        // 메모저장
-
-        saveMemo()
-        sleep(1)
-
-        // 저장메모 확인
-
-        selectMainMemoTableViewLastRowCell()
-    }
-
-    // MARK: - URL이미지 + 메모 추가 테스트
-
-    /// * URL 이미지 등록 포함 메모 추가 로직 테스트
-    func testAddingMemoDataWithURLImage() {
-        // AddMemoView 이동
-
-        pressAddMemoBarButton()
-
-        // 메모 URL Image 추가
-
-        pressAddImageCell()
-        presentAddImageURLView()
-        getURLImage(url: sampleImageURL)
-
-        // 메모내용 입력
-
-        insertMemoText(title: "Insert Title Text", subText: "Insert Sub Text")
-        hideKeyboard()
-        sleep(1)
-
-        // 메모저장
-
-        saveMemo()
-        sleep(1)
-
-        // 저장메모 확인
-
-        selectMainMemoTableViewLastRowCell()
-    }
-
-    // MARK: - 앨범 이미지 + 메모 추가 테스트
-
-    /// * 앨범 이미지 등록 포함 메모 추가 로직 테스트
-    func testAddingMemoDataWithAlbumImage() {
-        // AddMemoView 이동
-
-        pressAddMemoBarButton()
-
-        // 메모 Image 선택
-
-        pressAddImageCell()
-        mornitorAlbumAuthAlertController()
-        getAlbumImage()
-
-        // 메모내용 입력
-
-        insertMemoText(title: "Insert Title Text", subText: "Insert Sub Text")
-        hideKeyboard()
-        sleep(1)
-
-        // 메모저장
-
-        saveMemo()
-        sleep(1)
-
-        // 저장메모 확인
-
-        selectMainMemoTableViewLastRowCell()
     }
 
     // MARK: - 메모 데이터 확인 + 삭제 테스트
@@ -168,6 +138,18 @@ class LineMemoUITests: XCTestCase {
 
     // MARK: - Event Method
 
+    private func addURLImage() {
+        pressAddImageCell()
+        presentAddImageURLView()
+        getURLImage(url: sampleImageURL)
+    }
+
+    private func addAlbumImage() {
+        pressAddImageCell()
+        mornitorAlbumAuthAlertController()
+        getAlbumImage()
+    }
+
     private func checkFirstTableViewCellData(element: XCUIElement) {
         let firstCell = element.cells.element(boundBy: 0)
         firstCell.tap()
@@ -177,6 +159,8 @@ class LineMemoUITests: XCTestCase {
     private func deleteFirstMemoTableViewCell(element: XCUIElement) {
         let firstCell = element.cells
         firstCell.element(boundBy: 0).swipeLeft()
+        sleep(1)
+
         firstCell.element(boundBy: 0).buttons["Delete"].tap()
     }
 
@@ -194,6 +178,14 @@ class LineMemoUITests: XCTestCase {
         }
     }
 
+    private func pressFirstMemoTableViewCell() {
+        let memoDataCells = app.tables.matching(identifier: XCTIdentifier.MainMemoView.memoTableView).cells
+        XCTAssert(memoDataCells.count > 0, "There's no memoDataCell")
+
+        let firstCell = memoDataCells.element(boundBy: 0)
+        firstCell.tap()
+    }
+
     private func pressAddMemoBarButton() {
         let addMemoBarButton = app.buttons.matching(identifier: XCTIdentifier.MainMemoView.addMemoBarButton).firstMatch
         addMemoBarButton.tap()
@@ -206,7 +198,12 @@ class LineMemoUITests: XCTestCase {
     }
 
     private func getAlbumImage() {
-        app.sheets.buttons.matching(identifier: XCTIdentifier.Alert.getAlbumAction).firstMatch.tap()
+        let presentAlbumAction = app.sheets.buttons["앨범 사진 가져오기"]
+        if !presentAlbumAction.waitForExistence(timeout: 3.0) {
+            XCTAssert(presentAlbumAction.waitForExistence(timeout: 3.0), "Couldn't get getAlbumButton")
+        }
+
+        presentAlbumAction.firstMatch.tap()
         app.tap()
 
         selectTableViewCell(at: 0)
@@ -215,7 +212,7 @@ class LineMemoUITests: XCTestCase {
     }
 
     private func presentAddImageURLView() {
-        app.sheets.buttons.matching(identifier: XCTIdentifier.Alert.presentAddImageURLViewAction).firstMatch.tap()
+        app.sheets.buttons["URL로 등록하기"].firstMatch.tap()
     }
 
     private func mornitorAlbumAuthAlertController() {
@@ -234,10 +231,14 @@ class LineMemoUITests: XCTestCase {
         let titleTextField = app.textFields.matching(identifier: XCTIdentifier.EditMemoView.titleTextField).firstMatch
         let subTextView = app.textViews.matching(identifier: XCTIdentifier.EditMemoView.subTextView).firstMatch
 
+        XCTAssert(titleTextField.waitForExistence(timeout: 3.0), "Couldn't get titleTextField")
+
         titleTextField.tap()
         titleTextField.typeText(title)
         subTextView.tap()
         subTextView.typeText(subText)
+
+        hideKeyboard()
     }
 
     private func editMemoText(title: String = "editedText", subText: String = "editedText") {
@@ -250,6 +251,8 @@ class LineMemoUITests: XCTestCase {
         subTextView.tap()
         selectAllText(element: subTextView)
         subTextView.typeText(subText)
+
+        hideKeyboard()
     }
 
     private func selectAllText(element: XCUIElement) {
@@ -265,8 +268,11 @@ class LineMemoUITests: XCTestCase {
 
     private func selectTableViewCell(at index: Int) {
         let tableViewCells = app.tables.cells
-        XCTAssert(tableViewCells.count > 0, "There's no Cell")
-        tableViewCells.element(boundBy: index).tap()
+        if tableViewCells.element.waitForExistence(timeout: 3.0) {
+            tableViewCells.element(boundBy: index).tap()
+        } else {
+            XCTAssert(tableViewCells.count > 0, "There's no Cell")
+        }
     }
 
     private func pressButton(identifier: String) {

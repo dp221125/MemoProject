@@ -1,3 +1,4 @@
+
 //
 //  ImageEditingMode.swift
 //  LineMemo
@@ -7,3 +8,9 @@
 //
 
 import Foundation
+
+enum ImageEditingMode {
+    case noImage
+    case albumImage
+    case urlImage
+}

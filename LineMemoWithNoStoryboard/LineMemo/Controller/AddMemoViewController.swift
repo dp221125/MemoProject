@@ -116,7 +116,6 @@ extension AddMemoViewController: ViewControllerSetting {
                 self?.presentCameraAuthRequestAlertController()
             }
         }
-        getCameraAlertAction.activateXCTIdentifier(XCTIdentifier.Alert.getCameraAction)
 
         /// * 앨범사진 선택 시 이벤트 정의
         let getAlbumAlertAction = UIAlertAction(title: "앨범 사진 가져오기", style: .default, handler: { [weak self] _ in
@@ -140,7 +139,6 @@ extension AddMemoViewController: ViewControllerSetting {
                 }
             }
         })
-        getAlbumAlertAction.activateXCTIdentifier(XCTIdentifier.Alert.getAlbumAction)
 
         let getPictureFromURLAction = UIAlertAction(title: "URL로 등록하기", style: .default) { _ in
             DispatchQueue.main.async { [weak self] in
@@ -149,14 +147,12 @@ extension AddMemoViewController: ViewControllerSetting {
                 self?.presentViewController(destination: addImageURLViewController)
             }
         }
-        getPictureFromURLAction.activateXCTIdentifier(XCTIdentifier.Alert.presentAddImageURLViewAction)
 
         let cancelAlertAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         addImageAlertController.addAction(getCameraAlertAction)
         addImageAlertController.addAction(getAlbumAlertAction)
         addImageAlertController.addAction(getPictureFromURLAction)
         addImageAlertController.addAction(cancelAlertAction)
-        cancelAlertAction.activateXCTIdentifier(XCTIdentifier.Alert.cancelAction)
     }
 
     private func checkInputData() {

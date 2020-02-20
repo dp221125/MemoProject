@@ -35,7 +35,6 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
         case .edit:
             photoImageView.backgroundColor = indexPath.row == 0 ? .white : .black
             deleteImageView.isHidden = indexPath.row == 0 ? true : false
-            isAccessibilityElement = true
             activateXCTIdentifier(indexPath.row == 0 ? XCTIdentifier.EditMemoView.addImageCell : "")
         }
         photoImageView.image = image

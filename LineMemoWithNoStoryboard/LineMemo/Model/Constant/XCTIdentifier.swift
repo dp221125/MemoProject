@@ -25,6 +25,7 @@ struct XCTIdentifier {
 
     struct EditMemoView {
         static let imageCollectionView = "imageCollectionView"
+        static let deleteImage = "deleteImage"
         static let addImageCell = "addImageCell"
         static let mainView = "addMemoView"
         static let titleTextField = "titleTextField"
