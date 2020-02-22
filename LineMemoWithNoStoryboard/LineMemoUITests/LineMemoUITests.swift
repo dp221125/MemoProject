@@ -4,7 +4,6 @@
 //
 //  Created by MinKyeongTae on 2020/02/18.
 //  Copyright © 2020 MinKyeongTae. All rights reserved.
-//  now Branch : Feature/TestApp
 
 import XCTest
 
