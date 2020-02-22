@@ -143,7 +143,7 @@ class LineMemoUITests: XCTestCase {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
             // This measures how long it takes to launch your application.
             measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
+                app.launch()
             }
         }
     }
@@ -208,6 +208,7 @@ class LineMemoUITests: XCTestCase {
 
     private func pressAddMemoBarButton() {
         let addMemoBarButton = app.buttons.matching(identifier: XCTIdentifier.MainMemoView.addMemoBarButton).firstMatch
+        XCTAssert(addMemoBarButton.waitForExistence(timeout: 3.0), "Failed to get addMemoBarButton")
         addMemoBarButton.tap()
     }
 
@@ -219,7 +220,7 @@ class LineMemoUITests: XCTestCase {
 
     private func getAlbumImage() {
         let presentAlbumAction = app.sheets.buttons["앨범 사진 가져오기"]
-        XCTAssert(presentAlbumAction.waitForExistence(timeout: 1.0), "Failed to get presentAlbumAtion")
+        XCTAssert(presentAlbumAction.waitForExistence(timeout: 3.0), "Failed to get presentAlbumAtion")
         presentAlbumAction.tap()
         sleep(1)
 
@@ -254,7 +255,7 @@ class LineMemoUITests: XCTestCase {
         let titleTextField = app.textFields.matching(identifier: XCTIdentifier.EditMemoView.titleTextField).firstMatch
         let subTextView = app.textViews.matching(identifier: XCTIdentifier.EditMemoView.subTextView).firstMatch
 
-        XCTAssert(titleTextField.waitForExistence(timeout: 1.0), "Failed to get titleTextField")
+        XCTAssert(titleTextField.waitForExistence(timeout: 3.0), "Failed to get titleTextField")
 
         titleTextField.tap()
         titleTextField.typeText(title)
@@ -268,7 +269,7 @@ class LineMemoUITests: XCTestCase {
         let titleTextField = app.textFields.matching(identifier: XCTIdentifier.EditMemoView.titleTextField).firstMatch
         let subTextView = app.textViews.matching(identifier: XCTIdentifier.EditMemoView.subTextView).firstMatch
 
-        XCTAssert(titleTextField.waitForExistence(timeout: 1.0), "Failed to get titleTextField")
+        XCTAssert(titleTextField.waitForExistence(timeout: 3.0), "Failed to get titleTextField")
         titleTextField.tap()
         selectAllText(element: titleTextField)
         titleTextField.typeText(title)
@@ -309,7 +310,7 @@ class LineMemoUITests: XCTestCase {
     private func saveMemo() {
         app.buttons["저장"].tap()
         let allowButton = app.buttons["네"]
-        XCTAssert(allowButton.waitForExistence(timeout: 1.0), "Failed to get Button")
+        XCTAssert(allowButton.waitForExistence(timeout: 3.0), "Failed to get Button")
         allowButton.tap()
     }
 
