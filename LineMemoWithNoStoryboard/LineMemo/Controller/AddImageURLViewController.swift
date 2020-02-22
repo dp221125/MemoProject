@@ -19,7 +19,7 @@ class AddImageURLViewController: UIViewController {
 
     // MARK: Properties
 
-    var delegate: SendDataDelegate?
+    weak var delegate: SendDataDelegate?
 
     private var isInputData = false {
         didSet {

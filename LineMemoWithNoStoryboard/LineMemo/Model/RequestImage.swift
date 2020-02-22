@@ -16,7 +16,7 @@ final class RequestImage {
 
     // MARK: Property
 
-    var delegate: RequestImageDelegate?
+    weak var delegate: RequestImageDelegate?
 
     // MARK: Initializer
 

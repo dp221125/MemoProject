@@ -49,6 +49,7 @@ extension MainNavigationController: ViewControllerSetting {
         navigationBar.barTintColor = .white
         configureActivityIndicatorView()
         addKeyboardObserver()
+        navigationItem.leftBarButtonItem?.action = #selector(backButtonItemPressed(_:))
     }
 
     private func configureActivityIndicatorView() {
@@ -70,6 +71,10 @@ extension MainNavigationController: ViewControllerSetting {
 // MARK: - Event
 
 extension MainNavigationController {
+    @objc func backButtonItemPressed(_: UIBarButtonItem) {
+        popViewController(animated: true)
+    }
+
     @objc func keyboardWillShow(_: NSNotification) {
         if let _ = self.topViewController as? AddImageURLViewController {
             return
