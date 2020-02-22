@@ -21,6 +21,7 @@ class LineMemoUITests: XCTestCase {
     private let testSubText = "This is the sub text"
     private let testSubTextToEdit = "This is the Edited sub text"
     private var imageEditingMode: ImageEditingMode = .noImage
+    private let deleteImageCount = 1
 
     // MARK: - SetUp
 
@@ -47,10 +48,11 @@ class LineMemoUITests: XCTestCase {
 
     // MARK: - 메모추가 로직 테스트
 
+    /// * 이미지, 텍스트 등을 포함한 메모 추가 로직 테스트
     func testAddingMemoData() {
         // 이미지 추가유형 선택
 
-        imageEditingMode = .urlImage
+        imageEditingMode = .albumImage
 
         // AddMemoView 이동
 
@@ -86,7 +88,7 @@ class LineMemoUITests: XCTestCase {
     func testEditingMemoData() {
         // 이미지 추가유형 선택
 
-        imageEditingMode = .urlImage
+        imageEditingMode = .albumImage
 
         // 첫번제 메모 선택
 
@@ -98,7 +100,7 @@ class LineMemoUITests: XCTestCase {
 
         // 기존 메모이미지 삭제 (삭제할 이미지 갯수 지정)
 
-        deleteMemoImage(count: 1)
+        deleteMemoImage(count: deleteImageCount)
 
         // 새 메모이미지 추가
 
@@ -152,7 +154,7 @@ class LineMemoUITests: XCTestCase {
     private func deleteMemoImage(count: Int) {
         for _ in 0 ..< count {
             if app.collectionViews.cells.element(boundBy: 1).exists {
-                app.collectionViews.cells.element(boundBy: 1).coordinate(withNormalizedOffset: CGVector.zero).withOffset(CGVector(dx: app.collectionViews.cells.element(boundBy: 1).frame.size.width - 10, dy: 10)).tap()
+                app.collectionViews.cells.element(boundBy: 1).coordinate(withNormalizedOffset: CGVector.zero).withOffset(CGVector(dx: app.collectionViews.cells.element(boundBy: 1).frame.size.width - 20, dy: 20)).tap()
                 sleep(1)
             }
         }
@@ -188,15 +190,13 @@ class LineMemoUITests: XCTestCase {
         let addURLImageButton = app.buttons.matching(identifier: XCTIdentifier.AddImageURLView.addButton).firstMatch
         let editMemoView = app.otherElements.matching(identifier: XCTIdentifier.EditMemoView.mainView).firstMatch
 
-        XCTAssert(urlTextField.waitForExistence(timeout: 30.0), "Fail to get urlTextField")
+        XCTAssert(urlTextField.waitForExistence(timeout: 30.0), "Failed to get urlTextField")
         urlTextField.tap()
 
         urlTextField.typeText(imageURL)
         addURLImageButton.tap()
 
-        if !editMemoView.waitForExistence(timeout: TimeInterval(30.0)) {
-            fatalError("There is Long Delay while getting URL Image")
-        }
+        XCTAssert(editMemoView.waitForExistence(timeout: TimeInterval(30.0)), "There is Long Delay while getting URL Image")
     }
 
     private func pressFirstMemoTableViewCell() {
@@ -220,9 +220,8 @@ class LineMemoUITests: XCTestCase {
 
     private func getAlbumImage() {
         let presentAlbumAction = app.sheets.buttons["앨범 사진 가져오기"]
-        if presentAlbumAction.waitForExistence(timeout: 1.0) {
-            presentAlbumAction.tap()
-        }
+        XCTAssert(presentAlbumAction.waitForExistence(timeout: 1.0), "Failed to get presentAlbumAtion")
+        presentAlbumAction.tap()
         sleep(1)
 
         app.coordinate(withNormalizedOffset: CGVector.zero).tap()
@@ -256,7 +255,7 @@ class LineMemoUITests: XCTestCase {
         let titleTextField = app.textFields.matching(identifier: XCTIdentifier.EditMemoView.titleTextField).firstMatch
         let subTextView = app.textViews.matching(identifier: XCTIdentifier.EditMemoView.subTextView).firstMatch
 
-        XCTAssert(titleTextField.waitForExistence(timeout: 1.0), "Couldn't get titleTextField")
+        XCTAssert(titleTextField.waitForExistence(timeout: 1.0), "Failed to get titleTextField")
 
         titleTextField.tap()
         titleTextField.typeText(title)
@@ -270,7 +269,7 @@ class LineMemoUITests: XCTestCase {
         let titleTextField = app.textFields.matching(identifier: XCTIdentifier.EditMemoView.titleTextField).firstMatch
         let subTextView = app.textViews.matching(identifier: XCTIdentifier.EditMemoView.subTextView).firstMatch
 
-        XCTAssert(titleTextField.waitForExistence(timeout: 1.0), "Couldn't get titleTextField")
+        XCTAssert(titleTextField.waitForExistence(timeout: 1.0), "Failed to get titleTextField")
         titleTextField.tap()
         selectAllText(element: titleTextField)
         titleTextField.typeText(title)
@@ -288,17 +287,16 @@ class LineMemoUITests: XCTestCase {
 
     private func selectCollectionViewItemCell(at index: Int) {
         let collectionViewCells = app.collectionViews.cells
-        if collectionViewCells.element(boundBy: index).waitForExistence(timeout: 10.0) {
-            collectionViewCells.element(boundBy: index).tap()
-        }
+        let collectionViewCell = collectionViewCells.element(boundBy: index)
+        XCTAssert(collectionViewCell.waitForExistence(timeout: 10.0), "Failed to get CollectionViewCell")
+        collectionViewCell.tap()
     }
 
     private func selectTableViewCell(at index: Int) {
         let tableViewCells = app.tables.cells
-
-        if tableViewCells.element(boundBy: index).waitForExistence(timeout: 10.0) {
-            tableViewCells.element(boundBy: index).tap()
-        }
+        let tableViewCell = tableViewCells.element(boundBy: index)
+        XCTAssert(tableViewCell.waitForExistence(timeout: 10.0), "Failed to get TableViewCell")
+        tableViewCells.element(boundBy: index).tap()
     }
 
     private func pressButton(identifier: String) -> Bool {
@@ -312,9 +310,8 @@ class LineMemoUITests: XCTestCase {
     private func saveMemo() {
         app.buttons["저장"].tap()
         let allowButton = app.buttons["네"]
-        if allowButton.waitForExistence(timeout: 1.0) {
-            allowButton.tap()
-        }
+        XCTAssert(allowButton.waitForExistence(timeout: 1.0), "Failed to get Button")
+        allowButton.tap()
     }
 
     private func selectMainMemoTableViewLastRowCell() {

@@ -23,23 +23,11 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         deleteImageView.alpha = 0.8
         photoImageView.configureBasicBorder()
-        deleteImageView.accessibilityLabel = "deleteImageView"
-        deleteImageView.accessibilityIdentifier = "deleteImageView"
-        deleteImageView.isAccessibilityElement = true
-        deleteImageView.image?.accessibilityLabel = "deleteImageView"
-        deleteImageView.image?.accessibilityIdentifier = "deleteImageView"
-        deleteImageView.image?.isAccessibilityElement = true
     }
 
     // MARK: Configuration
 
     func configureCell(image: UIImage, imageMode: MemoMode, indexPath: IndexPath) {
-        deleteImageView.accessibilityLabel = "deleteImageView"
-        deleteImageView.accessibilityIdentifier = "deleteImageView"
-        deleteImageView.isAccessibilityElement = true
-        deleteImageView.image?.accessibilityLabel = "deleteImageView"
-        deleteImageView.image?.accessibilityIdentifier = "deleteImageView"
-        deleteImageView.image?.isAccessibilityElement = true
         switch imageMode {
         case .view:
             photoImageView.backgroundColor = .black
