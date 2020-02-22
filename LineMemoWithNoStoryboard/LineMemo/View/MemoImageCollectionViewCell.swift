@@ -21,14 +21,13 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        deleteImageView.alpha = 0.8
+        photoImageView.configureBasicBorder()
     }
 
     // MARK: Configuration
 
     func configureCell(image: UIImage, imageMode: MemoMode, indexPath: IndexPath) {
-        photoImageView.configureBasicBorder()
-        deleteImageView.configureBasicBorder()
-
         switch imageMode {
         case .view:
             photoImageView.backgroundColor = .black
@@ -36,7 +35,6 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
         case .edit:
             photoImageView.backgroundColor = indexPath.row == 0 ? .white : .black
             deleteImageView.isHidden = indexPath.row == 0 ? true : false
-            isAccessibilityElement = true
             activateXCTIdentifier(indexPath.row == 0 ? XCTIdentifier.EditMemoView.addImageCell : "")
         }
         photoImageView.image = image

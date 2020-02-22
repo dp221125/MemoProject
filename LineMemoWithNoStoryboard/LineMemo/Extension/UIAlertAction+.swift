@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension UIAlertAction {
-    func activateXCTIdentifier(_ identifier: String) {
-        accessibilityLabel = identifier
-        isAccessibilityElement = true
-    }
-}
+// extension UIAlertAction {
+//    func activateXCTIdentifier(_ identifier: String) {
+//        accessibilityLabel = identifier
+//        isAccessibilityElement = true
+//    }
+// }

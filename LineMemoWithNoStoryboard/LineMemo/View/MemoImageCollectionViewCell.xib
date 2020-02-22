@@ -21,15 +21,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="120" height="113"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                     </view>
                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="TY2-yT-1Wg">
                         <rect key="frame" x="3" y="3" width="114" height="107"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                     </imageView>
                     <imageView hidden="YES" clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete" translatesAutoresizingMaskIntoConstraints="NO" id="8EL-0R-9Mj">
-                        <rect key="frame" x="87" y="3" width="30" height="30"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="85" y="5" width="30" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration" identifier="deleteImageView">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="Yxl-fj-VrC"/>
                             <constraint firstAttribute="height" constant="30" id="rpw-LW-UDD"/>
@@ -42,11 +51,11 @@
             <constraints>
                 <constraint firstItem="TY2-yT-1Wg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="2KZ-c0-0qL"/>
                 <constraint firstAttribute="trailing" secondItem="Ax7-b5-uu3" secondAttribute="trailing" id="6Gc-NT-qxw"/>
-                <constraint firstAttribute="trailing" secondItem="8EL-0R-9Mj" secondAttribute="trailing" constant="3" id="82E-eB-6bo"/>
+                <constraint firstAttribute="trailing" secondItem="8EL-0R-9Mj" secondAttribute="trailing" constant="5" id="82E-eB-6bo"/>
                 <constraint firstAttribute="trailing" secondItem="TY2-yT-1Wg" secondAttribute="trailing" constant="3" id="9yD-Vz-vel"/>
                 <constraint firstAttribute="bottom" secondItem="Ax7-b5-uu3" secondAttribute="bottom" id="9ya-nS-K3e"/>
                 <constraint firstItem="Ax7-b5-uu3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="F59-GI-b65"/>
-                <constraint firstItem="8EL-0R-9Mj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="FIY-SF-rCq"/>
+                <constraint firstItem="8EL-0R-9Mj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="FIY-SF-rCq"/>
                 <constraint firstItem="Ax7-b5-uu3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JfY-tD-3FM"/>
                 <constraint firstItem="TY2-yT-1Wg" firstAttribute="centerX" secondItem="Ax7-b5-uu3" secondAttribute="centerX" id="LPi-pe-HK1"/>
                 <constraint firstAttribute="bottom" secondItem="TY2-yT-1Wg" secondAttribute="bottom" constant="3" id="O2w-Nh-6Wz"/>
@@ -64,6 +73,6 @@
     </objects>
     <resources>
         <image name="addPhoto" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="delete" width="29.5" height="28"/>
+        <image name="delete" width="170.66667175292969" height="170.66667175292969"/>
     </resources>
 </document>

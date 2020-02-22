@@ -39,8 +39,9 @@ class DetailMemoViewController: UIViewController {
 
     private var imageMode = MemoMode.view {
         didSet {
-            configureByMemoMode(mode: imageMode)
             DispatchQueue.main.async { [weak self] in
+                guard let imageMode = self?.imageMode else { return }
+                self?.configureByMemoMode(mode: imageMode)
                 self?.mainView.imageCollectionView.reloadData()
             }
         }
@@ -146,8 +147,11 @@ extension DetailMemoViewController: ViewControllerSetting {
             switch mode {
             case .single:
                 self?.mainView.imageCollectionView.performBatchUpdates({
+                    self?.beginIgnoringInteractionEvents()
                     self?.mainView.imageCollectionView.insertItems(at: [IndexPath(item: index, section: 0)])
-                }, completion: nil)
+                }) { _ in
+                    self?.endIgnoringInteractionEvents()
+                }
             case .whole:
                 self?.mainView.imageCollectionView.reloadData()
             }
@@ -160,8 +164,11 @@ extension DetailMemoViewController: ViewControllerSetting {
             switch mode {
             case .single:
                 self?.mainView.imageCollectionView.performBatchUpdates({
+                    self?.beginIgnoringInteractionEvents()
                     self?.mainView.imageCollectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
-                }, completion: nil)
+                }) { _ in
+                    self?.endIgnoringInteractionEvents()
+                }
             case .whole:
                 self?.mainView.imageCollectionView.reloadData()
             }

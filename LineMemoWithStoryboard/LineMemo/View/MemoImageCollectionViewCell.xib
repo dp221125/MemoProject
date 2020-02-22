@@ -28,7 +28,7 @@
                     </imageView>
                     <imageView hidden="YES" clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete" translatesAutoresizingMaskIntoConstraints="NO" id="8EL-0R-9Mj">
                         <rect key="frame" x="87" y="3" width="30" height="30"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="Yxl-fj-VrC"/>
@@ -64,6 +64,6 @@
     </objects>
     <resources>
         <image name="addPhoto" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="delete" width="29.5" height="28"/>
+        <image name="delete" width="170.66667175292969" height="170.66667175292969"/>
     </resources>
 </document>
