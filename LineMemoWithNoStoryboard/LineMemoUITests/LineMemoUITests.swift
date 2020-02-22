@@ -13,7 +13,13 @@ class LineMemoUITests: XCTestCase {
 
     private let app = XCUIApplication() // 테스트를 위한 UIApplication
 
+    // MARK: Test Data
+
     private let sampleImageURL = "https://homepages.cae.wisc.edu/~ece533/images/cat.png"
+    private let testTitleText = "This is the title text"
+    private let testTitleTextToEdit = "This is the Edited title text"
+    private let testSubText = "This is the sub text"
+    private let testSubTextToEdit = "This is the Edited sub text"
     private var imageEditingMode: ImageEditingMode = .noImage
 
     // MARK: - SetUp
@@ -27,6 +33,7 @@ class LineMemoUITests: XCTestCase {
 
         app.launch()
 
+        mornitorAlbumAuthAlertController()
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
@@ -60,7 +67,7 @@ class LineMemoUITests: XCTestCase {
             addURLImage()
         }
 
-        insertMemoText(title: "Insert Title Text", subText: "Insert Sub Text")
+        insertMemoText(title: testTitleText, subText: testSubText)
         sleep(1)
 
         // 메모저장
@@ -75,6 +82,7 @@ class LineMemoUITests: XCTestCase {
 
     // MARK: - 메모편집 로직 테스트
 
+    /// * 메모 편집 간 이미지 삭제 /. 추가, 텍스트 수정 로직 테스트
     func testEditingMemoData() {
         // 이미지 추가유형 선택
 
@@ -88,7 +96,9 @@ class LineMemoUITests: XCTestCase {
 
         app.buttons["편집"].tap()
 
-        // 기존 메모이미지 삭제
+        // 기존 메모이미지 삭제 (삭제할 이미지 갯수 지정)
+
+        deleteMemoImage(count: 1)
 
         // 새 메모이미지 추가
 
@@ -101,9 +111,10 @@ class LineMemoUITests: XCTestCase {
             addURLImage()
         }
 
+        sleep(1)
         // 메모 텍스트 입역 및 메인화면 이동
 
-        editMemoText()
+        editMemoText(title: testTitleTextToEdit, subText: testSubTextToEdit)
         app.buttons["저장"].tap()
         app.buttons["메모 리스트"].tap()
         sleep(1)
@@ -138,6 +149,15 @@ class LineMemoUITests: XCTestCase {
 
     // MARK: - Event Method
 
+    private func deleteMemoImage(count: Int) {
+        for _ in 0 ..< count {
+            if app.collectionViews.cells.element(boundBy: 1).exists {
+                app.collectionViews.cells.element(boundBy: 1).coordinate(withNormalizedOffset: CGVector.zero).withOffset(CGVector(dx: app.collectionViews.cells.element(boundBy: 1).frame.size.width - 10, dy: 10)).tap()
+                sleep(1)
+            }
+        }
+    }
+
     private func addURLImage() {
         pressAddImageCell()
         presentAddImageURLView()
@@ -146,7 +166,6 @@ class LineMemoUITests: XCTestCase {
 
     private func addAlbumImage() {
         pressAddImageCell()
-        mornitorAlbumAuthAlertController()
         getAlbumImage()
     }
 
@@ -169,7 +188,9 @@ class LineMemoUITests: XCTestCase {
         let addURLImageButton = app.buttons.matching(identifier: XCTIdentifier.AddImageURLView.addButton).firstMatch
         let editMemoView = app.otherElements.matching(identifier: XCTIdentifier.EditMemoView.mainView).firstMatch
 
+        XCTAssert(urlTextField.waitForExistence(timeout: 30.0), "Fail to get urlTextField")
         urlTextField.tap()
+
         urlTextField.typeText(imageURL)
         addURLImageButton.tap()
 
@@ -199,25 +220,29 @@ class LineMemoUITests: XCTestCase {
 
     private func getAlbumImage() {
         let presentAlbumAction = app.sheets.buttons["앨범 사진 가져오기"]
-        if !presentAlbumAction.waitForExistence(timeout: 3.0) {
-            XCTAssert(presentAlbumAction.waitForExistence(timeout: 3.0), "Couldn't get getAlbumButton")
+        if presentAlbumAction.waitForExistence(timeout: 1.0) {
+            presentAlbumAction.tap()
         }
+        sleep(1)
 
-        presentAlbumAction.firstMatch.tap()
-        app.tap()
-
+        app.coordinate(withNormalizedOffset: CGVector.zero).tap()
         selectTableViewCell(at: 0)
         selectCollectionViewItemCell(at: 1)
-        pressButton(identifier: "Choose")
+
+        XCTAssert(pressButton(identifier: "Choose") || pressButton(identifier: "선택"), "Failed to press button")
     }
 
     private func presentAddImageURLView() {
-        app.sheets.buttons["URL로 등록하기"].firstMatch.tap()
+        app.sheets.buttons["URL로 등록하기"].tap()
     }
 
     private func mornitorAlbumAuthAlertController() {
         addUIInterruptionMonitor(withDescription: "AlbumAuthAlertControllerPresented") { alert -> Bool in
-            alert.buttons["OK"].tap()
+            if alert.buttons["확인"].exists {
+                alert.buttons["확인"].tap()
+            } else if alert.buttons["OK"].exists {
+                alert.buttons["OK"].tap()
+            }
             return true
         }
     }
@@ -231,7 +256,7 @@ class LineMemoUITests: XCTestCase {
         let titleTextField = app.textFields.matching(identifier: XCTIdentifier.EditMemoView.titleTextField).firstMatch
         let subTextView = app.textViews.matching(identifier: XCTIdentifier.EditMemoView.subTextView).firstMatch
 
-        XCTAssert(titleTextField.waitForExistence(timeout: 3.0), "Couldn't get titleTextField")
+        XCTAssert(titleTextField.waitForExistence(timeout: 1.0), "Couldn't get titleTextField")
 
         titleTextField.tap()
         titleTextField.typeText(title)
@@ -245,6 +270,7 @@ class LineMemoUITests: XCTestCase {
         let titleTextField = app.textFields.matching(identifier: XCTIdentifier.EditMemoView.titleTextField).firstMatch
         let subTextView = app.textViews.matching(identifier: XCTIdentifier.EditMemoView.subTextView).firstMatch
 
+        XCTAssert(titleTextField.waitForExistence(timeout: 1.0), "Couldn't get titleTextField")
         titleTextField.tap()
         selectAllText(element: titleTextField)
         titleTextField.typeText(title)
@@ -261,28 +287,32 @@ class LineMemoUITests: XCTestCase {
     }
 
     private func selectCollectionViewItemCell(at index: Int) {
-        let collectionViewCells = app.collectionViews.firstMatch.cells
-        XCTAssert(collectionViewCells.count > 0, "There's no Item Cell")
-        app.collectionViews.firstMatch.cells.element(boundBy: index).tap()
+        let collectionViewCells = app.collectionViews.cells
+        if collectionViewCells.element(boundBy: index).waitForExistence(timeout: 10.0) {
+            collectionViewCells.element(boundBy: index).tap()
+        }
     }
 
     private func selectTableViewCell(at index: Int) {
         let tableViewCells = app.tables.cells
-        if tableViewCells.element.waitForExistence(timeout: 3.0) {
+
+        if tableViewCells.element(boundBy: index).waitForExistence(timeout: 10.0) {
             tableViewCells.element(boundBy: index).tap()
-        } else {
-            XCTAssert(tableViewCells.count > 0, "There's no Cell")
         }
     }
 
-    private func pressButton(identifier: String) {
-        app.buttons[identifier].tap()
+    private func pressButton(identifier: String) -> Bool {
+        if app.buttons[identifier].waitForExistence(timeout: 3.0) {
+            app.buttons[identifier].tap()
+            return true
+        }
+        return false
     }
 
     private func saveMemo() {
         app.buttons["저장"].tap()
         let allowButton = app.buttons["네"]
-        if allowButton.waitForExistence(timeout: 3.0) {
+        if allowButton.waitForExistence(timeout: 1.0) {
             allowButton.tap()
         }
     }
