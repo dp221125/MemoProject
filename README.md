@@ -11,6 +11,13 @@
 
 <br>
 
+## 앱 구동화면
+<div> 
+  <img width=250 src="https://user-images.githubusercontent.com/4410021/75112185-b0329c00-5684-11ea-9bec-f16902a39d58.gif">     &nbsp
+  <img width=250 src="https://user-images.githubusercontent.com/4410021/75112189-b759aa00-5684-11ea-8698-6e5b2fb4c1c3.gif">
+  &nbsp
+  <img width=250 src="https://user-images.githubusercontent.com/4410021/75112190-b7f24080-5684-11ea-8b1b-d4bd0e671768.gif"></div>
+
 ## 프로젝트 구조 및 사용목적
 ### AppDelegate 
 - UserDataManager로부터 기존의 저장된 메모데이터 로드
