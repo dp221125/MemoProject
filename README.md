@@ -16,10 +16,13 @@
 <br>
 
 ## 개요
-- 제목과 내용, 이미지를 작성/추가할 수 있는 메모앱 프로젝트
-- 코드+xib(메인) / 스토리보드+xib 사용 메모앱 개발 프로젝트
-- 코드+xib 프로젝트 내 LineMemoUITests에 메모 추가/편집/삭제 간 로직 테스트코드 작성
-- 내부 프레임워크로만 프로젝트 개발
+- 이미지와 제목, 내용을 작성/추가할 수 있는 메모앱 프로젝트
+  - 카메라촬영, 사진앨범, URL Image 등을 통해 이미지 추가가능
+- LineMemoWithNoStoryboard(코드+xib) / LineMemoWithStoryboard(스토리보드+xib) 두가지 방식 개발
+  - LineMemoWithNoStoryboard
+    - 실제 제출 프로젝트, 스토리보드 미사용 개발
+    - 코드+xib 프로젝트 내 LineMemoUITests에 메모 추가/편집/삭제 간 로직 테스트코드 작성
+- 내부 프레임워크 활용 프로젝트 개발
 - 애플 기본 MVC 디자인패턴 사용
 
 <br>
@@ -84,14 +87,14 @@
 - **MainMemoTableViewCell** : xib활용 UI 정의, 메인화면 메모리스트 셀
 - **MemoImageCollectionViewCell** : xib활용 UI 정의, 메모 이미지리스트 셀
 - FlowLayout
-  - MemoImageCollectionViewFlowLayout
+  - MemoImageCollectionViewFlowLayout : MemoImageCollectionView flowLayout 
 
 ### Controller
 - **MainNavigationController** : 메인화면을 rootViewController로 하는 메모앱 메인 NavigationController
-- **MainMemoViewController** : 메민 메모리스트 화면
-- **DetailMemoViewController** : 저장된 메모 정보 확인 및 편집/저장이 가능한 화면
-- **AddMemoViewController** : 새로운 메모 추가 화면
-- **AddImageURLViewController** : URL Image 추가 화면
+- **MainMemoViewController** : 메인 메모리스트 ViewController
+- **DetailMemoViewController** : 메모 선택 후 저장된 메모 확인 및 편집/저장이 가능한 ViewController
+- **AddMemoViewController** : 새로운 메모 추가 ViewController
+- **AddImageURLViewController** : URL Image 추가 ViewController
 
 <br>
 
