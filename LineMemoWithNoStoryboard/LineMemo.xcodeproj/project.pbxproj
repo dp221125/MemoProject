@@ -204,6 +204,7 @@
 			children = (
 				07B6DFA123F3193800B870CF /* UserDataManager.swift */,
 				07DD9E7123F19945009B95A0 /* RequestImage.swift */,
+				077D58CA23F700760060C111 /* UserData */,
 				0746F6FC23F3EC9100617A16 /* ToastView.swift */,
 				07BFEE8B23F28F9900877D8F /* Constant */,
 			);
@@ -273,12 +274,11 @@
 			isa = PBXGroup;
 			children = (
 				077D58CB23F7007B0060C111 /* Error */,
-				077D58CA23F700760060C111 /* UserData */,
+				073D410223FEC41500FFEB16 /* ImageEditingMode.swift */,
 				0794F87723F140C700D16463 /* UIIdentifier.swift */,
 				0799E98D23FD188500339FBA /* XCTIdentifier.swift */,
-				073D410223FEC41500FFEB16 /* ImageEditingMode.swift */,
-				07BFEE9223F2CC4500877D8F /* UpdateMode.swift */,
 				0746F6F423F3D0F700617A16 /* ViewSize.swift */,
+				07BFEE9223F2CC4500877D8F /* UpdateMode.swift */,
 				0775887E23F94AF200BF4D50 /* TitleData.swift */,
 			);
 			path = Constant;

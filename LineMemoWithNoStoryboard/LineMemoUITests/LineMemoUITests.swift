@@ -88,7 +88,7 @@ class LineMemoUITests: XCTestCase {
     func testEditingMemoData() {
         // 이미지 추가유형 선택
 
-        imageEditingMode = .noImage
+        imageEditingMode = .urlImage
 
         // 첫번제 메모 선택
 
@@ -223,7 +223,6 @@ class LineMemoUITests: XCTestCase {
         let presentAlbumAction = app.sheets.buttons["앨범 사진 가져오기"]
         XCTAssert(presentAlbumAction.waitForExistence(timeout: 3.0), "Failed to get presentAlbumAtion")
         presentAlbumAction.tap()
-        sleep(1)
 
         app.coordinate(withNormalizedOffset: CGVector.zero).tap()
         selectTableViewCell(at: 0)
@@ -233,6 +232,7 @@ class LineMemoUITests: XCTestCase {
     }
 
     private func presentAddImageURLView() {
+        XCTAssert(app.sheets.buttons["URL로 등록하기"].waitForExistence(timeout: 3.0), "Failed to get URLAddButton")
         app.sheets.buttons["URL로 등록하기"].tap()
     }
 
@@ -249,6 +249,7 @@ class LineMemoUITests: XCTestCase {
 
     private func hideKeyboard() {
         let addMemoMainView = app.otherElements.matching(identifier: XCTIdentifier.EditMemoView.mainView).firstMatch
+        XCTAssert(addMemoMainView.waitForExistence(timeout: 3.0), "Failed to get addMemoMainView")
         addMemoMainView.tap()
     }
 
@@ -309,7 +310,10 @@ class LineMemoUITests: XCTestCase {
     }
 
     private func saveMemo() {
-        app.buttons["저장"].tap()
+        let saveButton = app.buttons["저장"]
+        XCTAssert(saveButton.waitForExistence(timeout: 3.0), "Failed to get saveButton")
+        saveButton.tap()
+
         let allowButton = app.buttons["네"]
         XCTAssert(allowButton.waitForExistence(timeout: 3.0), "Failed to get Button")
         allowButton.tap()
