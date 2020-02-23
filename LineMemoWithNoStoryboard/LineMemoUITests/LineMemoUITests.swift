@@ -52,7 +52,7 @@ class LineMemoUITests: XCTestCase {
     func testAddingMemoData() {
         // 이미지 추가유형 선택
 
-        imageEditingMode = .albumImage
+        imageEditingMode = .urlImage
 
         // AddMemoView 이동
 
@@ -88,7 +88,7 @@ class LineMemoUITests: XCTestCase {
     func testEditingMemoData() {
         // 이미지 추가유형 선택
 
-        imageEditingMode = .urlImage
+        imageEditingMode = .albumImage
 
         // 첫번제 메모 선택
 
@@ -223,8 +223,9 @@ class LineMemoUITests: XCTestCase {
         let presentAlbumAction = app.sheets.buttons["앨범 사진 가져오기"]
         XCTAssert(presentAlbumAction.waitForExistence(timeout: 3.0), "Failed to get presentAlbumAtion")
         presentAlbumAction.tap()
+        sleep(1)
 
-        app.coordinate(withNormalizedOffset: CGVector.zero).tap()
+        app.coordinate(withNormalizedOffset: CGVector.zero).withOffset(CGVector.zero).tap()
         selectTableViewCell(at: 0)
         selectCollectionViewItemCell(at: 1)
 
