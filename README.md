@@ -27,3 +27,19 @@
 - UIButton+ : 기본 버튼 설정
 - UINavigationController+ : 알람 필요 시 띄울 ToastMessage 이벤트 정의
 - UIFont+ : main/title/sub 폰트 정의
+
+### Protocol
+- RequestImageDelegate : URL 이미지요청 간 Delegate
+- SendDataDelegate : ViewController간 데이터 전송 Delegate
+- ViewControlerSetting
+- ViewSetting
+
+### Model
+- UserDataManager : 메모데이터 관리자 싱글턴클래스, UserDefaults 활용 메모데이터 저장/삭제/편집 관리
+- RequestImage : URL Image 처리 싱글턴클래스
+- ToastView : 이벤트 발생 간 ToastMessage에 사용될 ToastView UI, Event 정의
+▼ UserData 
+  - MemoData : UI에 사용되는 메모데이터
+  - MemoRawData : UserDefaults 저장 용 메모데이터
+  - MemoMode : 메모보기 방식 (view/edit) 정의
+▼ Constant
