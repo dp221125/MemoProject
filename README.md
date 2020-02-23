@@ -1,14 +1,28 @@
-# MemoProject
 
+<br>
+<br>
+
+# 메모앱 프로젝트 MemoProject
+
+<br>
+<br>
+
+## 목차 링크
+### [프로젝트 개요](https://github.com/applebuddy/MemoProject/blob/master/README.md#개요)
+### [앱 구동화면](https://github.com/applebuddy/MemoProject/blob/master/README.md#앱-구동화면)
+### [프로젝트 구조 & 사용목적](https://github.com/applebuddy/MemoProject/blob/master/README.md#프로젝트-구조--사용목적)
+
+<br>
 <br>
 
 ## 개요
-- 제목과 내용, 이미지를 메모로 추가할 수 있는 프로젝트 진행
+- 제목과 내용, 이미지를 작성/추가할 수 있는 메모앱 프로젝트
 - 코드+xib / 스토리보드+xib 사용 메모앱 개발 프로젝트
 - 코드+xib 프로젝트 내에서는 LineMemoUITests에서 메모 추가/편집/삭제 간 로직 테스트코드 추가 작성
 - 내부 프레임워크로만 프로젝트 진행
 - 애플 기본 MVC 디자인패턴 활용 프로젝트 진행
 
+<br>
 <br>
 
 ## 앱 구동화면
@@ -18,6 +32,7 @@
   &nbsp
   <img width=250 src="https://user-images.githubusercontent.com/4410021/75112190-b7f24080-5684-11ea-8b1b-d4bd0e671768.gif"></div>
 
+<br>
 <br>
 
 ## 프로젝트 구조 & 사용목적
@@ -97,3 +112,5 @@
     - 메모 삭제 테스트
     - 존재하는 메모데이터 정보 순차 확인 후 삭제 진행
 
+<br>
+<br>
