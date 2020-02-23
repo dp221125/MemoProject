@@ -53,3 +53,14 @@
   - ViewSize : UI 높이/너비/두께 등 정의
   - TitleData : ViewController 타이틀 정의
   
+### View
+- MainMemoView : 메인화면 View, 메모리스트 화면 UI, MainMemoViewController mainView로 사용
+- EditMemoView : 메모편집 화면 UI, DetailMemoViewController/AddMemoViewController mainView로 사용
+- AddImageURLView : URL 이미지 추가화면 UI, AddMemoViewController mainView로 사용
+- MainMemoTableViewCell : xib활용 UI 정의, 메인화면 메모리스트 셀
+- MemoImageCollectionViewCell : xib활용 UI 정의, 메모 이미지리스트 셀
+- FlowLayout
+  - MemoImageCollectionViewFlowLayout
+
+### Controller
+- MainNavigationController : 
