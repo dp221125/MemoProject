@@ -18,7 +18,9 @@
   &nbsp
   <img width=250 src="https://user-images.githubusercontent.com/4410021/75112190-b7f24080-5684-11ea-8b1b-d4bd0e671768.gif"></div>
 
-## 프로젝트 구조 및 사용목적
+<br>
+
+## 프로젝트 구조 & 사용목적
 ### AppDelegate 
 - UserDataManager로부터 기존의 저장된 메모데이터 로드
 - MainNavigationController, MainMemoViewController 인스턴스 생성 및 UIWindow의 rootViewController 설정
@@ -76,7 +78,7 @@
 - **AddMemoViewController** : 새로운 메모 추가 화면
 - **AddImageURLViewController** : URL Image 추가 화면
 
-
+<br>
 
 ### UITests
 
