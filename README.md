@@ -40,6 +40,8 @@
 <br>
 
 ## 프로젝트 구조 & 사용목적
+- **LineMemoWithNoStoryboard**
+
 ### AppDelegate 
 - UserDataManager로부터 기존의 저장된 메모데이터 로드
 - MainNavigationController, MainMemoViewController 인스턴스 생성 및 UIWindow의 rootViewController 설정
