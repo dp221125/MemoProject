@@ -17,7 +17,8 @@
 
 ## 개요
 - 이미지와 제목, 내용을 작성/추가할 수 있는 메모앱 프로젝트
-  - 카메라촬영, 사진앨범, URL Image 등을 통해 이미지 추가가능
+  - 편집 간 이미지 추가버튼, 각 이미지 우측 상단 모서리의 제거버튼으로 이미지 추가 및 삭제가능
+  - 편집 간 카메라촬영, 사진앨범, URL Image 방식으로 이미지 추가가능
 - LineMemoWithNoStoryboard(코드+xib) / LineMemoWithStoryboard(스토리보드+xib) 두가지 방식 개발
   - LineMemoWithNoStoryboard
     - 실제 제출 프로젝트, 스토리보드 미사용 개발
