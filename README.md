@@ -37,9 +37,19 @@
 ### Model
 - UserDataManager : 메모데이터 관리자 싱글턴클래스, UserDefaults 활용 메모데이터 저장/삭제/편집 관리
 - RequestImage : URL Image 처리 싱글턴클래스
-- ToastView : 이벤트 발생 간 ToastMessage에 사용될 ToastView UI, Event 정의
-▼ UserData 
+- UserData 
   - MemoData : UI에 사용되는 메모데이터
   - MemoRawData : UserDefaults 저장 용 메모데이터
   - MemoMode : 메모보기 방식 (view/edit) 정의
-▼ Constant
+- imageEditingMode : 이미지 편집모드 정의
+- ToastView : 이벤트 발생 간 ToastMessage에 사용 될 ToastView UI, Event 정의
+- Constant
+  - Error
+    - UserDataError : 유저 데이터 처리 간 에러 정의
+    - RequestImageError : URL Image 요청 간 에러 정의
+  - UIIdentifier : UI 식별자 정의
+  - XCTIdentifier : XCT 식별자 정의
+  - UpdateMode : UI 업데이트 방식 (single/whole) 정의
+  - ViewSize : UI 높이/너비/두께 등 정의
+  - TitleData : ViewController 타이틀 정의
+  
