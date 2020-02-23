@@ -29,21 +29,21 @@
 - UIFont+ : main/title/sub 폰트 정의
 
 ### Protocol
-- RequestImageDelegate : URL 이미지요청 간 Delegate
-- SendDataDelegate : ViewController간 데이터 전송 Delegate
+- **RequestImageDelegate** : URL 이미지요청 간 Delegate
+- **SendDataDelegate** : ViewController간 데이터 전송 Delegate
 - ViewControlerSetting
 - ViewSetting
 
 ### Model
-- UserDataManager : 메모데이터 관리자 싱글턴클래스, UserDefaults 활용 메모데이터 저장/삭제/편집 관리
-- RequestImage : URL Image 처리 싱글턴클래스
-- UserData 
+- **UserDataManager** : 메모데이터 관리자 싱글턴클래스, UserDefaults 활용 메모데이터 저장/삭제/편집 관리
+- **RequestImage** : URL Image 처리 싱글턴클래스
+- **UserData** 
   - MemoData : UI에 사용되는 메모데이터
   - MemoRawData : UserDefaults 저장 용 메모데이터
   - MemoMode : 메모보기 방식 (view/edit) 정의
-- imageEditingMode : 이미지 편집모드 정의
 - ToastView : 이벤트 발생 간 ToastMessage에 사용 될 ToastView UI, Event 정의
-- Constant
+- imageEditingMode : 이미지 편집모드 정의
+- **Constant**
   - Error
     - UserDataError : 유저 데이터 처리 간 에러 정의
     - RequestImageError : URL Image 요청 간 에러 정의
@@ -54,13 +54,37 @@
   - TitleData : ViewController 타이틀 정의
   
 ### View
-- MainMemoView : 메인화면 View, 메모리스트 화면 UI, MainMemoViewController mainView로 사용
-- EditMemoView : 메모편집 화면 UI, DetailMemoViewController/AddMemoViewController mainView로 사용
-- AddImageURLView : URL 이미지 추가화면 UI, AddMemoViewController mainView로 사용
-- MainMemoTableViewCell : xib활용 UI 정의, 메인화면 메모리스트 셀
-- MemoImageCollectionViewCell : xib활용 UI 정의, 메모 이미지리스트 셀
+- **MainMemoView** : 메인화면 View, 메모리스트 화면 UI, MainMemoViewController mainView로 사용
+- **EditMemoView** : 메모편집 화면 UI, DetailMemoViewController/AddMemoViewController mainView로 사용
+- **AddImageURLView** : URL 이미지 추가화면 UI, AddMemoViewController mainView로 사용
+- **MainMemoTableViewCell** : xib활용 UI 정의, 메인화면 메모리스트 셀
+- **MemoImageCollectionViewCell** : xib활용 UI 정의, 메모 이미지리스트 셀
 - FlowLayout
   - MemoImageCollectionViewFlowLayout
 
 ### Controller
-- MainNavigationController : 
+- **MainNavigationController** : 메인화면을 rootViewController로 하는 메모앱 메인 NavigationController
+- **MainMemoViewController** : 메민 메모리스트 화면
+- **DetailMemoViewController** : 저장된 메모 정보 확인 및 편집/저장이 가능한 화면
+- **AddMemoViewController** : 새로운 메모 추가 화면
+- **AddImageURLViewController** : URL Image 추가 화면
+
+
+
+### UITests
+
+- **LineMemoUITests : 메모 UI Test 메서드 정의**
+  -  **TestAddingMemoData**
+    - 메모 추가 테스트
+    - 이미지 추가방식 설정 후 진행 (ImageEditingMode)
+      - AddMemoViewController 진입 후 이미지, 메모데이터 입력 및 추가
+      - 추가한 메모데이터가 정상적으로 저장되었는지 확인 후 테스트 종료
+  - **testEditingMemoData**
+    - 메모 편집 테스트
+    - 이미지 삭제횟수(deleteImageCount), 추가방식(ImageEditingMode) 설정 후 진행
+      - DetailMemoViewController 진입 후 이미지, 메모데이터 편집 후 저장
+      - 메모데이터 편집 후 테스트 종료
+  - **testDeletingMemoData**
+    - 메모 삭제 테스트
+    - 존재하는 메모데이터 정보 순차 확인 후 삭제 진행
+
