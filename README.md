@@ -9,8 +9,8 @@
 
 ## 목차 링크
 ### [프로젝트 개요](https://github.com/applebuddy/MemoProject/blob/master/README.md#개요)
-### [앱 구동화면](https://github.com/applebuddy/MemoProject/blob/master/README.md#앱-구동화면)
-### [프로젝트 구조 & 사용목적](https://github.com/applebuddy/MemoProject/blob/master/README.md#프로젝트-구조--사용목적)
+### [앱 구동예시](https://github.com/applebuddy/MemoProject/blob/master/README.md#앱-구동화면)
+### [프로젝트 구조](https://github.com/applebuddy/MemoProject/blob/master/README.md#프로젝트-구조--사용목적)
 
 <br>
 <br>
