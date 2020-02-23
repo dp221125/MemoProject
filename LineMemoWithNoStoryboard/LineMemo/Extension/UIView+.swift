@@ -47,15 +47,11 @@ extension UIView {
         clipsToBounds = true
         layer.borderWidth = ViewSize.BorderWidth.basic
         layer.cornerRadius = ViewSize.CornerRadius.basic
-        UIView.animate(withDuration: 0.3, animations: {
-            self.layer.borderColor = UIColor.black.cgColor
-        })
+        layer.borderColor = UIColor.black.cgColor
     }
 
     func removeBorder() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.layer.borderColor = UIColor.clear.cgColor
-        })
+        layer.borderColor = UIColor.clear.cgColor
     }
 
     func activateXCTIdentifier(_ identifier: String) {

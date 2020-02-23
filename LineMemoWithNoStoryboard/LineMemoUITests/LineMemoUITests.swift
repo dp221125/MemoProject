@@ -14,13 +14,14 @@ class LineMemoUITests: XCTestCase {
 
     // MARK: Test Data
 
+    private var imageEditingMode: ImageEditingMode = .noImage
+    private let deleteImageCount = 1
+
     private let sampleImageURL = "https://homepages.cae.wisc.edu/~ece533/images/cat.png"
     private let testTitleText = "This is the title text"
     private let testTitleTextToEdit = "This is the Edited title text"
     private let testSubText = "This is the sub text"
     private let testSubTextToEdit = "This is the Edited sub text"
-    private var imageEditingMode: ImageEditingMode = .noImage
-    private let deleteImageCount = 1
 
     // MARK: - SetUp
 
@@ -87,7 +88,7 @@ class LineMemoUITests: XCTestCase {
     func testEditingMemoData() {
         // 이미지 추가유형 선택
 
-        imageEditingMode = .albumImage
+        imageEditingMode = .noImage
 
         // 첫번제 메모 선택
 
