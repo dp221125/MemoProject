@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemoImageCollectionViewCell" id="gTV-IL-0wX" customClass="MemoImageCollectionViewCell" customModule="LineMemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="113"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="120" height="113"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ax7-b5-uu3" userLabel="Content View">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="113"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
+                    </view>
+                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="TY2-yT-1Wg">
+                        <rect key="frame" x="3" y="3" width="114" height="107"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
+                    </imageView>
+                    <imageView hidden="YES" clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete" translatesAutoresizingMaskIntoConstraints="NO" id="8EL-0R-9Mj">
+                        <rect key="frame" x="85" y="5" width="30" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration" identifier="deleteImageView">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Yxl-fj-VrC"/>
+                            <constraint firstAttribute="height" constant="30" id="rpw-LW-UDD"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="TY2-yT-1Wg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="2KZ-c0-0qL"/>
+                <constraint firstAttribute="trailing" secondItem="Ax7-b5-uu3" secondAttribute="trailing" id="6Gc-NT-qxw"/>
+                <constraint firstAttribute="trailing" secondItem="8EL-0R-9Mj" secondAttribute="trailing" constant="5" id="82E-eB-6bo"/>
+                <constraint firstAttribute="trailing" secondItem="TY2-yT-1Wg" secondAttribute="trailing" constant="3" id="9yD-Vz-vel"/>
+                <constraint firstAttribute="bottom" secondItem="Ax7-b5-uu3" secondAttribute="bottom" id="9ya-nS-K3e"/>
+                <constraint firstItem="Ax7-b5-uu3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="F59-GI-b65"/>
+                <constraint firstItem="8EL-0R-9Mj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="FIY-SF-rCq"/>
+                <constraint firstItem="Ax7-b5-uu3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JfY-tD-3FM"/>
+                <constraint firstItem="TY2-yT-1Wg" firstAttribute="centerX" secondItem="Ax7-b5-uu3" secondAttribute="centerX" id="LPi-pe-HK1"/>
+                <constraint firstAttribute="bottom" secondItem="TY2-yT-1Wg" secondAttribute="bottom" constant="3" id="O2w-Nh-6Wz"/>
+                <constraint firstItem="TY2-yT-1Wg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="OX1-co-OoQ"/>
+                <constraint firstItem="TY2-yT-1Wg" firstAttribute="centerY" secondItem="Ax7-b5-uu3" secondAttribute="centerY" id="et0-kc-VzG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="120" height="113"/>
+            <connections>
+                <outlet property="deleteImageView" destination="8EL-0R-9Mj" id="IXe-Al-Jih"/>
+                <outlet property="photoImageView" destination="TY2-yT-1Wg" id="Aqy-iz-fMz"/>
+            </connections>
+            <point key="canvasLocation" x="188.40579710144928" y="103.45982142857143"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="addPhoto" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="delete" width="170.66667175292969" height="170.66667175292969"/>
+    </resources>
+</document>
