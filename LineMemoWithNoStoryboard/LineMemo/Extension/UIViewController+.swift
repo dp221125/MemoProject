@@ -8,27 +8,10 @@
 
 import UIKit
 
-// MARK: - Configuration
-
-extension UIViewController {
-    func updateMainMemoList() {
-        guard let navigationController = self.navigationController as? MainNavigationController else { return }
-//        navigationController.reloadMainMemoList()
-    }
-}
 
 // MARK: - Event
 
 extension UIViewController {
-    func openCamera(_ imagePickerController: UIImagePickerController) {
-        DispatchQueue.main.async { [weak self] in
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                imagePickerController.sourceType = .camera
-                self?.present(imagePickerController, animated: true, completion: nil)
-            }
-        }
-    }
-
     func presentAlbumAuthRequestAlertController() {
         DispatchQueue.main.async { [weak self] in
             self?.presentAuthRequestAlertController(title: "앨범 접근권한 필요", message: "앨범사용을 위해 앨범 접근권한이 필요합니다.")
@@ -70,13 +53,6 @@ extension UIViewController {
         alertController.addAction(approvalAction)
         alertController.addAction(denyAction)
         present(alertController, animated: true, completion: nil)
-    }
-
-    func openAlbum(_ imagePickerController: UIImagePickerController) {
-        DispatchQueue.main.async { [weak self] in
-            imagePickerController.sourceType = .photoLibrary
-            self?.present(imagePickerController, animated: true, completion: nil)
-        }
     }
 
     func endIgnoringInteractionEvents() {

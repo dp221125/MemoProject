@@ -27,15 +27,15 @@ class MemoImageCollectionViewCell: UICollectionViewCell {
 
     // MARK: Configuration
 
-    func configureCell(image: UIImage, imageMode: MemoMode, indexPath: IndexPath) {
+    func configureCell(image: UIImage, imageMode: MemoMode, indexPath: Int) {
         switch imageMode {
         case .view:
             photoImageView.backgroundColor = .black
             deleteImageView.isHidden = true
         case .edit:
-            photoImageView.backgroundColor = indexPath.row == 0 ? .white : .black
-            deleteImageView.isHidden = indexPath.row == 0 ? true : false
-            activateXCTIdentifier(indexPath.row == 0 ? XCTIdentifier.EditMemoView.addImageCell : "")
+            photoImageView.backgroundColor = indexPath == 0 ? .white : .black
+            deleteImageView.isHidden = indexPath == 0 ? true : false
+            activateXCTIdentifier(indexPath == 0 ? XCTIdentifier.EditMemoView.addImageCell : "")
         }
         photoImageView.image = image
     }

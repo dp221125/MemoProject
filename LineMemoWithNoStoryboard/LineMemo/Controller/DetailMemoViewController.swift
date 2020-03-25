@@ -141,7 +141,7 @@ extension DetailMemoViewController: ViewControllerSetting {
         }
     }
 
-    private func insertAndUpdateImageList(at index: Int, image: UIImage, mode: UpdateMode) {
+    private func insertAndUpdateImageList(at index: Int = 1, image: UIImage, mode: UpdateMode) {
         DispatchQueue.main.async { [weak self] in
             self?.editingMemoData.imageList.insert(image, at: index)
             switch mode {
@@ -288,7 +288,7 @@ extension DetailMemoViewController {
                 navigationController?.presentToastView("메모 저장에 실패했습니다.\n\(String(describing: (error as? UserDataError)?.message))")
             }
 
-            updateMainMemoList()
+//            updateMainMemoList()
             imageMode = .view
         }
     }
@@ -324,7 +324,7 @@ extension DetailMemoViewController: UICollectionViewDataSource {
         guard let imageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: UIIdentifier.Cell.Collection.memoImage, for: indexPath) as? MemoImageCollectionViewCell else { return UICollectionViewCell() }
 
         let isFirstItem = indexPath.row == 0 ? true : false
-        imageCollectionViewCell.configureCell(image: editingMemoData.imageList[indexPath.item], imageMode: imageMode, indexPath: indexPath)
+        imageCollectionViewCell.configureCell(image: editingMemoData.imageList[indexPath.item], imageMode: imageMode, indexPath: indexPath.row)
 
         switch imageMode {
         case .view:

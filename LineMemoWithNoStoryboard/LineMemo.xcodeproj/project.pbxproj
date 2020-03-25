@@ -56,6 +56,9 @@
 		241181558DBD83E11F7008CD /* Pods_LineMemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3886A59FE103EAF8B6C4434 /* Pods_LineMemo.framework */; };
 		4060E165BC1708CB8A6D2EDF /* Pods_LineMemo_LineMemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3926FB28BEEB0660CDCF7E0C /* Pods_LineMemo_LineMemoUITests.framework */; };
 		C3B4059F24289CA400AE2D90 /* MemoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B4059E24289CA400AE2D90 /* MemoDataManager.swift */; };
+		C3CC01C9242AF86C008EDF9D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC01C8242AF86C008EDF9D /* ImagePicker.swift */; };
+		C3CC01CB242AF89A008EDF9D /* AddMemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC01CA242AF89A008EDF9D /* AddMemoViewModel.swift */; };
+		C3CC01CE242B1375008EDF9D /* MainMemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CC01CD242B1375008EDF9D /* MainMemoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +125,9 @@
 		513061CF2BFD5AE52402C9C7 /* Pods-LineMemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LineMemo.release.xcconfig"; path = "Target Support Files/Pods-LineMemo/Pods-LineMemo.release.xcconfig"; sourceTree = "<group>"; };
 		900A095F699CEE87CFEEF071 /* Pods-LineMemo-LineMemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LineMemo-LineMemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-LineMemo-LineMemoUITests/Pods-LineMemo-LineMemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C3B4059E24289CA400AE2D90 /* MemoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDataManager.swift; sourceTree = "<group>"; };
+		C3CC01C8242AF86C008EDF9D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C3CC01CA242AF89A008EDF9D /* AddMemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewModel.swift; sourceTree = "<group>"; };
+		C3CC01CD242B1375008EDF9D /* MainMemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMemoViewModel.swift; sourceTree = "<group>"; };
 		E3886A59FE103EAF8B6C4434 /* Pods_LineMemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LineMemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6D2CA06FF10AC5BC73AB548 /* Pods-LineMemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LineMemo.debug.xcconfig"; path = "Target Support Files/Pods-LineMemo/Pods-LineMemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,10 +208,10 @@
 		0794F87223F13FC900D16463 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C3CC01CF242B15C0008EDF9D /* Add */,
+				C3CC01CC242B1365008EDF9D /* Main */,
 				0794F87923F1458100D16463 /* MainNavigationController.swift */,
-				0794F85E23F13CE000D16463 /* MainMemoViewController.swift */,
 				075172EA23F1CF4200959180 /* DetailMemoViewController.swift */,
-				0794F87D23F14E2C00D16463 /* AddMemoViewController.swift */,
 				07DD9E6F23F192CB009B95A0 /* AddImageURLViewController.swift */,
 			);
 			path = Controller;
@@ -316,6 +322,25 @@
 				44850C187B5DC83EB128B68C /* Pods-LineMemo-LineMemoUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C3CC01CC242B1365008EDF9D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0794F85E23F13CE000D16463 /* MainMemoViewController.swift */,
+				C3CC01CD242B1375008EDF9D /* MainMemoViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C3CC01CF242B15C0008EDF9D /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				0794F87D23F14E2C00D16463 /* AddMemoViewController.swift */,
+				C3CC01C8242AF86C008EDF9D /* ImagePicker.swift */,
+				C3CC01CA242AF89A008EDF9D /* AddMemoViewModel.swift */,
+			);
+			path = Add;
 			sourceTree = "<group>";
 		};
 		E486061CB8BDDAE4FE44E66A /* Frameworks */ = {
@@ -532,12 +557,15 @@
 				078141C123F2D33400D9A9CD /* UITextView+.swift in Sources */,
 				0746F6FD23F3EC9100617A16 /* ToastView.swift in Sources */,
 				0777F11523F9A92900F8FA96 /* AddImageURLVIew.swift in Sources */,
+				C3CC01C9242AF86C008EDF9D /* ImagePicker.swift in Sources */,
 				0794F87823F140C700D16463 /* UIIdentifier.swift in Sources */,
 				07BFEE9523F2D1CD00877D8F /* UITextField+.swift in Sources */,
+				C3CC01CB242AF89A008EDF9D /* AddMemoViewModel.swift in Sources */,
 				073D410323FEC41500FFEB16 /* ImageEditingMode.swift in Sources */,
 				07DD9E7223F19945009B95A0 /* RequestImage.swift in Sources */,
 				0794F85F23F13CE000D16463 /* MainMemoViewController.swift in Sources */,
 				0775887923F91B2200BF4D50 /* ViewSetting.swift in Sources */,
+				C3CC01CE242B1375008EDF9D /* MainMemoViewModel.swift in Sources */,
 				0775887D23F93A9A00BF4D50 /* UIFont+.swift in Sources */,
 				0746F6F823F3D17300617A16 /* MainMemoTableViewCell.swift in Sources */,
 				0794F87A23F1458100D16463 /* MainNavigationController.swift in Sources */,

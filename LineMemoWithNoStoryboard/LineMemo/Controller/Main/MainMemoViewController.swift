@@ -11,41 +11,11 @@ import RxSwift
 import RxCocoa
 
 // MARK: - MainMemoViewController
-protocol MainMemoViewType {
-    var memo: Observable<[MemoData]> { get }
-    
-    func deleteAction(_ row: Int)
-}
-
-class MainMemoViewModel: MainMemoViewType {
-    
-    //output
-    var memo: Observable<[MemoData]>
-    
-    private let disposeBag = DisposeBag()
-    private let dataManager: MemoDataManager
-    
-    init(dataManager: MemoDataManager = MemoDataManager()) {
-        self.dataManager = dataManager
-        let memo = BehaviorSubject<[MemoData]>(value: [])
-        self.memo = memo
-        
-        dataManager.loadData()
-            .bind(to: memo)
-            .disposed(by: self.disposeBag)
-        
-    }
-    
-    func deleteAction(_ row: Int) {
-        //
-    }
-}
-
 /// * 메인 메모리스트 뷰컨트롤러
 class MainMemoViewController: UIViewController {
     // MARK: UI
     
-    private let viewModel = MainMemoViewModel()
+    private let viewModel: MainMemoViewModelType
     private let disposeBag = DisposeBag()
     private weak var dataInfoLabel: UILabel?
     private var tableView: UITableView {
@@ -55,8 +25,17 @@ class MainMemoViewController: UIViewController {
         return tableView
     }
 
+    
+    init(viewModel: MainMemoViewModelType = MainMemoViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
     // MARK: Life Cycle
-
     override func loadView() {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .white
@@ -109,7 +88,7 @@ class MainMemoViewController: UIViewController {
     
     private func bind() {
 
-        self.viewModel.memo
+        self.viewModel.mainOutputs.memo
             .do(onNext: { data in self.configureDataInfoLabel(data.isEmpty ? false : true) })
             .bind(to: tableView.rx.items(cellIdentifier: UIIdentifier.Cell.Table.main,
                                          cellType: MainMemoTableViewCell.self)) {
@@ -119,27 +98,7 @@ class MainMemoViewController: UIViewController {
         
     }
 }
-
-// MARK: - Configuration
-
-//extension MainMemoViewController: ViewControllerSetting {
-//
-//    func reloadMemoData() {
-//        DispatchQueue.main.async { [weak self] in
-//            self?.tableView.reloadData()
-//        }
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let detailMemoViewController = segue.destination as? DetailMemoViewController,
-//            let memoData = sender as? MemoData else { return }
-//        detailMemoViewController.configureMemoData(memoData)
-//    }
-//}
-
-
 // MARK: - Transition
-
 extension MainMemoViewController {
     func presentDetailViewController(indexPath: IndexPath) {
         let detailMemoViewController = DetailMemoViewController()
@@ -149,14 +108,11 @@ extension MainMemoViewController {
 }
 
 // MARK: - UITableViewDelegate
-
 extension MainMemoViewController: UITableViewDelegate {
-    
-    
     func tableView(_: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            self.viewModel.deleteAction(indexPath.row)
+            self.viewModel.mainInputs.deleteAction(indexPath.row)
         default:
             break
         }
